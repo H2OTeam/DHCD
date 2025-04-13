@@ -1,0 +1,167 @@
+<#
+// Callbacks **********************************************************************************************************************
+    // This method will be called right before we write the POCO header.
+    Action<Table> WritePocoClassAttributes = t =>
+    {
+        if (UseDataAnnotations)
+        {
+            foreach (var dataAnnotation in t.DataAnnotations)
+            {
+                WriteLine("    [" + dataAnnotation + "]");
+            }
+        }
+
+        // if(t.ClassName.StartsWith("Order"))
+        //     WriteLine("    [SomeAttribute]");
+    };
+
+    // Writes optional base classes
+    Func<Table, string> WritePocoBaseClasses = t =>
+    {
+        //if (t.ClassName == "User")
+        //    return ": IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>";
+        return "";
+    };
+
+    // Writes any boilerplate stuff
+    Action<Table> WritePocoBaseClassBody = t =>
+    {
+        // Do nothing by default
+        // Example:
+        // WriteLine("        // " + t.ClassName);
+    };
+
+    Func<Column, string> WritePocoColumn = c =>
+    {
+        bool commentWritten = false;
+        if((IncludeExtendedPropertyComments == CommentsStyle.InSummaryBlock || IncludeComments == CommentsStyle.InSummaryBlock) && !string.IsNullOrEmpty(c.SummaryComments))
+        {
+            WriteLine(string.Empty);
+            WriteLine("        ///<summary>");
+            WriteLine("        /// {0}", System.Security.SecurityElement.Escape(c.SummaryComments));
+            WriteLine("        ///</summary>");
+            commentWritten = true;
+        }
+        if (UseDataAnnotations)
+        {
+            if(c.Ordinal > 1 && !commentWritten)
+                WriteLine(string.Empty);    // Leave a blank line before the next property
+
+            foreach (var dataAnnotation in c.DataAnnotations)
+            {
+                WriteLine("        [" + dataAnnotation + "]");
+            }
+        }
+
+        // Example of adding a [Required] data annotation attribute to all non-null fields
+        //if (!c.IsNullable)
+        //    return "        [System.ComponentModel.DataAnnotations.Required] " + c.Entity;
+
+        return "        " + c.Entity;
+    };
+
+    ForeignKeyFilter = (ForeignKey fk) =>
+    {
+        // Return null to exclude this foreign key, or set IncludeReverseNavigation = false
+        // to include the foeriegn key but not generate reverse navigation properties.
+        // Example, to exclude all foreign keys for the Categories table, use:
+        // if (fk.PkTableName == "Categories")
+        //    return null;
+
+        // Example, to exclude reverse navigation properties for tables ending with Type, use:
+        // if (fk.PkTableName.EndsWith("Type"))
+        //    fk.IncludeReverseNavigation = false;
+
+        return fk;
+    };
+
+    ForeignKeyName = (tableName, foreignKey, foreignKeyName, relationship, attempt) =>
+    {
+        string fkName;
+
+        // 5 Attempts to correctly name the foreign key
+        switch (attempt)
+        {
+            case 1:
+                // Try without appending foreign key name
+                fkName = tableName;
+                break;
+
+            case 2:
+                // Only called if foreign key name ends with "id"
+                // Use foreign key name without "id" at end of string
+                fkName = foreignKeyName.Remove(foreignKeyName.Length-2, 2);
+                break;
+
+            case 3:
+                // Use foreign key name only
+                fkName = foreignKeyName;
+                break;
+
+            case 4:
+                // Use table name and foreign key name
+                fkName = tableName + "_" + foreignKeyName;
+                break;
+
+            case 5:
+                // Used in for loop 1 to 99 to append a number to the end
+                fkName = tableName;
+                break;
+
+            default:
+                // Give up
+                fkName = tableName;
+                break;
+        }
+
+        // Apply custom foreign key renaming rules. Can be useful in applying pluralization.
+        // For example:
+        /*if (tableName == "Employee" && foreignKey.FkColumn == "ReportsTo")
+            return "Manager";
+
+        if (tableName == "Territories" && foreignKey.FkTableName == "EmployeeTerritories")
+            return "Locations";
+
+        if (tableName == "Employee" && foreignKey.FkTableName == "Orders" && foreignKey.FkColumn == "EmployeeID")
+            return "ContactPerson";
+        */
+
+        // FK_TableName_FromThisToParentRelationshipName_FromParentToThisChildsRelationshipName
+        // (e.g. FK_CustomerAddress_Customer_Addresses will extract navigation properties "address.Customer" and "customer.Addresses")
+        // Feel free to use and change the following
+        /*if (foreignKey.ConstraintName.StartsWith("FK_") && foreignKey.ConstraintName.Count(x => x == '_') == 3)
+        {
+            var parts = foreignKey.ConstraintName.Split('_');
+            if (!string.IsNullOrWhiteSpace(parts[2]) && !string.IsNullOrWhiteSpace(parts[3]) && parts[1] == foreignKey.FkTableName)
+            {
+                if (relationship == Relationship.OneToMany)
+                    fkName = parts[3];
+                else if (relationship == Relationship.ManyToOne)
+                    fkName = parts[2];
+            }
+        }*/
+
+        return fkName;
+    };
+
+    // Return true to include this table in the db context
+    ConfigurationFilter = (Table t) =>
+    {
+        return true;
+    };
+
+    // That's it, nothing else to configure ***********************************************************************************************
+
+
+    // Read schema
+    var factory = GetDbProviderFactory();
+    var tables = LoadTables(factory);
+    var storedProcs = LoadStoredProcs(factory);
+
+    // Generate output
+    if (tables.Count > 0 || storedProcs.Count > 0)
+    {
+#>
+<#@ include file="EF.Reverse.POCO.ttinclude" #>
+<#@ import namespace="System.Xml.Schema" #>
+<# } #>
