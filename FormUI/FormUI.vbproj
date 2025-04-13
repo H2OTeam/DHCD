@@ -202,6 +202,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>header.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Report\phieubauHDQT.vb">
       <DependentUpon>phieubauHDQT.rpt</DependentUpon>
@@ -271,8 +272,8 @@
       <DependentUpon>phieubauBKS.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Report\phieubieuquyet1.vb">
       <DependentUpon>phieubieuquyet1.rpt</DependentUpon>
@@ -462,6 +463,7 @@
     <EmbeddedResource Include="Report\header.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>header.vb</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\phieubauHDQT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
