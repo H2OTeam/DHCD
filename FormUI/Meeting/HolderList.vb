@@ -89,7 +89,19 @@ Public Class HolderList
 
         'Dim cr_thebieuquyet As New thebieuquyet_2
         Dim cr_thebieuquyet As New ReportDocument()
-        cr_thebieuquyet.Load("~/Report/thebieuquyet_2.rpt")
+        ' cr_thebieuquyet.Load("~/Report/thebieuquyet_2.rpt")
+        Dim reportPath As String = IO.Path.Combine(Application.StartupPath, "Report\thebieuquyet_2.rpt")
+        If Not IO.File.Exists(reportPath) Then
+            MessageBox.Show("Không tìm thấy file báo cáo: " & reportPath)
+            Exit Sub
+        End If
+
+        Try
+            cr_thebieuquyet.Load(reportPath)
+        Catch ex As Exception
+            MessageBox.Show("Lỗi khi load báo cáo: " & ex.Message)
+            Exit Sub
+        End Try
         Dim objCommon As New clsCommon()
 
         Dim strDelegateCode As String = DataGridView1.CurrentRow.Cells("holdercode").Value
@@ -115,6 +127,8 @@ Public Class HolderList
             Next
         End If
         strHoldercode = str
+        Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+        cr_thebieuquyet.SetParameterValue("LogoPath", logoPath)
         cr_thebieuquyet.SetParameterValue("Delegatecode", strDelegateCode)
         cr_thebieuquyet.SetParameterValue("HolderName", strDelegateName)
         cr_thebieuquyet.SetParameterValue("Delegatename", strDelegateName)
@@ -123,6 +137,8 @@ Public Class HolderList
         cr_thebieuquyet.SetParameterValue("Holdercode", strHoldercode)
         cr_thebieuquyet.SetParameterValue("voterights", strVoterights)
         cr_thebieuquyet.SetParameterValue("DateMeeting", Mainform.dateMeeting)
+        cr_thebieuquyet.SetParameterValue("MettingType", Mainform.mettingType)
+
         ReportViewer.LoadReport(cr_thebieuquyet, Me)
     End Sub
 

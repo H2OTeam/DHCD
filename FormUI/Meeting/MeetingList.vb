@@ -63,7 +63,8 @@
         Mainform.ToolStripStatusLabel3.Text = DataGridView1.CurrentRow.Cells("MeetingTime").Value
         Mainform.period = DataGridView1.CurrentRow.Cells("Period").Value
         Mainform.companyName = DataGridView1.CurrentRow.Cells("CompanyName").Value
-        Mainform.mettingType = DataGridView1.CurrentRow.Cells("MettingType").Value 'companyName
+        Mainform.stockCode = DataGridView1.CurrentRow.Cells("StockCode").Value
+        Mainform.mettingType = DataGridView1.CurrentRow.Cells("MettingType").Value 'stockCode
         Me.Close()
     End Sub
 
@@ -94,6 +95,7 @@
             Mainform.ToolStripStatusLabel3.Text = DataGridView1.CurrentRow.Cells("MeetingTime").Value
             Mainform.period = DataGridView1.CurrentRow.Cells("Period").Value
             Mainform.mettingType = DataGridView1.CurrentRow.Cells("MettingType").Value
+            Mainform.stockCode = DataGridView1.CurrentRow.Cells("StockCode").Value
             Me.Close()
         End If
 

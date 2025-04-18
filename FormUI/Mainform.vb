@@ -14,6 +14,7 @@ Public Class Mainform
     Public workingmeeting As String = ""
     Public period As String = "2022 – 2026"
     Public mettingType As String = "thường niên"
+    Public stockCode As String = "APG"
     Public companyName As String = "Công ty Cổ phần Chứng khoán APG"
     Public dateMeeting As DateTime = DateTime.Now
 

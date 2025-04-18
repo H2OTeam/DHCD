@@ -16,9 +16,18 @@ Public Class PrintHolders
 
             ' Dim cr_thebieuquyet As New thebieuquyet
             Dim cr_thebieuquyet As New ReportDocument()
-            cr_thebieuquyet.Load("~/Report/thebieuquyet.rpt")
+            'cr_thebieuquyet.Load("~/Report/thebieuquyet.rpt")
+            Dim reportPath As String = IO.Path.Combine(Application.StartupPath, "Report\thebieuquyet.rpt")
+            If Not IO.File.Exists(reportPath) Then
+                MessageBox.Show("Không tìm thấy file báo cáo: " & reportPath)
+                Exit Sub
+            End If
+            cr_thebieuquyet.Load(reportPath)
             cr_thebieuquyet.SetDataSource(dt)
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr_thebieuquyet.SetParameterValue("LogoPath", logoPath)
             cr_thebieuquyet.SetParameterValue("DateMeeting", Mainform.dateMeeting)
+            cr_thebieuquyet.SetParameterValue("MettingType", Mainform.mettingType)
             ReportViewer.LoadReport(cr_thebieuquyet, HolderList)
         Catch ex As Exception
             MsgBox("Lỗi :" + ex.Message)

@@ -27,6 +27,7 @@
             MaskedTextBox5.Text = dt.Rows(0)("HolderAddress")
             StockTextBox1.Text = dt.Rows(0)("Shares")
             StockTextBox2.Text = dt.Rows(0)("Voterights")
+            identityDate.Value = dt.Rows(0)("IdentityDate")
         End If
     End Sub
 

@@ -44,7 +44,7 @@ Namespace BenlyDAL
             Return result
         End Function
 
-        Public Sub meeting_insert(ByVal meetingcode As String, ByVal MeetingName As String, ByVal CompanyName As String, ByVal companyAddress As String, ByVal MeetingAddress As String, ByVal Meetingtime As DateTime, ByVal period As String, ByVal mettingType As String)
+        Public Sub meeting_insert(ByVal meetingcode As String, ByVal MeetingName As String, ByVal CompanyName As String, ByVal companyAddress As String, ByVal MeetingAddress As String, ByVal Meetingtime As DateTime, ByVal period As String, ByVal mettingType As String, ByVal stockCode As String)
             Dim strquerry As String = "Meetings_insert"
             Dim cmd As New SqlCommand(strquerry, conn)
             cmd.Parameters.Add("meetingcode", SqlDbType.VarChar).Value = meetingcode
@@ -55,6 +55,8 @@ Namespace BenlyDAL
             cmd.Parameters.Add("Meetingtime", SqlDbType.SmallDateTime).Value = Meetingtime
             cmd.Parameters.Add("Period", SqlDbType.NVarChar).Value = period
             cmd.Parameters.Add("MettingType", SqlDbType.NVarChar).Value = mettingType
+            cmd.Parameters.Add("YearMeeting", SqlDbType.NVarChar).Value = Meetingtime.Year.ToString()
+            cmd.Parameters.Add("StockCode", SqlDbType.NVarChar).Value = stockCode
             cmd.CommandType = CommandType.StoredProcedure
 
             Try
@@ -63,7 +65,7 @@ Namespace BenlyDAL
                 Throw (ex)
             End Try
         End Sub
-        Public Sub meeting_update(ByVal meetingcode As String, ByVal MeetingName As String, ByVal CompanyName As String, ByVal companyAddress As String, ByVal MeetingAddress As String, ByVal Meetingtime As DateTime, ByVal period As String, ByVal mettingType As String)
+        Public Sub meeting_update(ByVal meetingcode As String, ByVal MeetingName As String, ByVal CompanyName As String, ByVal companyAddress As String, ByVal MeetingAddress As String, ByVal Meetingtime As DateTime, ByVal period As String, ByVal mettingType As String, ByVal stockCode As String)
             Dim strquerry As String = "Meetings_update"
             Dim cmd As New SqlCommand(strquerry, conn)
             cmd.Parameters.Add("meetingcode", SqlDbType.VarChar).Value = meetingcode
@@ -74,6 +76,8 @@ Namespace BenlyDAL
             cmd.Parameters.Add("Meetingtime", SqlDbType.SmallDateTime).Value = Meetingtime
             cmd.Parameters.Add("Period", SqlDbType.NVarChar).Value = period
             cmd.Parameters.Add("MettingType", SqlDbType.NVarChar).Value = mettingType
+            cmd.Parameters.Add("YearMeeting", SqlDbType.NVarChar).Value = Meetingtime.Year.ToString()
+            cmd.Parameters.Add("StockCode", SqlDbType.NVarChar).Value = stockCode
             cmd.CommandType = CommandType.StoredProcedure
 
             Try

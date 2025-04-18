@@ -163,7 +163,7 @@ Public Class Delegate_ins
             Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
             cr.SetParameterValue("LogoPath", logoPath)
             cr.SetParameterValue("HolderName", strHolderName.ToUpper())
-            cr.SetParameterValue("Delegatecode", strDelegateCode)
+            cr.SetParameterValue("Delegatecode", Mainform.stockCode + strDelegateCode.PadLeft(4, "0"c))
             cr.SetParameterValue("Delegatename", strDelegateName.ToUpper())
             cr.SetParameterValue("IdentityCard", strIndentityCard)
             cr.SetParameterValue("Address", strAddress)

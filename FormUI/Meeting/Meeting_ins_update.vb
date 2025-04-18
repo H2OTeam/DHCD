@@ -25,8 +25,9 @@ Public Class Meeting_ins_update
             MaskedTextBox3.Text = dt.Rows(0)("companyname")
             MaskedTextBox4.Text = dt.Rows(0)("CompanyAddress")
             MaskedTextBox5.Text = dt.Rows(0)("meetingAddress")
-            txtPeriod.Text=dt.Rows(0)("Period")
-            txtMettingType.SelectedText = dt.Rows(0)("MettingType")
+            txtPeriod.Text = dt.Rows(0)("Period")
+            txtMettingType.SelectedText = dt.Rows(0)("MettingType") 'stockCode
+            stockCode.Text = dt.Rows(0)("StockCode")
             'DateTimePicker1.Value = Convert.ToDateTime(dt.Rows(0)("meetingtime"))
             DateTimePicker1.Value = DateTime.Parse(dt.Rows(0)("meetingtime"), New CultureInfo("vi-VN"))
         End If
@@ -40,14 +41,14 @@ Public Class Meeting_ins_update
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         If controlcode = "Add" Then
             Try
-                Mainform.BenlyDal.meeting_insert(MaskedTextBox1.Text, MaskedTextBox2.Text, MaskedTextBox3.Text, MaskedTextBox4.Text, MaskedTextBox5.Text, DateTimePicker1.Value.Date, txtPeriod.Text, txtMettingType.SelectedText)
+                Mainform.BenlyDal.meeting_insert(MaskedTextBox1.Text, MaskedTextBox2.Text, MaskedTextBox3.Text, MaskedTextBox4.Text, MaskedTextBox5.Text, DateTimePicker1.Value.Date, txtPeriod.Text, txtMettingType.Text, stockCode.Text)
                 Me.Close()
             Catch ex As Exception
                 MsgBox("Lỗi : " + ex.Message)
             End Try
         ElseIf controlcode = "Update" Then
             Try
-                Mainform.BenlyDal.meeting_update(MaskedTextBox1.Text, MaskedTextBox2.Text, MaskedTextBox3.Text, MaskedTextBox4.Text, MaskedTextBox5.Text, DateTimePicker1.Value.Date, txtPeriod.Text, txtMettingType.SelectedText)
+                Mainform.BenlyDal.meeting_update(MaskedTextBox1.Text, MaskedTextBox2.Text, MaskedTextBox3.Text, MaskedTextBox4.Text, MaskedTextBox5.Text, DateTimePicker1.Value.Date, txtPeriod.Text, txtMettingType.Text, stockCode.Text)
                 Me.Close()
             Catch ex As Exception
                 MsgBox("Lỗi : " + ex.Message)

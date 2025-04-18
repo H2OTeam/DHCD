@@ -22,39 +22,44 @@ Partial Class HolderList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HolderList))
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel
-        Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.holdercode = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.HolderName = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.HolderIdentity = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.HolderAddress = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Shares = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Voterights = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton
-        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripSplitButton2 = New System.Windows.Forms.ToolStripSplitButton
-        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripStatusLabel6 = New System.Windows.Forms.ToolStripStatusLabel
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.holdercode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HolderName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HolderIdentity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdentityDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Phone = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.email = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HolderAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotVSD = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Shares = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Voterights = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripSplitButton2 = New System.Windows.Forms.ToolStripSplitButton()
+        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel6 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -62,10 +67,11 @@ Partial Class HolderList
         '
         'ToolStrip1
         '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.ToolStripTextBox2, Me.ToolStripButton4, Me.ToolStripButton6, Me.ToolStripButton5})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(832, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1109, 31)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -74,7 +80,7 @@ Partial Class HolderList
         Me.ToolStripButton1.Image = Global.pmDHCD.My.Resources.Resources.Add
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(68, 22)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(90, 28)
         Me.ToolStripButton1.Text = "Thêm(A)"
         '
         'ToolStripButton2
@@ -82,7 +88,7 @@ Partial Class HolderList
         Me.ToolStripButton2.Image = Global.pmDHCD.My.Resources.Resources.Document
         Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(60, 22)
+        Me.ToolStripButton2.Size = New System.Drawing.Size(76, 28)
         Me.ToolStripButton2.Text = "Sửa(E)"
         '
         'ToolStripButton3
@@ -90,47 +96,49 @@ Partial Class HolderList
         Me.ToolStripButton3.Image = Global.pmDHCD.My.Resources.Resources.Delete
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(60, 22)
+        Me.ToolStripButton3.Size = New System.Drawing.Size(80, 28)
         Me.ToolStripButton3.Text = "Xóa(D)"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 31)
         '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(62, 22)
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(89, 28)
         Me.ToolStripLabel1.Text = "Mã cổ đông"
         '
         'ToolStripTextBox1
         '
+        Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(100, 25)
+        Me.ToolStripTextBox1.Size = New System.Drawing.Size(132, 31)
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 31)
         '
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(58, 22)
-        Me.ToolStripLabel2.Text = "CMT/GPKD"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(91, 28)
+        Me.ToolStripLabel2.Text = "CCCD/GPKD"
         '
         'ToolStripTextBox2
         '
+        Me.ToolStripTextBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
-        Me.ToolStripTextBox2.Size = New System.Drawing.Size(100, 25)
+        Me.ToolStripTextBox2.Size = New System.Drawing.Size(132, 31)
         '
         'ToolStripButton4
         '
         Me.ToolStripButton4.Image = Global.pmDHCD.My.Resources.Resources.Search
         Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(43, 22)
+        Me.ToolStripButton4.Size = New System.Drawing.Size(58, 28)
         Me.ToolStripButton4.Text = "Tìm"
         '
         'ToolStripButton6
@@ -138,16 +146,18 @@ Partial Class HolderList
         Me.ToolStripButton6.Image = Global.pmDHCD.My.Resources.Resources.Printer
         Me.ToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton6.Name = "ToolStripButton6"
-        Me.ToolStripButton6.Size = New System.Drawing.Size(93, 22)
+        Me.ToolStripButton6.Size = New System.Drawing.Size(118, 28)
         Me.ToolStripButton6.Text = "In tài liệu..(P)"
+        Me.ToolStripButton6.Visible = False
         '
         'ToolStripButton5
         '
         Me.ToolStripButton5.Image = Global.pmDHCD.My.Resources.Resources.Printer
         Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(84, 22)
+        Me.ToolStripButton5.Size = New System.Drawing.Size(109, 28)
         Me.ToolStripButton5.Text = "In nhiều CĐ"
+        Me.ToolStripButton5.Visible = False
         '
         'DataGridView1
         '
@@ -155,13 +165,15 @@ Partial Class HolderList
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.holdercode, Me.HolderName, Me.HolderIdentity, Me.HolderAddress, Me.Shares, Me.Voterights})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.holdercode, Me.HolderName, Me.HolderIdentity, Me.IdentityDate, Me.Phone, Me.email, Me.HolderAddress, Me.NotVSD, Me.Shares, Me.Voterights})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 25)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 31)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(832, 440)
+        Me.DataGridView1.Size = New System.Drawing.Size(1109, 541)
         Me.DataGridView1.TabIndex = 5
         '
         'holdercode
@@ -169,6 +181,7 @@ Partial Class HolderList
         Me.holdercode.DataPropertyName = "holdercode"
         Me.holdercode.FillWeight = 59.08628!
         Me.holdercode.HeaderText = "Mã cổ đông"
+        Me.holdercode.MinimumWidth = 6
         Me.holdercode.Name = "holdercode"
         Me.holdercode.ReadOnly = True
         Me.holdercode.Width = 50
@@ -178,6 +191,7 @@ Partial Class HolderList
         Me.HolderName.DataPropertyName = "HolderName"
         Me.HolderName.FillWeight = 59.08628!
         Me.HolderName.HeaderText = "Tên cổ đông"
+        Me.HolderName.MinimumWidth = 6
         Me.HolderName.Name = "HolderName"
         Me.HolderName.ReadOnly = True
         Me.HolderName.Width = 120
@@ -186,27 +200,72 @@ Partial Class HolderList
         '
         Me.HolderIdentity.DataPropertyName = "HolderIdentity"
         Me.HolderIdentity.FillWeight = 59.08628!
-        Me.HolderIdentity.HeaderText = "CMT/GPKD"
+        Me.HolderIdentity.HeaderText = "Số đăng ký sở hữu"
+        Me.HolderIdentity.MinimumWidth = 6
         Me.HolderIdentity.Name = "HolderIdentity"
         Me.HolderIdentity.ReadOnly = True
         Me.HolderIdentity.Width = 94
         '
+        'IdentityDate
+        '
+        Me.IdentityDate.DataPropertyName = "IdentityDate"
+        Me.IdentityDate.HeaderText = "Ngày Cấp"
+        Me.IdentityDate.MinimumWidth = 6
+        Me.IdentityDate.Name = "IdentityDate"
+        Me.IdentityDate.ReadOnly = True
+        Me.IdentityDate.Width = 125
+        '
+        'Phone
+        '
+        Me.Phone.HeaderText = "Phone"
+        Me.Phone.MinimumWidth = 6
+        Me.Phone.Name = "Phone"
+        Me.Phone.ReadOnly = True
+        Me.Phone.Width = 125
+        '
+        'email
+        '
+        Me.email.DataPropertyName = "email"
+        Me.email.HeaderText = "Email"
+        Me.email.MinimumWidth = 6
+        Me.email.Name = "email"
+        Me.email.ReadOnly = True
+        Me.email.Width = 125
+        '
         'HolderAddress
         '
+        Me.HolderAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.HolderAddress.DataPropertyName = "HolderAddress"
         Me.HolderAddress.FillWeight = 200.0!
         Me.HolderAddress.HeaderText = "Địa chỉ"
+        Me.HolderAddress.MinimumWidth = 6
         Me.HolderAddress.Name = "HolderAddress"
         Me.HolderAddress.ReadOnly = True
-        Me.HolderAddress.Width = 319
+        Me.HolderAddress.Width = 58
+        '
+        'NotVSD
+        '
+        Me.NotVSD.DataPropertyName = "NotVSD"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N0"
+        DataGridViewCellStyle2.NullValue = "0"
+        Me.NotVSD.DefaultCellStyle = DataGridViewCellStyle2
+        Me.NotVSD.HeaderText = "Chư Lưu Ký"
+        Me.NotVSD.MinimumWidth = 6
+        Me.NotVSD.Name = "NotVSD"
+        Me.NotVSD.ReadOnly = True
+        Me.NotVSD.Width = 125
         '
         'Shares
         '
         Me.Shares.DataPropertyName = "Shares"
-        DataGridViewCellStyle2.Format = "N0"
-        Me.Shares.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N0"
+        DataGridViewCellStyle3.NullValue = "0"
+        Me.Shares.DefaultCellStyle = DataGridViewCellStyle3
         Me.Shares.FillWeight = 59.08628!
         Me.Shares.HeaderText = "Số cổ phần"
+        Me.Shares.MinimumWidth = 6
         Me.Shares.Name = "Shares"
         Me.Shares.ReadOnly = True
         Me.Shares.Width = 94
@@ -214,52 +273,56 @@ Partial Class HolderList
         'Voterights
         '
         Me.Voterights.DataPropertyName = "Voterights"
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.Voterights.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = "0"
+        Me.Voterights.DefaultCellStyle = DataGridViewCellStyle4
         Me.Voterights.FillWeight = 59.08628!
         Me.Voterights.HeaderText = "Số quyền biểu quyết"
+        Me.Voterights.MinimumWidth = 6
         Me.Voterights.Name = "Voterights"
         Me.Voterights.ReadOnly = True
         Me.Voterights.Width = 94
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripSplitButton1, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4, Me.ToolStripSplitButton2, Me.ToolStripStatusLabel5, Me.ToolStripStatusLabel6})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 443)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 546)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(832, 22)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1109, 26)
         Me.StatusStrip1.TabIndex = 6
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(97, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(134, 20)
         Me.ToolStripStatusLabel1.Text = "Số lượng bản ghi : "
         '
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 20)
         '
         'ToolStripSplitButton1
         '
         Me.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.None
         Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
-        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(16, 20)
+        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(19, 24)
         Me.ToolStripSplitButton1.Text = "ToolStripSplitButton1"
         '
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(96, 17)
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(130, 20)
         Me.ToolStripStatusLabel3.Text = "Tổng số cổ phần : "
         '
         'ToolStripStatusLabel4
         '
         Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(0, 17)
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(0, 20)
         '
         'ToolStripSplitButton2
         '
@@ -267,29 +330,30 @@ Partial Class HolderList
         Me.ToolStripSplitButton2.Image = CType(resources.GetObject("ToolStripSplitButton2.Image"), System.Drawing.Image)
         Me.ToolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripSplitButton2.Name = "ToolStripSplitButton2"
-        Me.ToolStripSplitButton2.Size = New System.Drawing.Size(16, 20)
+        Me.ToolStripSplitButton2.Size = New System.Drawing.Size(19, 24)
         Me.ToolStripSplitButton2.Text = "ToolStripSplitButton2"
         '
         'ToolStripStatusLabel5
         '
         Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
-        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(142, 17)
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(191, 20)
         Me.ToolStripStatusLabel5.Text = "Tổng số quyền biểu quyết : "
         '
         'ToolStripStatusLabel6
         '
         Me.ToolStripStatusLabel6.Name = "ToolStripStatusLabel6"
-        Me.ToolStripStatusLabel6.Size = New System.Drawing.Size(0, 17)
+        Me.ToolStripStatusLabel6.Size = New System.Drawing.Size(0, 20)
         '
         'HolderList
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(832, 465)
+        Me.ClientSize = New System.Drawing.Size(1109, 572)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.KeyPreview = True
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "HolderList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Danh sách cổ đông"
@@ -324,11 +388,15 @@ Partial Class HolderList
     Friend WithEvents ToolStripStatusLabel5 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel6 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents holdercode As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents HolderName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents HolderIdentity As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents HolderAddress As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Shares As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Voterights As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents holdercode As DataGridViewTextBoxColumn
+    Friend WithEvents HolderName As DataGridViewTextBoxColumn
+    Friend WithEvents HolderIdentity As DataGridViewTextBoxColumn
+    Friend WithEvents IdentityDate As DataGridViewTextBoxColumn
+    Friend WithEvents Phone As DataGridViewTextBoxColumn
+    Friend WithEvents email As DataGridViewTextBoxColumn
+    Friend WithEvents HolderAddress As DataGridViewTextBoxColumn
+    Friend WithEvents NotVSD As DataGridViewTextBoxColumn
+    Friend WithEvents Shares As DataGridViewTextBoxColumn
+    Friend WithEvents Voterights As DataGridViewTextBoxColumn
 End Class

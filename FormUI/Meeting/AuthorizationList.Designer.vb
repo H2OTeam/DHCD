@@ -23,44 +23,44 @@ Partial Class AuthorizationList
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AuthorizationList))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel
-        Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel
-        Me.ToolStripTextBox4 = New System.Windows.Forms.ToolStripTextBox
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton
-        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripSplitButton2 = New System.Windows.Forms.ToolStripSplitButton
-        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripStatusLabel6 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.Holdercode = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.holdername = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.HolderIdentity = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.HolderAddress = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Delegatecode = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Delegatename = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.IdentityCard = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DelegateAddress = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.voterights = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DelegateRight = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripTextBox4 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripSplitButton2 = New System.Windows.Forms.ToolStripSplitButton()
+        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel6 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Holdercode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.holdername = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HolderIdentity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HolderAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Delegatecode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Delegatename = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdentityCard = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DelegateAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.voterights = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DelegateRight = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,10 +68,11 @@ Partial Class AuthorizationList
         '
         'ToolStrip1
         '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.ToolStripTextBox2, Me.ToolStripSeparator2, Me.ToolStripLabel4, Me.ToolStripTextBox4, Me.ToolStripSeparator3, Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripButton4})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(940, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1253, 31)
         Me.ToolStrip1.TabIndex = 4
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -80,7 +81,7 @@ Partial Class AuthorizationList
         Me.ToolStripButton1.Image = Global.pmDHCD.My.Resources.Resources.Add
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(74, 22)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(90, 28)
         Me.ToolStripButton1.Text = "Thêm(A)"
         '
         'ToolStripButton2
@@ -88,7 +89,7 @@ Partial Class AuthorizationList
         Me.ToolStripButton2.Image = Global.pmDHCD.My.Resources.Resources.Document
         Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(60, 22)
+        Me.ToolStripButton2.Size = New System.Drawing.Size(76, 28)
         Me.ToolStripButton2.Text = "Sửa(E)"
         '
         'ToolStripButton3
@@ -96,52 +97,54 @@ Partial Class AuthorizationList
         Me.ToolStripButton3.Image = Global.pmDHCD.My.Resources.Resources.Delete
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(63, 22)
+        Me.ToolStripButton3.Size = New System.Drawing.Size(80, 28)
         Me.ToolStripButton3.Text = "Xóa(D)"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 31)
         '
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(100, 22)
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(123, 28)
         Me.ToolStripLabel2.Text = "CMT/HC đại biểu"
         '
         'ToolStripTextBox2
         '
+        Me.ToolStripTextBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
-        Me.ToolStripTextBox2.Size = New System.Drawing.Size(100, 25)
+        Me.ToolStripTextBox2.Size = New System.Drawing.Size(132, 31)
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 31)
         '
         'ToolStripLabel4
         '
         Me.ToolStripLabel4.Name = "ToolStripLabel4"
-        Me.ToolStripLabel4.Size = New System.Drawing.Size(137, 22)
-        Me.ToolStripLabel4.Text = "CMT/HC/GPKD cổ đông"
+        Me.ToolStripLabel4.Size = New System.Drawing.Size(176, 28)
+        Me.ToolStripLabel4.Text = "CCCD/HC/GPKD cổ đông"
         '
         'ToolStripTextBox4
         '
+        Me.ToolStripTextBox4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox4.Name = "ToolStripTextBox4"
-        Me.ToolStripTextBox4.Size = New System.Drawing.Size(100, 25)
+        Me.ToolStripTextBox4.Size = New System.Drawing.Size(132, 31)
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 31)
         '
         'ToolStripButton5
         '
         Me.ToolStripButton5.Image = Global.pmDHCD.My.Resources.Resources.Search
         Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(48, 22)
+        Me.ToolStripButton5.Size = New System.Drawing.Size(58, 28)
         Me.ToolStripButton5.Text = "Tìm"
         '
         'ToolStripButton6
@@ -149,7 +152,7 @@ Partial Class AuthorizationList
         Me.ToolStripButton6.Image = Global.pmDHCD.My.Resources.Resources.Search
         Me.ToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton6.Name = "ToolStripButton6"
-        Me.ToolStripButton6.Size = New System.Drawing.Size(76, 22)
+        Me.ToolStripButton6.Size = New System.Drawing.Size(94, 28)
         Me.ToolStripButton6.Text = "In thẻ BQ"
         Me.ToolStripButton6.Visible = False
         '
@@ -158,28 +161,31 @@ Partial Class AuthorizationList
         Me.ToolStripButton4.Image = Global.pmDHCD.My.Resources.Resources.Search
         Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(124, 22)
+        Me.ToolStripButton4.Size = New System.Drawing.Size(153, 28)
         Me.ToolStripButton4.Text = "In giấy x.nhận t.dự"
+        Me.ToolStripButton4.Visible = False
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripSplitButton1, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4, Me.ToolStripSplitButton2, Me.ToolStripStatusLabel5, Me.ToolStripStatusLabel6})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 441)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 544)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(940, 22)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1253, 26)
         Me.StatusStrip1.TabIndex = 8
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(106, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(134, 20)
         Me.ToolStripStatusLabel1.Text = "Số lượng bản ghi : "
         '
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 20)
         '
         'ToolStripSplitButton1
         '
@@ -187,19 +193,19 @@ Partial Class AuthorizationList
         Me.ToolStripSplitButton1.Image = CType(resources.GetObject("ToolStripSplitButton1.Image"), System.Drawing.Image)
         Me.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
-        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(16, 20)
+        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(19, 24)
         Me.ToolStripSplitButton1.Text = "ToolStripSplitButton1"
         '
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(195, 17)
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(242, 20)
         Me.ToolStripStatusLabel3.Text = "Tổng số quyền biểu quyết của CĐ : "
         '
         'ToolStripStatusLabel4
         '
         Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(0, 17)
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(0, 20)
         '
         'ToolStripSplitButton2
         '
@@ -207,19 +213,19 @@ Partial Class AuthorizationList
         Me.ToolStripSplitButton2.Image = CType(resources.GetObject("ToolStripSplitButton2.Image"), System.Drawing.Image)
         Me.ToolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripSplitButton2.Name = "ToolStripSplitButton2"
-        Me.ToolStripSplitButton2.Size = New System.Drawing.Size(16, 20)
+        Me.ToolStripSplitButton2.Size = New System.Drawing.Size(19, 24)
         Me.ToolStripSplitButton2.Text = "ToolStripSplitButton2"
         '
         'ToolStripStatusLabel5
         '
         Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
-        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(236, 17)
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(292, 20)
         Me.ToolStripStatusLabel5.Text = "Tổng số quyền biểu quyết được ủy quyền : "
         '
         'ToolStripStatusLabel6
         '
         Me.ToolStripStatusLabel6.Name = "ToolStripStatusLabel6"
-        Me.ToolStripStatusLabel6.Size = New System.Drawing.Size(121, 17)
+        Me.ToolStripStatusLabel6.Size = New System.Drawing.Size(153, 20)
         Me.ToolStripStatusLabel6.Text = "ToolStripStatusLabel6"
         '
         'DataGridView1
@@ -232,12 +238,14 @@ Partial Class AuthorizationList
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Holdercode, Me.holdername, Me.HolderIdentity, Me.HolderAddress, Me.Delegatecode, Me.Delegatename, Me.IdentityCard, Me.DelegateAddress, Me.voterights, Me.DelegateRight})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 25)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 31)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(940, 416)
+        Me.DataGridView1.Size = New System.Drawing.Size(1253, 513)
         Me.DataGridView1.TabIndex = 9
         '
         'Holdercode
@@ -274,6 +282,7 @@ Partial Class AuthorizationList
         '
         Me.HolderAddress.DataPropertyName = "HolderAddress"
         Me.HolderAddress.HeaderText = "HolderAddress"
+        Me.HolderAddress.MinimumWidth = 6
         Me.HolderAddress.Name = "HolderAddress"
         Me.HolderAddress.ReadOnly = True
         Me.HolderAddress.Visible = False
@@ -309,6 +318,7 @@ Partial Class AuthorizationList
         '
         Me.DelegateAddress.DataPropertyName = "DelegateAddress"
         Me.DelegateAddress.HeaderText = "DelegateAddress"
+        Me.DelegateAddress.MinimumWidth = 6
         Me.DelegateAddress.Name = "DelegateAddress"
         Me.DelegateAddress.ReadOnly = True
         Me.DelegateAddress.Visible = False
@@ -337,13 +347,14 @@ Partial Class AuthorizationList
         '
         'AuthorizationList
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(940, 463)
+        Me.ClientSize = New System.Drawing.Size(1253, 570)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.KeyPreview = True
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "AuthorizationList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Danh sách ủy quyền"

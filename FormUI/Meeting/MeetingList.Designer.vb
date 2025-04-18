@@ -43,6 +43,7 @@ Partial Class MeetingList
         Me.CompanyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CompanyAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Meetingaddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StockCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.meetingtime = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Period = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MettingType = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -153,10 +154,10 @@ Partial Class MeetingList
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Meetingcode, Me.Meetingname, Me.CompanyName, Me.CompanyAddress, Me.Meetingaddress, Me.meetingtime, Me.Period, Me.MettingType, Me.YearMeeting})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Meetingcode, Me.Meetingname, Me.CompanyName, Me.CompanyAddress, Me.Meetingaddress, Me.StockCode, Me.meetingtime, Me.Period, Me.MettingType, Me.YearMeeting})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 27)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersWidth = 51
@@ -210,6 +211,14 @@ Partial Class MeetingList
         Me.Meetingaddress.ReadOnly = True
         Me.Meetingaddress.Visible = False
         '
+        'StockCode
+        '
+        Me.StockCode.DataPropertyName = "StockCode"
+        Me.StockCode.HeaderText = "Mã CK"
+        Me.StockCode.MinimumWidth = 6
+        Me.StockCode.Name = "StockCode"
+        Me.StockCode.ReadOnly = True
+        '
         'meetingtime
         '
         Me.meetingtime.DataPropertyName = "meetingtime"
@@ -255,7 +264,7 @@ Partial Class MeetingList
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.KeyPreview = True
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "MeetingList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Danh sách cuộc họp"
@@ -287,6 +296,7 @@ Partial Class MeetingList
     Friend WithEvents CompanyName As DataGridViewTextBoxColumn
     Friend WithEvents CompanyAddress As DataGridViewTextBoxColumn
     Friend WithEvents Meetingaddress As DataGridViewTextBoxColumn
+    Friend WithEvents StockCode As DataGridViewTextBoxColumn
     Friend WithEvents meetingtime As DataGridViewTextBoxColumn
     Friend WithEvents Period As DataGridViewTextBoxColumn
     Friend WithEvents MettingType As DataGridViewTextBoxColumn
