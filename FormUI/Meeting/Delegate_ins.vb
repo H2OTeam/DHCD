@@ -1,4 +1,5 @@
-﻿Public Class Delegate_ins
+﻿Imports CrystalDecisions.CrystalReports.Engine
+Public Class Delegate_ins
 
 
     Private Sub Delegate_ins_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -109,9 +110,12 @@
     End Sub
 
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
-        Dim cr_thebieuquyet As New thebieuquyet_2
+        'Dim cr_thebieuquyet As New thebieuquyet_2
+        Dim cr_thebieuquyet As New ReportDocument()
+        cr_thebieuquyet.Load("~/Report/thebieuquyet_2.rpt")
         Dim objCommon As New clsCommon()
-
+        Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+        cr_thebieuquyet.SetParameterValue("LogoPath", logoPath)
         Dim strDelegateCode As String = MaskedTextBox2.Text
         Dim strDelegateName As String = MaskedTextBox4.Text.ToUpper()
         Dim strIdentityCard As String = MaskedTextBox3.Text
@@ -152,8 +156,12 @@
 
     Private Sub InPhieuXacNhan(ByVal strHolderName As String, ByVal strDelegateCode As String, ByVal strDelegateName As String, ByVal strIndentityCard As String, ByVal strAddress As String, ByVal strVoteRight As String)
 
-        Dim cr As New PhieuXacNhan
+        'Dim cr As New PhieuXacNhan
+        Dim cr As New ReportDocument()
+        cr.Load("~/Report/PhieuXacNhan.rpt")
         Try
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr.SetParameterValue("LogoPath", logoPath)
             cr.SetParameterValue("HolderName", strHolderName.ToUpper())
             cr.SetParameterValue("Delegatecode", strDelegateCode)
             cr.SetParameterValue("Delegatename", strDelegateName.ToUpper())

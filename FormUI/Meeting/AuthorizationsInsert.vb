@@ -1,4 +1,5 @@
-﻿Public Class AuthorizationsInsert
+﻿Imports CrystalDecisions.CrystalReports.Engine
+Public Class AuthorizationsInsert
 
     Private Sub AuthorizationsInsert_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         MaskedTextBox3.Focus()
@@ -119,8 +120,12 @@
 
     Private Sub InPhieuXacNhan(ByVal strHolderName As String, ByVal strDelegateCode As String, ByVal strDelegateName As String, ByVal strIndentityCard As String, ByVal strAddress As String, ByVal strVoteRight As String)
 
-        Dim cr As New PhieuXacNhan
+        'Dim cr As New PhieuXacNhan
+        Dim cr As New ReportDocument()
+        cr.Load("~/Report/PhieuXacNhan.rpt")
         Try
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr.SetParameterValue("LogoPath", logoPath)
             cr.SetParameterValue("HolderName", strHolderName.ToUpper())
             cr.SetParameterValue("Delegatecode", strDelegateCode)
             cr.SetParameterValue("Delegatename", strDelegateName.ToUpper())

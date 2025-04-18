@@ -45,13 +45,15 @@
                 Mainform.dateMeeting = DateTime.Parse(DataGridView1.CurrentRow.Cells("MeetingTime").Value)
                 Mainform.ToolStripStatusLabel2.Text = DataGridView1.CurrentRow.Cells("Meetingcode").Value
                 Mainform.ToolStripStatusLabel3.Text = DataGridView1.CurrentRow.Cells("MeetingTime").Value
+                Mainform.period = DataGridView1.CurrentRow.Cells("Period").Value
+                Mainform.mettingType = DataGridView1.CurrentRow.Cells("MettingType").Value
                 filldgv()
             Catch ex As Exception
                 MsgBox("Lỗi :" + ex.Message)
             End Try
 
         End If
-        
+
     End Sub
 
     Private Sub ToolStripButton5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton5.Click
@@ -59,6 +61,9 @@
         Mainform.dateMeeting = DateTime.Parse(DataGridView1.CurrentRow.Cells("MeetingTime").Value)
         Mainform.ToolStripStatusLabel2.Text = DataGridView1.CurrentRow.Cells("Meetingcode").Value
         Mainform.ToolStripStatusLabel3.Text = DataGridView1.CurrentRow.Cells("MeetingTime").Value
+        Mainform.period = DataGridView1.CurrentRow.Cells("Period").Value
+        Mainform.companyName = DataGridView1.CurrentRow.Cells("CompanyName").Value
+        Mainform.mettingType = DataGridView1.CurrentRow.Cells("MettingType").Value 'companyName
         Me.Close()
     End Sub
 
@@ -87,6 +92,8 @@
             Mainform.dateMeeting = DateTime.Parse(DataGridView1.CurrentRow.Cells("MeetingTime").Value)
             Mainform.ToolStripStatusLabel2.Text = DataGridView1.CurrentRow.Cells("Meetingcode").Value
             Mainform.ToolStripStatusLabel3.Text = DataGridView1.CurrentRow.Cells("MeetingTime").Value
+            Mainform.period = DataGridView1.CurrentRow.Cells("Period").Value
+            Mainform.mettingType = DataGridView1.CurrentRow.Cells("MettingType").Value
             Me.Close()
         End If
 

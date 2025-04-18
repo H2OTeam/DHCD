@@ -12,6 +12,9 @@ Public Class Mainform
     Public conn As New SqlConnection
     Public BenlyDal As New DAL(conn)
     Public workingmeeting As String = ""
+    Public period As String = "2022 – 2026"
+    Public mettingType As String = "thường niên"
+    Public companyName As String = "Công ty Cổ phần Chứng khoán APG"
     Public dateMeeting As DateTime = DateTime.Now
 
 

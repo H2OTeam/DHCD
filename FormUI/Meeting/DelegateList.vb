@@ -1,4 +1,6 @@
-﻿Public Class DelegateList
+﻿Imports CrystalDecisions.CrystalReports.Engine
+
+Public Class DelegateList
     Private dateMeeting As DateTime = Mainform.dateMeeting
     Private Sub DelegateList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.MdiParent = Mainform
@@ -61,34 +63,55 @@
     End Sub
 
     Private Sub ToolStripButton5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton5.Click
-        Dim cr As New thebieuquyet_2
-        cr.SetParameterValue("HolderName", DataGridView1.CurrentRow.Cells("Delegatename").Value)
-        cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value)
-        cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())
-        cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
-        cr.SetParameterValue("Address", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
-        cr.SetParameterValue("DateMeeting", dateMeeting)
-        Dim dt As New DataTable
+        ' Dim cr As New thebieuquyet_2
+        Dim cr As New ReportDocument()
+        Dim reportPath As String = IO.Path.Combine(Application.StartupPath, "Report\thebieuquyet_2.rpt")
+        If Not IO.File.Exists(reportPath) Then
+            MessageBox.Show("Không tìm thấy file báo cáo: " & reportPath)
+            Exit Sub
+        End If
+
         Try
+            cr.Load(reportPath)
+        Catch ex As Exception
+            MessageBox.Show("Lỗi khi load báo cáo: " & ex.Message)
+            Exit Sub
+        End Try
+
+
+
+        Try
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr.SetParameterValue("LogoPath", logoPath)
+            cr.SetParameterValue("HolderName", DataGridView1.CurrentRow.Cells("Delegatename").Value)
+            cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value)
+            cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())
+            cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
+            cr.SetParameterValue("Address", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
+            cr.SetParameterValue("DateMeeting", dateMeeting)
+            cr.SetParameterValue("Period", Mainform.period)
+            cr.SetParameterValue("MettingType", Mainform.mettingType)
+            Dim dt As New DataTable
             dt = Mainform.BenlyDal.Authorizations_getlist(Mainform.workingmeeting, DataGridView1.CurrentRow.Cells("Delegatecode").Value, "", "", "")
+            Dim str As String = ""
+            If dt.Rows.Count = 1 Then
+                str = dt.Rows(0).Item("Holdercode")
+            Else
+                For Each dr As DataRow In dt.Rows
+                    str = str + dr.Item("Holdercode").ToString + " (" + Mainform.addthousandseperator(dr.Item("DelegateRight").ToString) + " CP); "
+                Next
+            End If
+
+            cr.SetParameterValue("Holdercode", str)
+            cr.SetParameterValue("voterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value))
+            ' cr.PrintToPrinter(1, True, 1, 1)
+
+            ReportViewer.LoadReport(cr, Me)
+
         Catch ex As Exception
             MsgBox("Lỗi :" + ex.Message)
             Exit Sub
         End Try
-        Dim str As String = ""
-        If dt.Rows.Count = 1 Then
-            str = dt.Rows(0).Item("Holdercode")
-        Else
-            For Each dr As DataRow In dt.Rows
-                str = str + dr.Item("Holdercode").ToString + " (" + Mainform.addthousandseperator(dr.Item("DelegateRight").ToString) + " CP); "
-            Next
-        End If
-
-        cr.SetParameterValue("Holdercode", str)
-        cr.SetParameterValue("voterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value))
-        ' cr.PrintToPrinter(1, True, 1, 1)
-        ReportViewer.LoadReport(cr, Me)
-
     End Sub
 
     Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton2.Click
@@ -105,13 +128,16 @@
     Private Sub ToolStripButton7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim cr As New phieubieuquyet1
         Try
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr.SetParameterValue("LogoPath", logoPath)
             cr.SetDataSource(Mainform.BenlyDal.Matter_getlist(Mainform.workingmeeting, 0))
             cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value)
             cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())
             cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
             cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
             cr.SetParameterValue("DateMeeting", dateMeeting)
-
+            cr.SetParameterValue("Period", Mainform.period)
+            cr.SetParameterValue("MettingType", Mainform.mettingType)
             Dim dt As New DataTable
             Try
                 dt = Mainform.BenlyDal.Authorizations_getlist(Mainform.workingmeeting, DataGridView1.CurrentRow.Cells("Delegatecode").Value, "", "", "")
@@ -141,31 +167,31 @@
     End Sub
 
     Private Sub ToolStripButton8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton8.Click
-'        Dim cr As New phieubieuquyet2
-'        cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value)
-'        cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value)
-'        cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
-'        cr.SetParameterValue("DateMeeting", dateMeeting)
-'        Dim dt As New DataTable
-'        Try
-'            dt = Mainform.BenlyDal.Authorizations_getlist(Mainform.workingmeeting, DataGridView1.CurrentRow.Cells("Delegatecode").Value, "", "", "")
-'        Catch ex As Exception
-'            MsgBox("Lỗi :" + ex.Message)
-'            Exit Sub
-'        End Try
-'        Dim str As String = ""
-'        If dt.Rows.Count = 1 Then
-'            str = dt.Rows(0).Item("Holdercode")
-'        Else
-'            For Each dr As DataRow In dt.Rows
-'                str = str + dr.Item("Holdercode").ToString + " (" + Mainform.addthousandseperator(dr.Item("DelegateRight").ToString) + " CP); "
-'            Next
-'        End If
-'
-'        cr.SetParameterValue("Holdercode", str)
-'        cr.SetParameterValue("voterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value))
-'        'cr.PrintToPrinter(1, True, 1, 1)
-'        ReportViewer.LoadReport(cr, Me)
+        '        Dim cr As New phieubieuquyet2
+        '        cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value)
+        '        cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value)
+        '        cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
+        '        cr.SetParameterValue("DateMeeting", dateMeeting)
+        '        Dim dt As New DataTable
+        '        Try
+        '            dt = Mainform.BenlyDal.Authorizations_getlist(Mainform.workingmeeting, DataGridView1.CurrentRow.Cells("Delegatecode").Value, "", "", "")
+        '        Catch ex As Exception
+        '            MsgBox("Lỗi :" + ex.Message)
+        '            Exit Sub
+        '        End Try
+        '        Dim str As String = ""
+        '        If dt.Rows.Count = 1 Then
+        '            str = dt.Rows(0).Item("Holdercode")
+        '        Else
+        '            For Each dr As DataRow In dt.Rows
+        '                str = str + dr.Item("Holdercode").ToString + " (" + Mainform.addthousandseperator(dr.Item("DelegateRight").ToString) + " CP); "
+        '            Next
+        '        End If
+        '
+        '        cr.SetParameterValue("Holdercode", str)
+        '        cr.SetParameterValue("voterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value))
+        '        'cr.PrintToPrinter(1, True, 1, 1)
+        '        ReportViewer.LoadReport(cr, Me)
     End Sub
 
     Private Sub ToolStripButton9_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ToolStripButton9.Click
@@ -249,15 +275,26 @@
 
     Private Sub InPhieuXacNhan(ByVal strHolderName As String, ByVal strDelegateCode As String, ByVal strDelegateName As String, ByVal strIndentityCard As String, ByVal strAddress As String, ByVal strVoteRight As String)
 
-        Dim cr As New PhieuXacNhan
+        'Dim cr As New PhieuXacNhan
+        Dim cr As New ReportDocument()
+
+        Dim reportPath As String = IO.Path.Combine(Application.StartupPath, "Report\PhieuXacNhan.rpt")
+        If Not IO.File.Exists(reportPath) Then
+            MessageBox.Show("Không tìm thấy file báo cáo: " & reportPath)
+            Exit Sub
+        End If
+
         Try
-            dim holderName() as String = strHolderName.Split(",")
-            if (holderName.Length > 1)
+            cr.Load(reportPath)
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr.SetParameterValue("LogoPath", logoPath)
+            Dim holderName() As String = strHolderName.Split(",")
+            If (holderName.Length > 1) Then
                 For i As Integer = 0 To holderName.Length - 1
-                    holderName(i) = (i+1).ToString() + ". " + holderName(i).Trim()
+                    holderName(i) = (i + 1).ToString() + ". " + holderName(i).Trim()
                 Next
             End If
-            
+
             cr.SetParameterValue("HolderName", String.Join(Environment.NewLine, holderName).ToUpper())
             cr.SetParameterValue("Delegatecode", "VIG " & strDelegateCode.ToUpper().PadLeft(2, "000"))
             cr.SetParameterValue("Delegatename", strDelegateName.ToUpper())
@@ -265,6 +302,9 @@
             cr.SetParameterValue("Address", strAddress)
             cr.SetParameterValue("DateMeeting", dateMeeting)
             cr.SetParameterValue("voterights", strVoteRight)
+            cr.SetParameterValue("Period", Mainform.period)
+            cr.SetParameterValue("MettingType", Mainform.mettingType)
+            cr.SetParameterValue("CompanyName", Mainform.companyName)
             'cr.PrintToPrinter(1, True, 1, 10)
             ReportViewer.LoadReport(cr, Me)
         Catch ex As Exception
@@ -274,47 +314,93 @@
     End Sub
 
     Private Sub InPhieuBauBKS_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InPhieuBauBKS.Click
-        Dim cr As New phieubauBKS
-        Const pram As String = "ban kiểm soát"
-        Dim dt As DataTable = Mainform.BenlyDal.GetVoteSenate(pram)
-        cr.SetDataSource(dt)
-        cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(2, "000"))
-        cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value)
-        cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
-        cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
-        cr.SetParameterValue("DateMeeting", dateMeeting)
-        cr.SetParameterValue("CountCandidate", dt.Rows.Count.ToString())
-        cr.SetParameterValue("Voterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("Voterights").Value))
-        cr.SetParameterValue("sumvoterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value * dt.Rows.Count))
-        ReportViewer.LoadReport(cr, Me)
+        'Dim cr As New phieubauBKS
+        Dim cr As New ReportDocument()
+        Dim reportPath As String = IO.Path.Combine(Application.StartupPath, "Report\phieubauBKS.rpt")
+        If Not IO.File.Exists(reportPath) Then
+            MessageBox.Show("Không tìm thấy file báo cáo: " & reportPath)
+            Exit Sub
+        End If
+
+        Try
+            cr.Load(reportPath)
+            Const pram As String = "ban kiểm soát"
+            Dim dt As DataTable = Mainform.BenlyDal.GetVoteSenate(pram)
+            cr.SetDataSource(dt)
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr.SetParameterValue("LogoPath", logoPath)
+            cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(2, "000"))
+            cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value)
+            cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
+            cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
+            cr.SetParameterValue("DateMeeting", dateMeeting)
+            cr.SetParameterValue("CountCandidate", dt.Rows.Count.ToString())
+            cr.SetParameterValue("Voterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("Voterights").Value))
+            cr.SetParameterValue("sumvoterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value * dt.Rows.Count))
+            cr.SetParameterValue("Period", Mainform.period)
+            cr.SetParameterValue("MettingType", Mainform.mettingType)
+            ReportViewer.LoadReport(cr, Me)
+        Catch ex As Exception
+            MsgBox("Lỗi :" + ex.Message)
+        End Try
     End Sub
 
     Private Sub InPhieuBauHDQT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InPhieuBauHDQT.Click
-        Dim cr As New phieubauHDQT
-        Const pram As String = "Hội Đồng Quản trị"
-        Dim dt As DataTable = Mainform.BenlyDal.GetVoteSenate(pram)
-        cr.SetDataSource(dt)
-        cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(2, "000"))
-        cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value)
-        cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
-        cr.SetParameterValue("CountCandidate", dt.Rows.Count.ToString())
-        cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
-        cr.SetParameterValue("dateMeeting", dateMeeting)
-        cr.SetParameterValue("Voterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("Voterights").Value))
-        cr.SetParameterValue("sumvoterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value * dt.Rows.Count))
-        ReportViewer.LoadReport(cr, Me)
+        'Dim cr As New phieubauHDQT
+        'Dim cr As New ReportDocument()
+        'cr.Load("~/Report/phieubauHDQT.rpt")
+        Dim cr As New ReportDocument()
+        Dim reportPath As String = IO.Path.Combine(Application.StartupPath, "Report\phieubauHDQT.rpt")
+        If Not IO.File.Exists(reportPath) Then
+            MessageBox.Show("Không tìm thấy file báo cáo: " & reportPath)
+            Exit Sub
+        End If
+
+        Try
+            cr.Load(reportPath)
+            Const pram As String = "Hội Đồng Quản trị"
+            Dim dt As DataTable = Mainform.BenlyDal.GetVoteSenate(pram)
+            cr.SetDataSource(dt)
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr.SetParameterValue("LogoPath", logoPath)
+            cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(2, "000"))
+            cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value)
+            cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
+            cr.SetParameterValue("CountCandidate", dt.Rows.Count.ToString())
+            cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
+            cr.SetParameterValue("dateMeeting", dateMeeting)
+            cr.SetParameterValue("Voterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("Voterights").Value))
+            cr.SetParameterValue("sumvoterights", Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value * dt.Rows.Count))
+            cr.SetParameterValue("Period", Mainform.period)
+            cr.SetParameterValue("MettingType", Mainform.mettingType)
+            ReportViewer.LoadReport(cr, Me)
+        Catch ex As Exception
+            MsgBox("Lỗi :" + ex.Message)
+        End Try
 
     End Sub
 
     Private Sub ToolStripButton7_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton7.Click
-        Dim cr As New phieubieuquyet1
+        'Dim cr As New phieubieuquyet1
+        Dim cr As New ReportDocument()
+        Dim reportPath As String = IO.Path.Combine(Application.StartupPath, "Report\phieubieuquyet1.rpt")
+        If Not IO.File.Exists(reportPath) Then
+            MessageBox.Show("Không tìm thấy file báo cáo: " & reportPath)
+            Exit Sub
+        End If
         Try
+            cr.Load(reportPath)
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+
             cr.SetDataSource(Mainform.BenlyDal.Matter_getlist(Mainform.workingmeeting, 0))
             cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(2, "000"))
             cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())
             cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
             cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
             cr.SetParameterValue("DateMeeting", dateMeeting)
+            cr.SetParameterValue("Period", Mainform.period)
+            cr.SetParameterValue("MettingType", Mainform.mettingType)
+            cr.SetParameterValue("LogoPath", logoPath)
             Dim dt As New DataTable
             Try
                 dt = Mainform.BenlyDal.Authorizations_getlist(Mainform.workingmeeting, DataGridView1.CurrentRow.Cells("Delegatecode").Value, "", "", "")
@@ -337,7 +423,7 @@
         Catch ex As Exception
             MsgBox("Lỗi :" + ex.Message)
         End Try
-       
+
 
     End Sub
 End Class

@@ -1,4 +1,6 @@
-﻿Public Class AuthorizationList
+﻿Imports CrystalDecisions.CrystalReports.Engine
+
+Public Class AuthorizationList
 
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
 
@@ -49,7 +51,7 @@
                 MsgBox("Lỗi :" + ex.Message)
             End Try
         End If
-        
+
         filldgv()
     End Sub
 
@@ -91,7 +93,11 @@
     End Sub
 
     Private Sub ToolStripButton6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton6.Click
-        Dim cr As New thebieuquyet_2
+        'Dim cr As New thebieuquyet_2
+        Dim cr As New ReportDocument()
+        cr.Load("~/Report/thebieuquyet_2.rpt")
+        Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+        cr.SetParameterValue("LogoPath", logoPath)
         cr.SetParameterValue("HolderName", DataGridView1.CurrentRow.Cells("HolderName").Value.ToString.ToUpper())
         cr.SetParameterValue("Delegatecode", DataGridView1.CurrentRow.Cells("Delegatecode").Value)
         cr.SetParameterValue("DelegateName", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())
@@ -110,8 +116,13 @@
 
     Private Sub InPhieuXacNhan(ByVal strHolderName As String, ByVal strDelegateCode As String, ByVal strDelegateName As String, ByVal strIndentityCard As String, ByVal strAddress As String, ByVal strVoteRight As String)
 
-        Dim cr As New PhieuXacNhan
+        'Dim cr As New PhieuXacNhan
+        Dim cr As New ReportDocument()
+        cr.Load("~/Report/PhieuXacNhan.rpt")
+
         Try
+            Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
+            cr.SetParameterValue("LogoPath", logoPath)
             cr.SetParameterValue("HolderName", strHolderName.ToUpper())
             cr.SetParameterValue("Delegatecode", strDelegateCode)
             cr.SetParameterValue("Delegatename", strDelegateName.ToUpper())

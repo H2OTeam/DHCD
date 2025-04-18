@@ -1,4 +1,6 @@
-﻿Public Class HolderList
+﻿Imports CrystalDecisions.CrystalReports.Engine
+
+Public Class HolderList
 
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
         filldgv()
@@ -85,7 +87,9 @@
 
     Private Sub ToolStripButton6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton6.Click
 
-        Dim cr_thebieuquyet As New thebieuquyet_2
+        'Dim cr_thebieuquyet As New thebieuquyet_2
+        Dim cr_thebieuquyet As New ReportDocument()
+        cr_thebieuquyet.Load("~/Report/thebieuquyet_2.rpt")
         Dim objCommon As New clsCommon()
 
         Dim strDelegateCode As String = DataGridView1.CurrentRow.Cells("holdercode").Value
@@ -120,7 +124,7 @@
         cr_thebieuquyet.SetParameterValue("voterights", strVoterights)
         cr_thebieuquyet.SetParameterValue("DateMeeting", Mainform.dateMeeting)
         ReportViewer.LoadReport(cr_thebieuquyet, Me)
-        End Sub
+    End Sub
 
 
     Private Sub ToolStripTextBox2_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ToolStripTextBox2.KeyUp

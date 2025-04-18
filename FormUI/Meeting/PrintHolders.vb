@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Forms
 Imports System
 Imports System.Data
+Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class PrintHolders
 
@@ -13,7 +14,9 @@ Public Class PrintHolders
                 dt.Rows(i)("VoteRights") = Mainform.addthousandseperator(dt.Rows(i)("VoteRights").ToString().Trim())
             Next
 
-            Dim cr_thebieuquyet As New thebieuquyet
+            ' Dim cr_thebieuquyet As New thebieuquyet
+            Dim cr_thebieuquyet As New ReportDocument()
+            cr_thebieuquyet.Load("~/Report/thebieuquyet.rpt")
             cr_thebieuquyet.SetDataSource(dt)
             cr_thebieuquyet.SetParameterValue("DateMeeting", Mainform.dateMeeting)
             ReportViewer.LoadReport(cr_thebieuquyet, HolderList)

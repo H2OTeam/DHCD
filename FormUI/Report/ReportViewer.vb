@@ -14,9 +14,9 @@ Partial Public Class ReportViewer
     Private Sub ReportViewer_Load(sender As Object, e As EventArgs)
         CrystalReportViewer1.Show()
     End Sub
-
-    Friend Shared Function LoadReport(reportDocument As ReportClass, owner As Form) As ReportViewer
-        Dim v As New ReportViewer(reportDocument)
+    Friend Shared Function LoadReport(reportDocument As ReportDocument, owner As Form) As ReportViewer
+        Dim v As New ReportViewer()
+        v.CrystalReportViewer1.ReportSource = reportDocument
         v.Show()
         v.WindowState = FormWindowState.Maximized
         Return v
