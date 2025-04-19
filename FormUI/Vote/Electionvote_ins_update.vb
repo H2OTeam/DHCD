@@ -134,9 +134,12 @@
         If dt.Rows.Count = 1 Then
             MaskedTextBox5.Text = dt.Rows(0).Item("Delegatecode")
             MaskedTextBox2.Text = dt.Rows(0).Item("IdentityCard")
+            MaskedTextBox2.Enabled = False
             MaskedTextBox4.Text = dt.Rows(0).Item("DelegateName")
             StockTextBox1.Text = dt.Rows(0).Item("voterights")
             StockTextBox2.Text = (dt.Rows(0).Item("voterights")) * (MaskedTextBox6.Text)
+            DataGridView1.Select()
+
         Else
             MaskedTextBox5.Text = ""
             MaskedTextBox2.Text = ""
@@ -223,7 +226,7 @@
     End Sub
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
         For Each gr As DataGridViewRow In DataGridView1.Rows
-        
+
             gr.Cells("Votes").Value = 0
             gr.Cells("Choosen").Value = True
 

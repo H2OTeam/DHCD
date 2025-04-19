@@ -45,8 +45,8 @@ Partial Class Mainform
         Me.MainStatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.MenuStrip1.SuspendLayout()
         Me.MainStatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -57,7 +57,6 @@ Partial Class Mainform
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HệThốngToolStripMenuItem, Me.CuộcHọpToolStripMenuItem, Me.BiểuQuyếtToolStripMenuItem, Me.BầuCửToolStripMenuItem, Me.HiểnThịToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(8, 2, 0, 2)
         Me.MenuStrip1.Size = New System.Drawing.Size(1456, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
@@ -65,112 +64,112 @@ Partial Class Mainform
         'HệThốngToolStripMenuItem
         '
         Me.HệThốngToolStripMenuItem.Name = "HệThốngToolStripMenuItem"
-        Me.HệThốngToolStripMenuItem.Size = New System.Drawing.Size(94, 24)
+        Me.HệThốngToolStripMenuItem.Size = New System.Drawing.Size(96, 24)
         Me.HệThốngToolStripMenuItem.Text = "&1.Hệ thống"
         '
         'CuộcHọpToolStripMenuItem
         '
         Me.CuộcHọpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DanhSáchCuộcHọpToolStripMenuItem, Me.DanhSáchCổĐôngToolStripMenuItem, Me.DanhSáchĐạiBiểuToolStripMenuItem, Me.DanhSáchỦyQuyềnToolStripMenuItem, Me.ThôngTinCuộcHọpToolStripMenuItem})
         Me.CuộcHọpToolStripMenuItem.Name = "CuộcHọpToolStripMenuItem"
-        Me.CuộcHọpToolStripMenuItem.Size = New System.Drawing.Size(99, 24)
+        Me.CuộcHọpToolStripMenuItem.Size = New System.Drawing.Size(101, 24)
         Me.CuộcHọpToolStripMenuItem.Text = "&2.Cuộc họp "
         '
         'DanhSáchCuộcHọpToolStripMenuItem
         '
         Me.DanhSáchCuộcHọpToolStripMenuItem.Name = "DanhSáchCuộcHọpToolStripMenuItem"
-        Me.DanhSáchCuộcHọpToolStripMenuItem.Size = New System.Drawing.Size(226, 24)
+        Me.DanhSáchCuộcHọpToolStripMenuItem.Size = New System.Drawing.Size(240, 26)
         Me.DanhSáchCuộcHọpToolStripMenuItem.Text = "1. Danh sách cuộc họp"
         '
         'DanhSáchCổĐôngToolStripMenuItem
         '
         Me.DanhSáchCổĐôngToolStripMenuItem.Name = "DanhSáchCổĐôngToolStripMenuItem"
-        Me.DanhSáchCổĐôngToolStripMenuItem.Size = New System.Drawing.Size(226, 24)
+        Me.DanhSáchCổĐôngToolStripMenuItem.Size = New System.Drawing.Size(240, 26)
         Me.DanhSáchCổĐôngToolStripMenuItem.Text = "2. Danh sách cổ đông"
         '
         'DanhSáchĐạiBiểuToolStripMenuItem
         '
         Me.DanhSáchĐạiBiểuToolStripMenuItem.Name = "DanhSáchĐạiBiểuToolStripMenuItem"
-        Me.DanhSáchĐạiBiểuToolStripMenuItem.Size = New System.Drawing.Size(226, 24)
+        Me.DanhSáchĐạiBiểuToolStripMenuItem.Size = New System.Drawing.Size(240, 26)
         Me.DanhSáchĐạiBiểuToolStripMenuItem.Text = "3. Danh sách đại biểu"
         '
         'DanhSáchỦyQuyềnToolStripMenuItem
         '
         Me.DanhSáchỦyQuyềnToolStripMenuItem.Name = "DanhSáchỦyQuyềnToolStripMenuItem"
-        Me.DanhSáchỦyQuyềnToolStripMenuItem.Size = New System.Drawing.Size(226, 24)
+        Me.DanhSáchỦyQuyềnToolStripMenuItem.Size = New System.Drawing.Size(240, 26)
         Me.DanhSáchỦyQuyềnToolStripMenuItem.Text = "4. Danh sách ủy quyền"
         '
         'ThôngTinCuộcHọpToolStripMenuItem
         '
         Me.ThôngTinCuộcHọpToolStripMenuItem.Name = "ThôngTinCuộcHọpToolStripMenuItem"
-        Me.ThôngTinCuộcHọpToolStripMenuItem.Size = New System.Drawing.Size(226, 24)
+        Me.ThôngTinCuộcHọpToolStripMenuItem.Size = New System.Drawing.Size(240, 26)
         Me.ThôngTinCuộcHọpToolStripMenuItem.Text = "5. Thông tin cuộc họp"
         '
         'BiểuQuyếtToolStripMenuItem
         '
         Me.BiểuQuyếtToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DanhSáchVấnĐềBiểuQuyếtToolStripMenuItem, Me.ToolStripMenuItem1, Me.KếtQuảBiểuQuyếtToolStripMenuItem})
         Me.BiểuQuyếtToolStripMenuItem.Name = "BiểuQuyếtToolStripMenuItem"
-        Me.BiểuQuyếtToolStripMenuItem.Size = New System.Drawing.Size(102, 24)
+        Me.BiểuQuyếtToolStripMenuItem.Size = New System.Drawing.Size(104, 24)
         Me.BiểuQuyếtToolStripMenuItem.Text = "&3.Biểu quyết"
         '
         'DanhSáchVấnĐềBiểuQuyếtToolStripMenuItem
         '
         Me.DanhSáchVấnĐềBiểuQuyếtToolStripMenuItem.Name = "DanhSáchVấnĐềBiểuQuyếtToolStripMenuItem"
-        Me.DanhSáchVấnĐềBiểuQuyếtToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.DanhSáchVấnĐềBiểuQuyếtToolStripMenuItem.Size = New System.Drawing.Size(297, 26)
         Me.DanhSáchVấnĐềBiểuQuyếtToolStripMenuItem.Text = "1. Danh sách vấn đề biểu quyết"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(283, 24)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(297, 26)
         Me.ToolStripMenuItem1.Text = "2. Danh sách phiếu biểu quyết"
         '
         'KếtQuảBiểuQuyếtToolStripMenuItem
         '
         Me.KếtQuảBiểuQuyếtToolStripMenuItem.Name = "KếtQuảBiểuQuyếtToolStripMenuItem"
-        Me.KếtQuảBiểuQuyếtToolStripMenuItem.Size = New System.Drawing.Size(283, 24)
+        Me.KếtQuảBiểuQuyếtToolStripMenuItem.Size = New System.Drawing.Size(297, 26)
         Me.KếtQuảBiểuQuyếtToolStripMenuItem.Text = "3. Kết quả biểu quyết"
         '
         'BầuCửToolStripMenuItem
         '
         Me.BầuCửToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DanhSáchVấnĐềBầuCửToolStripMenuItem, Me.DanhSáchỨngViênToolStripMenuItem, Me.DanhSáchPhiếuBầuCửToolStripMenuItem, Me.KếtQuảBầuCửToolStripMenuItem, Me.DanhSáchPhiếuBầuKhôngHợpLệToolStripMenuItem})
         Me.BầuCửToolStripMenuItem.Name = "BầuCửToolStripMenuItem"
-        Me.BầuCửToolStripMenuItem.Size = New System.Drawing.Size(77, 24)
+        Me.BầuCửToolStripMenuItem.Size = New System.Drawing.Size(79, 24)
         Me.BầuCửToolStripMenuItem.Text = "&4.Bầu cử"
         '
         'DanhSáchVấnĐềBầuCửToolStripMenuItem
         '
         Me.DanhSáchVấnĐềBầuCửToolStripMenuItem.Name = "DanhSáchVấnĐềBầuCửToolStripMenuItem"
-        Me.DanhSáchVấnĐềBầuCửToolStripMenuItem.Size = New System.Drawing.Size(333, 24)
+        Me.DanhSáchVấnĐềBầuCửToolStripMenuItem.Size = New System.Drawing.Size(347, 26)
         Me.DanhSáchVấnĐềBầuCửToolStripMenuItem.Text = "1. Danh sách vấn đề bầu cử"
         '
         'DanhSáchỨngViênToolStripMenuItem
         '
         Me.DanhSáchỨngViênToolStripMenuItem.Name = "DanhSáchỨngViênToolStripMenuItem"
-        Me.DanhSáchỨngViênToolStripMenuItem.Size = New System.Drawing.Size(333, 24)
+        Me.DanhSáchỨngViênToolStripMenuItem.Size = New System.Drawing.Size(347, 26)
         Me.DanhSáchỨngViênToolStripMenuItem.Text = "2. Danh sách ứng viên"
         '
         'DanhSáchPhiếuBầuCửToolStripMenuItem
         '
         Me.DanhSáchPhiếuBầuCửToolStripMenuItem.Name = "DanhSáchPhiếuBầuCửToolStripMenuItem"
-        Me.DanhSáchPhiếuBầuCửToolStripMenuItem.Size = New System.Drawing.Size(333, 24)
+        Me.DanhSáchPhiếuBầuCửToolStripMenuItem.Size = New System.Drawing.Size(347, 26)
         Me.DanhSáchPhiếuBầuCửToolStripMenuItem.Text = "3. Danh sách phiếu bầu cử"
         '
         'KếtQuảBầuCửToolStripMenuItem
         '
         Me.KếtQuảBầuCửToolStripMenuItem.Name = "KếtQuảBầuCửToolStripMenuItem"
-        Me.KếtQuảBầuCửToolStripMenuItem.Size = New System.Drawing.Size(333, 24)
+        Me.KếtQuảBầuCửToolStripMenuItem.Size = New System.Drawing.Size(347, 26)
         Me.KếtQuảBầuCửToolStripMenuItem.Text = "4. Kết quả bầu cử"
         '
         'DanhSáchPhiếuBầuKhôngHợpLệToolStripMenuItem
         '
         Me.DanhSáchPhiếuBầuKhôngHợpLệToolStripMenuItem.Name = "DanhSáchPhiếuBầuKhôngHợpLệToolStripMenuItem"
-        Me.DanhSáchPhiếuBầuKhôngHợpLệToolStripMenuItem.Size = New System.Drawing.Size(333, 24)
+        Me.DanhSáchPhiếuBầuKhôngHợpLệToolStripMenuItem.Size = New System.Drawing.Size(347, 26)
         Me.DanhSáchPhiếuBầuKhôngHợpLệToolStripMenuItem.Text = "5. Danh sách phiếu bầu KHÔNG hợp lệ"
         '
         'HiểnThịToolStripMenuItem
         '
         Me.HiểnThịToolStripMenuItem.Name = "HiểnThịToolStripMenuItem"
-        Me.HiểnThịToolStripMenuItem.Size = New System.Drawing.Size(84, 24)
+        Me.HiểnThịToolStripMenuItem.Size = New System.Drawing.Size(86, 24)
         Me.HiểnThịToolStripMenuItem.Text = "&5.Hiển thị"
         Me.HiểnThịToolStripMenuItem.Visible = False
         '
@@ -178,10 +177,10 @@ Partial Class Mainform
         '
         Me.MainStatusStrip.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MainStatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3})
-        Me.MainStatusStrip.Location = New System.Drawing.Point(0, 827)
+        Me.MainStatusStrip.Location = New System.Drawing.Point(0, 826)
         Me.MainStatusStrip.Name = "MainStatusStrip"
         Me.MainStatusStrip.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.MainStatusStrip.Size = New System.Drawing.Size(1456, 25)
+        Me.MainStatusStrip.Size = New System.Drawing.Size(1456, 26)
         Me.MainStatusStrip.TabIndex = 1
         Me.MainStatusStrip.Text = "StatusStrip1"
         '
@@ -196,6 +195,12 @@ Partial Class Mainform
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 20)
         '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(153, 20)
+        Me.ToolStripStatusLabel3.Text = "ToolStripStatusLabel3"
+        '
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
@@ -204,12 +209,6 @@ Partial Class Mainform
         Me.ToolStrip1.Size = New System.Drawing.Size(1456, 25)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
-        '
-        'ToolStripStatusLabel3
-        '
-        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(154, 20)
-        Me.ToolStripStatusLabel3.Text = "ToolStripStatusLabel3"
         '
         'Mainform
         '
@@ -221,9 +220,10 @@ Partial Class Mainform
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MainStatusStrip)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Mainform"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Phần mềm họp đại hội cổ đông"

@@ -83,6 +83,8 @@ Public Class DelegateList
         Try
             Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
             cr.SetParameterValue("LogoPath", logoPath)
+            Dim qrcodepath As String = IO.Path.Combine(Application.StartupPath, "Resources\qrcode.jpeg")
+            cr.SetParameterValue("qrcodepath", qrcodepath)
             cr.SetParameterValue("HolderName", DataGridView1.CurrentRow.Cells("Delegatename").Value)
             cr.SetParameterValue("Delegatecode", Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
             cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())

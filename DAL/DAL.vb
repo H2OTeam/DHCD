@@ -268,7 +268,6 @@ Namespace BenlyDAL
 
         End Function
 
-
         Public Function Authorizations_getlist(ByVal meetingcode As String, ByVal Delegatecode As Decimal, ByVal holdercode As String, ByVal IdentityCard As String, ByVal holderIdentity As String) As DataTable
             Dim result As New DataTable
             Dim strquerry As String = "Authorizations_getlist"
