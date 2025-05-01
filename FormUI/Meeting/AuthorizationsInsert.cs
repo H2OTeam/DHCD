@@ -16,7 +16,7 @@ namespace pmDHCD
 
         private void AuthorizationsInsert_Load(object sender, EventArgs e)
         {
-            MaskedTextBox3.Focus();
+            MaskedTextBox2.Focus();
         }
 
         private void MaskedTextBox3_Leave(object sender, EventArgs e)
@@ -29,9 +29,16 @@ namespace pmDHCD
             var daibieu = new DataTable();
             try
             {
-                // daibieu = Mainform.BenlyDal.Delegate_getlist(Mainform.workingmeeting, 0, MaskedTextBox3.Text)
-                daibieu = My.MyProject.Forms.Mainform.BenlyDal.Delegate_getlist(My.MyProject.Forms.Mainform.workingmeeting, 0m, MaskedTextBox3.Text);
+                if (string.IsNullOrEmpty(MaskedTextBox2.Text) == false)
+                {
+                    daibieu = My.MyProject.Forms.Mainform.BenlyDal.Delegate_getlist(My.MyProject.Forms.Mainform.workingmeeting, Conversions.ToDecimal(MaskedTextBox2.Text), "");
+                }
+                else if (string.IsNullOrEmpty(MaskedTextBox3.Text) == false)
+                {
+                    daibieu = My.MyProject.Forms.Mainform.BenlyDal.Delegate_getlist(My.MyProject.Forms.Mainform.workingmeeting, 0m, MaskedTextBox3.Text);
+                }
             }
+
             catch (Exception ex)
             {
                 Interaction.MsgBox("Lỗi" + ex.Message);
@@ -42,7 +49,7 @@ namespace pmDHCD
                 MaskedTextBox2.Text = Conversions.ToString(daibieu.Rows[0]["DelegateCode"]);
                 MaskedTextBox3.Text = Conversions.ToString(daibieu.Rows[0]["IdentityCard"]);
                 MaskedTextBox4.Text = Conversions.ToString(daibieu.Rows[0]["DelegateName"]);
-                MaskedTextBox7.Focus();
+                MaskedTextBox8.Focus();
             }
             else if (daibieu.Rows.Count > 1)
             {
@@ -70,7 +77,9 @@ namespace pmDHCD
                 // If (MessageBox.Show("Bạn có muốn in phiếu xác nhận tham dự không?", "In phiếu xác nhận tham dự", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes) Then
                 // Me.InPhieuXacNhan(MaskedTextBox6.Text, MaskedTextBox2.Text, MaskedTextBox4.Text, MaskedTextBox7.Text, MaskedTextBox1.Text, StockTextBox2.Text)
                 // End If
-                Close();
+                // Me.Close()
+                Button1.Enabled = false;
+                btnext.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -113,7 +122,14 @@ namespace pmDHCD
             var codong = new DataTable();
             try
             {
-                codong = My.MyProject.Forms.Mainform.BenlyDal.Holder_getlist(My.MyProject.Forms.Mainform.workingmeeting, "", MaskedTextBox7.Text);
+                if (string.IsNullOrEmpty(MaskedTextBox8.Text) == false)
+                {
+                    codong = My.MyProject.Forms.Mainform.BenlyDal.Holder_getlist(My.MyProject.Forms.Mainform.workingmeeting, MaskedTextBox8.Text, "");
+                }
+                else if (string.IsNullOrEmpty(MaskedTextBox7.Text) == false)
+                {
+                    codong = My.MyProject.Forms.Mainform.BenlyDal.Holder_getlist(My.MyProject.Forms.Mainform.workingmeeting, "", MaskedTextBox7.Text);
+                }
             }
             catch (Exception ex)
             {
@@ -188,6 +204,39 @@ namespace pmDHCD
             {
                 Interaction.MsgBox("Lỗi :" + ex.Message);
             }
+
+        }
+
+        private void MaskedTextBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TimDaiBieu();
+            }
+        }
+        private void MaskedTextBox8_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrEmpty(MaskedTextBox8.Text) == false)
+                {
+                    ThucHienUyQuyen();
+                }
+
+            }
+        }
+
+        private void btnext_Click(object sender, EventArgs e)
+        {
+            MaskedTextBox8.Text = "";
+            MaskedTextBox7.Text = "";
+            MaskedTextBox6.Text = "";
+            MaskedTextBox1.Text = "";
+            StockTextBox1.Text = "";
+            StockTextBox2.Text = "";
+            MaskedTextBox8.Focus();
+            btnext.Enabled = false;
+            Button1.Enabled = true;
 
         }
     }

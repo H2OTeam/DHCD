@@ -307,9 +307,12 @@ namespace BenlyDAL.BenlyDAL
             }
         }
 
-        public string getAuthorizationByDelegateCode(string workingmeeting, string DelegateCode)
+        public string getAuthorizationByDelegateCode(string workingmeeting, string DelegateCode, ref bool isOnlyAuthori, ref bool isHolder)
         {
             string strHolders;
+            string holderName;
+            isOnlyAuthori = true;
+            isHolder = false;
             strHolders = "";
             var dt = new DataTable();
             try
@@ -322,8 +325,23 @@ namespace BenlyDAL.BenlyDAL
             }
 
             foreach (DataRow dr in dt.Rows)
-                strHolders = Conversions.ToString(Operators.AddObject(Operators.AddObject(strHolders, dr["holdername"]), ", "));
-            return strHolders.Remove(strHolders.Length - 2, 2);
+            {
+                if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(dr["HolderIdentity"], dr["IdentityCard"], false)))
+                {
+                    isHolder = true;
+                }
+                // holderName = dr.Item("holdername")
+                else
+                {
+                    strHolders = Conversions.ToString(Operators.AddObject(Operators.AddObject(strHolders, dr["holdername"]), ", "));
+                }
+
+            }
+            if (isHolder && dt.Rows.Count == 1)
+            {
+                isOnlyAuthori = false;
+            }
+            return strHolders; // .Remove(strHolders.Length - 2, 2)
 
         }
 
@@ -663,7 +681,7 @@ namespace BenlyDAL.BenlyDAL
             }
         }
 
-        public void MatterVotes_insert(string meetingcode, decimal mattercode, decimal HolderCode, decimal DelegateCode, bool Agree, bool disAgree, bool noidea)
+        public void MatterVotes_insert(string meetingcode, decimal mattercode, decimal HolderCode, decimal DelegateCode, bool Agree, bool disAgree, bool noidea, bool illegal)
         {
             string strquerry = "Mattervotes_insert";
             var cmd = new SqlCommand(strquerry, conn);
@@ -674,6 +692,7 @@ namespace BenlyDAL.BenlyDAL
             cmd.Parameters.Add("@Agree", SqlDbType.Bit).Value = Agree;
             cmd.Parameters.Add("@Disagree", SqlDbType.Bit).Value = disAgree;
             cmd.Parameters.Add("@Noidea", SqlDbType.Bit).Value = noidea;
+            cmd.Parameters.Add("@Illegal", SqlDbType.Bit).Value = illegal;
             cmd.CommandType = CommandType.StoredProcedure;
 
             try
@@ -685,7 +704,7 @@ namespace BenlyDAL.BenlyDAL
                 throw ex;
             }
         }
-        public void MatterVotes_insert_remain(string meetingcode, decimal mattercode, decimal DelegateCode, bool Agree, bool disAgree, bool noidea)
+        public void MatterVotes_insert_remain(string meetingcode, decimal mattercode, decimal DelegateCode, bool Agree, bool disAgree, bool noidea, bool illegal)
         {
             string strquerry = "Mattervotes_insert_remain";
             var cmd = new SqlCommand(strquerry, conn);
@@ -694,6 +713,7 @@ namespace BenlyDAL.BenlyDAL
             cmd.Parameters.Add("@Agree", SqlDbType.Bit).Value = Agree;
             cmd.Parameters.Add("@Disagree", SqlDbType.Bit).Value = disAgree;
             cmd.Parameters.Add("@Noidea", SqlDbType.Bit).Value = noidea;
+            cmd.Parameters.Add("@Illegal", SqlDbType.Bit).Value = illegal;
             cmd.CommandType = CommandType.StoredProcedure;
 
             try
@@ -705,7 +725,7 @@ namespace BenlyDAL.BenlyDAL
                 throw ex;
             }
         }
-        public void MatterVotes_update(string meetingcode, decimal mattercode, decimal delegatecode, bool Agree, bool disAgree, bool noidea)
+        public void MatterVotes_update(string meetingcode, decimal mattercode, decimal delegatecode, bool Agree, bool disAgree, bool noidea, bool illegal)
         {
             string strquerry = "Mattervotes_update";
             var cmd = new SqlCommand(strquerry, conn);
@@ -714,7 +734,8 @@ namespace BenlyDAL.BenlyDAL
             cmd.Parameters.Add("@delegatecode", SqlDbType.Int).Value = delegatecode;
             cmd.Parameters.Add("@Agree", SqlDbType.Bit).Value = Agree;
             cmd.Parameters.Add("@DisAgree", SqlDbType.Bit).Value = disAgree;
-            cmd.Parameters.Add("@Noidea", SqlDbType.Bit).Value = noidea;
+            cmd.Parameters.Add("@Noidea", SqlDbType.Bit).Value = noidea; // illegal
+            cmd.Parameters.Add("@Illegal", SqlDbType.Bit).Value = illegal; // illegal
             cmd.CommandType = CommandType.StoredProcedure;
 
             try
@@ -746,7 +767,7 @@ namespace BenlyDAL.BenlyDAL
             }
         }
 
-        public DataTable MatterVotes_getlist(string meetingcode, decimal mattercode, string holderIdentify)
+        public DataTable MatterVotes_getlist(string meetingcode, decimal mattercode, string holderIdentify, decimal delegateCode)
         {
             var result = new DataTable();
             string strquerry = "Mattervotes_getlist";
@@ -754,7 +775,7 @@ namespace BenlyDAL.BenlyDAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@Meetingcode", SqlDbType.VarChar).Value = meetingcode;
             cmd.Parameters.Add("@mattercode", SqlDbType.VarChar).Value = mattercode;
-            cmd.Parameters.Add("@DelegateCode", SqlDbType.VarChar).Value = 0;
+            cmd.Parameters.Add("@DelegateCode", SqlDbType.VarChar).Value = delegateCode;
             cmd.Parameters.Add("@holderIdentify", SqlDbType.VarChar).Value = holderIdentify;
             var da = new SqlDataAdapter(cmd);
             try

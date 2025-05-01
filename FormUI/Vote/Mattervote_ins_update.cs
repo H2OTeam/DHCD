@@ -11,6 +11,7 @@ namespace pmDHCD
         private string controlcode;
         private int updatemattercode;
         private int updatedelegatecode;
+        private bool isLoading = true;
         public Mattervote_ins_update(string controlcode, int mattercode, int delegatecode)
         {
             this.controlcode = controlcode;
@@ -23,7 +24,10 @@ namespace pmDHCD
         }
         private void Mattervote_ins_update_Load(object sender, EventArgs e)
         {
+            isLoading = true;
             MaskedTextBox1.Text = My.MyProject.Forms.Mainform.workingmeeting;
+            NumericUpDown1.Value = 1m;
+
             if (controlcode == "Update")
             {
                 Button1.Text = "Cập nhật";
@@ -48,38 +52,52 @@ namespace pmDHCD
                     Interaction.MsgBox("Lỗi :" + ex.Message);
                     return;
                 }
-                NumericUpDown1.Value = Conversions.ToDecimal(dt1.Rows[0]["Mattercode"]);
+                // NumericUpDown1.Value = CDec(dt1.Rows(0).Item("Mattercode"))
+                var val = dt1.Rows[0]["Mattercode"];
+                if (!(val is DBNull) && Information.IsNumeric(val.ToString()))
+                {
+                    NumericUpDown1.Value = Conversions.ToDecimal(val);
+                }
+                else
+                {
+                    NumericUpDown1.Value = 1m;
+                }
                 MaskedTextBox3.Text = Conversions.ToString(dt1.Rows[0]["Mattername"]);
                 NumericUpDown1.ReadOnly = true;
 
-                HolderCodeMaskedTextBox.Text = Conversions.ToString(dt2.Rows[0]["Delegatecode"]);
+
+                var delegatecode = dt2.Rows[0]["Delegatecode"];
+                HolderCodeMaskedTextBox.Text = Conversions.ToString(delegatecode);
                 HolderIdentifyMaskedTextBox2.Text = Conversions.ToString(dt2.Rows[0]["IdentityCard"]);
                 MaskedTextBox4.Text = Conversions.ToString(dt2.Rows[0]["Delegatename"]);
                 HolderCodeMaskedTextBox.ReadOnly = true;
                 HolderIdentifyMaskedTextBox2.ReadOnly = true;
 
-                var dt3 = new DataTable();
                 try
                 {
-                    dt3 = My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_getlist(My.MyProject.Forms.Mainform.workingmeeting, updatemattercode, updatedelegatecode.ToString());
+                    var dt3 = new DataTable();
+                    dt3 = My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_getlist(My.MyProject.Forms.Mainform.workingmeeting, updatemattercode, "", Conversions.ToDecimal(delegatecode));
+                    RadioButton1.Checked = Conversions.ToBoolean(dt3.Rows[0]["Agree"]);
+                    RadioButton2.Checked = Conversions.ToBoolean(dt3.Rows[0]["DisAgree"]);
+                    RadioButton3.Checked = Conversions.ToBoolean(dt3.Rows[0]["Noidea"]);
+                    RadioButton3.Checked = Conversions.ToBoolean(dt3.Rows[0]["Illegal"]);
                 }
                 catch (Exception ex)
                 {
                     Interaction.MsgBox("Lỗi :" + ex.Message);
                     return;
                 }
-                RadioButton1.Checked = Conversions.ToBoolean(dt3.Rows[0]["Agree"]);
-                RadioButton2.Checked = Conversions.ToBoolean(dt3.Rows[0]["DisAgree"]);
-                RadioButton3.Checked = Conversions.ToBoolean(dt3.Rows[0]["Noidea"]);
-
                 Button2.Visible = false;
                 CheckBox1.Visible = false;
+
             }
+            isLoading = false;
         }
 
         private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             var dt = new DataTable();
+
             try
             {
                 dt = My.MyProject.Forms.Mainform.BenlyDal.Matter_getlist(My.MyProject.Forms.Mainform.workingmeeting, NumericUpDown1.Value);
@@ -92,12 +110,22 @@ namespace pmDHCD
             if (dt.Rows.Count == 1)
             {
                 MaskedTextBox3.Text = Conversions.ToString(dt.Rows[0]["Mattername"]);
+                if (!(dt.Rows[0]["Mattercode"] is DBNull) && Information.IsNumeric(dt.Rows[0]["Mattercode"]))
+                {
+                    NumericUpDown1.Value = Convert.ToDecimal(dt.Rows[0]["Mattercode"]);
+                }
+                else
+                {
+                    NumericUpDown1.Value = 1m;
+                }
+
+                if (isLoading)
+                    return;
             }
             else
             {
                 MaskedTextBox3.Text = "";
             }
-
         }
 
         private void MaskedTextBox5_KeyDown(object sender, KeyEventArgs e)
@@ -147,6 +175,10 @@ namespace pmDHCD
         private void MaskedTextBox5_Leave(object sender, EventArgs e)
         {
             var dt = new DataTable();
+            if (string.IsNullOrEmpty(HolderCodeMaskedTextBox.Text))
+            {
+                return;
+            }
             try
             {
                 dt = My.MyProject.Forms.Mainform.BenlyDal.Delegate_getlist(My.MyProject.Forms.Mainform.workingmeeting, Conversions.ToDecimal(HolderCodeMaskedTextBox.Text), "");
@@ -177,8 +209,17 @@ namespace pmDHCD
         {
             try
             {
-                My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_insert(My.MyProject.Forms.Mainform.workingmeeting, NumericUpDown1.Value, Conversions.ToDecimal(HolderCodeMaskedTextBox.Text), Conversions.ToDecimal(delegateCodeMaskedTextBox.Text), RadioButton1.Checked, RadioButton2.Checked, RadioButton3.Checked);
+                string meetingcode = My.MyProject.Forms.Mainform.workingmeeting;
+                decimal mattercode = NumericUpDown1.Value;
+                decimal HolderCode = 0m; // CDec(HolderCodeMaskedTextBox.Text)
+                decimal DelegateCode = Conversions.ToDecimal(HolderCodeMaskedTextBox.Text);
+                bool Agree;
+                bool disAgree;
+                bool noidea;
+                bool illegal;
+                My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_insert(meetingcode, mattercode, HolderCode, DelegateCode, RadioButton1.Checked, RadioButton2.Checked, RadioButton3.Checked, rbillegal.Enabled);
             }
+
             catch (Exception ex)
             {
                 Interaction.MsgBox("Lỗi :" + ex.Message);
@@ -188,7 +229,7 @@ namespace pmDHCD
         {
             try
             {
-                My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_update(My.MyProject.Forms.Mainform.workingmeeting, NumericUpDown1.Value, Conversions.ToDecimal(HolderCodeMaskedTextBox.Text), RadioButton1.Checked, RadioButton2.Checked, RadioButton3.Checked);
+                My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_update(My.MyProject.Forms.Mainform.workingmeeting, NumericUpDown1.Value, Conversions.ToDecimal(HolderCodeMaskedTextBox.Text), RadioButton1.Checked, RadioButton2.Checked, RadioButton3.Checked, rbillegal.Checked);
             }
             catch (Exception ex)
             {
@@ -286,10 +327,18 @@ namespace pmDHCD
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(HolderCodeMaskedTextBox.Text))
+            {
+                HolderCodeMaskedTextBox.Focus();
+                return;
+            }
             if (controlcode == "Add")
             {
+
                 insert();
                 Button2.Focus();
+                Button2.Enabled = true;
+                Button1.Enabled = false;
             }
             else if (controlcode == "Update")
             {
@@ -306,7 +355,9 @@ namespace pmDHCD
             MaskedTextBox4.Text = "";
             StockTextBox1.Text = "";
             delegateNameTextbox.Text = "";
-            HolderIdentifyMaskedTextBox2.Focus();
+            HolderCodeMaskedTextBox.Focus();
+            Button1.Enabled = true;
+            Button2.Enabled = false;
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -328,6 +379,14 @@ namespace pmDHCD
             if (e.KeyCode == Keys.Escape)
             {
                 Close();
+            }
+        }
+
+        private void NumericUpDown1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(NumericUpDown1.Text))
+            {
+                NumericUpDown1.Value = 1m;
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿Public Class MeetingInfoshow
+﻿Imports CrystalDecisions.CrystalReports.Engine
+
+Public Class MeetingInfoshow
     Private dateMeeting As DateTime = Mainform.dateMeeting
     Private Sub MaskedTextBox10_MaskInputRejected(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MaskInputRejectedEventArgs) Handles MaskedTextBox10.MaskInputRejected, MaskedTextBox11.MaskInputRejected
 
@@ -36,21 +38,34 @@
     End Sub
 
     Private Sub PrintButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PrintButton1.Click
-        Dim cr As New ThongTinCuocHop
+        Dim cr As New ReportDocument()
+        Dim reportPath As String = IO.Path.Combine(Application.StartupPath, "Report\ThongTinCuocHop.rpt")
+        If Not IO.File.Exists(reportPath) Then
+            MessageBox.Show("Không tìm thấy file báo cáo: " & reportPath)
+            Exit Sub
+        End If
+
+        Try
+            cr.Load(reportPath)
+        Catch ex As Exception
+            MessageBox.Show("Lỗi khi load báo cáo: " & ex.Message)
+            Exit Sub
+            ' End TryDim cr As New ThongTinCuocHop
+        End Try
 
         cr.SetParameterValue("TenCongTy", MaskedTextBox1.Text)
-        cr.SetParameterValue("dateMeeting", dateMeeting)
-        cr.SetParameterValue("CuocHop", MaskedTextBox2.Text)
-        cr.SetParameterValue("SoCoDong", MaskedTextBox3.Text)
-        cr.SetParameterValue("SoCoPhan", MaskedTextBox4.Text)
-        cr.SetParameterValue("QuyenBieuQuyet", MaskedTextBox5.Text)
-        cr.SetParameterValue("SoDaiBieu", MaskedTextBox6.Text)
-        cr.SetParameterValue("SoCoDongTrucTiep", MaskedTextBox7.Text)
-        cr.SetParameterValue("SoCoDongUyQuyen", MaskedTextBox8.Text)
-        cr.SetParameterValue("TongSo", MaskedTextBox9.Text)
-        cr.SetParameterValue("SoQuyenBQ", MaskedTextBox10.Text)
-        cr.SetParameterValue("TyLe", MaskedTextBox11.Text)
-        ReportViewer.LoadReport(cr, Me) 
+            cr.SetParameterValue("dateMeeting", dateMeeting)
+            cr.SetParameterValue("CuocHop", MaskedTextBox2.Text)
+            cr.SetParameterValue("SoCoDong", MaskedTextBox3.Text)
+            cr.SetParameterValue("SoCoPhan", MaskedTextBox4.Text)
+            cr.SetParameterValue("QuyenBieuQuyet", MaskedTextBox5.Text)
+            cr.SetParameterValue("SoDaiBieu", MaskedTextBox6.Text)
+            cr.SetParameterValue("SoCoDongTrucTiep", MaskedTextBox7.Text)
+            cr.SetParameterValue("SoCoDongUyQuyen", MaskedTextBox8.Text)
+            cr.SetParameterValue("TongSo", MaskedTextBox9.Text)
+            cr.SetParameterValue("SoQuyenBQ", MaskedTextBox10.Text)
+            cr.SetParameterValue("TyLe", MaskedTextBox11.Text)
+            ReportViewer.LoadReport(cr, Me)
 
     End Sub
 End Class

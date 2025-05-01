@@ -36,7 +36,7 @@ namespace pmDHCD
             {
                 try
                 {
-                    My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_insert_remain(My.MyProject.Forms.Mainform.workingmeeting, insertmattercode, 0m, RadioButton1.Checked, RadioButton2.Checked, RadioButton3.Checked);
+                    My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_insert_remain(My.MyProject.Forms.Mainform.workingmeeting, insertmattercode, 0m, RadioButton1.Checked, RadioButton2.Checked, RadioButton3.Checked, rbillegal.Checked);
                     Interaction.MsgBox("Đã nhập xong");
                 }
                 catch (Exception ex)

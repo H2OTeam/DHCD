@@ -221,6 +221,26 @@ namespace pmDHCD
                 return DataDefinition.ParameterFields[10];
             }
         }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IParameterField Parameter_isHolder
+        {
+            get
+            {
+                return DataDefinition.ParameterFields[11];
+            }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IParameterField Parameter_isOnlyAuthori
+        {
+            get
+            {
+                return DataDefinition.ParameterFields[12];
+            }
+        }
     }
 
     [ToolboxBitmap(typeof(ExportOptions), "report.bmp")]

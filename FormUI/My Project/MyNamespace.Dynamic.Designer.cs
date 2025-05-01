@@ -401,29 +401,6 @@ namespace pmDHCD.My
 
 
             [EditorBrowsable(EditorBrowsableState.Never)]
-            public MatterVoteResult m_MatterVoteResult;
-
-            public MatterVoteResult MatterVoteResult
-            {
-                [DebuggerHidden]
-                get
-                {
-                    m_MatterVoteResult = Create__Instance__(m_MatterVoteResult);
-                    return m_MatterVoteResult;
-                }
-                [DebuggerHidden]
-                set
-                {
-                    if (ReferenceEquals(value, m_MatterVoteResult))
-                        return;
-                    if (value is not null)
-                        throw new ArgumentException("Property can only be set to Nothing");
-                    Dispose__Instance__(ref m_MatterVoteResult);
-                }
-            }
-
-
-            [EditorBrowsable(EditorBrowsableState.Never)]
             public MeetingInfoshow m_MeetingInfoshow;
 
             public MeetingInfoshow MeetingInfoshow
@@ -511,6 +488,29 @@ namespace pmDHCD.My
                     if (value is not null)
                         throw new ArgumentException("Property can only be set to Nothing");
                     Dispose__Instance__(ref m_ReportViewer);
+                }
+            }
+
+
+            [EditorBrowsable(EditorBrowsableState.Never)]
+            public sodbhl m_sodbhl;
+
+            public sodbhl sodbhl
+            {
+                [DebuggerHidden]
+                get
+                {
+                    m_sodbhl = Create__Instance__(m_sodbhl);
+                    return m_sodbhl;
+                }
+                [DebuggerHidden]
+                set
+                {
+                    if (ReferenceEquals(value, m_sodbhl))
+                        return;
+                    if (value is not null)
+                        throw new ArgumentException("Property can only be set to Nothing");
+                    Dispose__Instance__(ref m_sodbhl);
                 }
             }
 

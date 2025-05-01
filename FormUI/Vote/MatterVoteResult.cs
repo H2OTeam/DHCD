@@ -5,9 +5,9 @@ using Microsoft.VisualBasic.CompilerServices;
 
 namespace pmDHCD
 {
-    public partial class MatterVoteResult
+    public partial class sodbhl
     {
-        public MatterVoteResult()
+        public sodbhl()
         {
             InitializeComponent();
         }
@@ -44,7 +44,7 @@ namespace pmDHCD
             var t = new DataTable();
             try
             {
-                t = My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_getlist(My.MyProject.Forms.Mainform.workingmeeting, NumericUpDown1.Value, "");
+                t = My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_getlist(My.MyProject.Forms.Mainform.workingmeeting, NumericUpDown1.Value, "", 0m);
             }
             catch (Exception ex)
             {
@@ -58,6 +58,8 @@ namespace pmDHCD
             int disagreeright = 0;
             int noideacount = 0;
             int noidearight = 0;
+            int illegalacount = 0;
+            int illegalright = 0;
 
             foreach (DataRow dr in t.Rows)
             {
@@ -71,6 +73,11 @@ namespace pmDHCD
                 {
                     disagreecount = disagreecount + 1;
                     disagreeright = Conversions.ToInteger(Operators.AddObject(disagreeright, dr["Voterights"]));
+                }
+                else if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(dr["Illegal"], true, false)))
+                {
+                    illegalacount = illegalacount + 1;
+                    illegalright = Conversions.ToInteger(Operators.AddObject(illegalright, dr["Voterights"]));
                 }
                 else
                 {
@@ -93,12 +100,27 @@ namespace pmDHCD
                 MaskedTextBox8.Text = Math.Round(agreeright / (double)totalright * 100d, 2).ToString() + "% ";
                 MaskedTextBox9.Text = Math.Round(disagreeright / (double)totalright * 100d, 2).ToString() + "% ";
                 MaskedTextBox10.Text = Math.Round(noidearight / (double)totalright * 100d, 2).ToString() + "% ";
+                decimal tyleIllegal = (decimal)Math.Round(illegalright / (double)totalright * 100d, 2);
+                textsodbhl.Text = (agreecount + disagreecount + noideacount).ToString();
+                sodbkhl.Text = illegalacount.ToString();
+
+                tongqbqhl.Text = (agreeright + disagreeright + noidearight).ToString("#,###");
+                tongqbqkhl.Text = illegalright.ToString("#,###");
+
+                tylebqkhl.Text = tyleIllegal.ToString() + "% ";
+                tylebqhl.Text = (100m - tyleIllegal).ToString() + "% ";
             }
             else
             {
                 MaskedTextBox8.Text = "";
                 MaskedTextBox9.Text = "";
                 MaskedTextBox10.Text = "";
+                textsodbhl.Text = "";
+                sodbkhl.Text = "";
+                tongqbqhl.Text = "";
+                tongqbqkhl.Text = "";
+                tylebqhl.Text = "";
+                tylebqkhl.Text = "";
             }
         }
     }

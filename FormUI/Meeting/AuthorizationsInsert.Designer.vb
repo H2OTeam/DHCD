@@ -44,6 +44,7 @@ Partial Class AuthorizationsInsert
         Me.Label10 = New System.Windows.Forms.Label()
         Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.btnext = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'StockTextBox2
@@ -54,12 +55,12 @@ Partial Class AuthorizationsInsert
         Me.StockTextBox2.CustomCultureInfo = New System.Globalization.CultureInfo("en-US")
         Me.StockTextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StockTextBox2.Location = New System.Drawing.Point(285, 430)
-        Me.StockTextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.StockTextBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.StockTextBox2.MaxLength = 25
         Me.StockTextBox2.Name = "StockTextBox2"
         Me.StockTextBox2.Precision = 0
         Me.StockTextBox2.Size = New System.Drawing.Size(265, 26)
-        Me.StockTextBox2.TabIndex = 2
+        Me.StockTextBox2.TabIndex = 4
         Me.StockTextBox2.Text = "0"
         Me.StockTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.StockTextBox2.ValueAlarm = New Decimal(New Integer() {1000000000, 0, 0, 0})
@@ -78,11 +79,11 @@ Partial Class AuthorizationsInsert
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(251, 490)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Location = New System.Drawing.Point(88, 490)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(193, 58)
-        Me.Button1.TabIndex = 3
+        Me.Button1.TabIndex = 5
         Me.Button1.Text = "Thêm"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -90,10 +91,10 @@ Partial Class AuthorizationsInsert
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(516, 490)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(193, 58)
-        Me.Button2.TabIndex = 4
+        Me.Button2.TabIndex = 6
         Me.Button2.Text = "Thoát"
         Me.Button2.UseVisualStyleBackColor = True
         '
@@ -133,29 +134,27 @@ Partial Class AuthorizationsInsert
         'MaskedTextBox2
         '
         Me.MaskedTextBox2.BackColor = System.Drawing.SystemColors.InactiveBorder
-        Me.MaskedTextBox2.Enabled = False
         Me.MaskedTextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox2.Location = New System.Drawing.Point(287, 37)
-        Me.MaskedTextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox2.Name = "MaskedTextBox2"
-        Me.MaskedTextBox2.Size = New System.Drawing.Size(265, 26)
-        Me.MaskedTextBox2.TabIndex = 5
-        Me.MaskedTextBox2.TabStop = False
+        Me.MaskedTextBox2.Size = New System.Drawing.Size(168, 26)
+        Me.MaskedTextBox2.TabIndex = 0
         '
         'MaskedTextBox3
         '
         Me.MaskedTextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox3.Location = New System.Drawing.Point(287, 90)
-        Me.MaskedTextBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox3.Name = "MaskedTextBox3"
         Me.MaskedTextBox3.Size = New System.Drawing.Size(265, 26)
-        Me.MaskedTextBox3.TabIndex = 0
+        Me.MaskedTextBox3.TabIndex = 1
         '
         'MaskedTextBox4
         '
         Me.MaskedTextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox4.Location = New System.Drawing.Point(287, 140)
-        Me.MaskedTextBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox4.Name = "MaskedTextBox4"
         Me.MaskedTextBox4.ReadOnly = True
         Me.MaskedTextBox4.Size = New System.Drawing.Size(505, 26)
@@ -209,29 +208,27 @@ Partial Class AuthorizationsInsert
         'MaskedTextBox8
         '
         Me.MaskedTextBox8.BackColor = System.Drawing.SystemColors.InactiveBorder
-        Me.MaskedTextBox8.Enabled = False
         Me.MaskedTextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox8.Location = New System.Drawing.Point(284, 229)
-        Me.MaskedTextBox8.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox8.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox8.Name = "MaskedTextBox8"
         Me.MaskedTextBox8.Size = New System.Drawing.Size(265, 26)
-        Me.MaskedTextBox8.TabIndex = 7
-        Me.MaskedTextBox8.TabStop = False
+        Me.MaskedTextBox8.TabIndex = 2
         '
         'MaskedTextBox7
         '
         Me.MaskedTextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox7.Location = New System.Drawing.Point(284, 267)
-        Me.MaskedTextBox7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox7.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox7.Name = "MaskedTextBox7"
         Me.MaskedTextBox7.Size = New System.Drawing.Size(265, 26)
-        Me.MaskedTextBox7.TabIndex = 1
+        Me.MaskedTextBox7.TabIndex = 3
         '
         'MaskedTextBox6
         '
         Me.MaskedTextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox6.Location = New System.Drawing.Point(284, 305)
-        Me.MaskedTextBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox6.Name = "MaskedTextBox6"
         Me.MaskedTextBox6.ReadOnly = True
         Me.MaskedTextBox6.Size = New System.Drawing.Size(505, 26)
@@ -246,7 +243,7 @@ Partial Class AuthorizationsInsert
         Me.StockTextBox1.CustomCultureInfo = New System.Globalization.CultureInfo("en-US")
         Me.StockTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StockTextBox1.Location = New System.Drawing.Point(284, 388)
-        Me.StockTextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.StockTextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.StockTextBox1.MaxLength = 25
         Me.StockTextBox1.Name = "StockTextBox1"
         Me.StockTextBox1.Precision = 0
@@ -284,7 +281,7 @@ Partial Class AuthorizationsInsert
         '
         Me.MaskedTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox1.Location = New System.Drawing.Point(284, 346)
-        Me.MaskedTextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox1.Name = "MaskedTextBox1"
         Me.MaskedTextBox1.ReadOnly = True
         Me.MaskedTextBox1.Size = New System.Drawing.Size(505, 26)
@@ -301,6 +298,17 @@ Partial Class AuthorizationsInsert
         Me.Label11.Size = New System.Drawing.Size(61, 20)
         Me.Label11.TabIndex = 20
         Me.Label11.Text = "Địa chỉ"
+        '
+        'btnext
+        '
+        Me.btnext.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnext.Location = New System.Drawing.Point(306, 490)
+        Me.btnext.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnext.Name = "btnext"
+        Me.btnext.Size = New System.Drawing.Size(193, 58)
+        Me.btnext.TabIndex = 5
+        Me.btnext.Text = "Tiếp tục"
+        Me.btnext.UseVisualStyleBackColor = True
         '
         'AuthorizationsInsert
         '
@@ -321,6 +329,7 @@ Partial Class AuthorizationsInsert
         Me.Controls.Add(Me.MaskedTextBox3)
         Me.Controls.Add(Me.MaskedTextBox8)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.btnext)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.MaskedTextBox2)
@@ -331,7 +340,7 @@ Partial Class AuthorizationsInsert
         Me.Controls.Add(Me.Label2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "AuthorizationsInsert"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ủy quyền"
@@ -361,4 +370,5 @@ Partial Class AuthorizationsInsert
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents MaskedTextBox1 As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents btnext As Button
 End Class

@@ -35,12 +35,12 @@ Partial Class DelegateList
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton10 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton10 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton7 = New System.Windows.Forms.ToolStripButton()
-        Me.InPhieuBauBKS = New System.Windows.Forms.ToolStripButton()
         Me.InPhieuBauHDQT = New System.Windows.Forms.ToolStripButton()
+        Me.InPhieuBauBKS = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton8 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton6 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton9 = New System.Windows.Forms.ToolStripButton()
@@ -64,10 +64,10 @@ Partial Class DelegateList
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.ToolStripTextBox2, Me.ToolStripButton4, Me.ToolStripButton10, Me.ToolStripSeparator3, Me.ToolStripButton5, Me.ToolStripButton7, Me.InPhieuBauBKS, Me.InPhieuBauHDQT, Me.ToolStripButton8, Me.ToolStripButton6, Me.ToolStripButton9})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator1, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator2, Me.ToolStripLabel2, Me.ToolStripTextBox2, Me.ToolStripButton4, Me.ToolStripButton10, Me.ToolStripButton7, Me.ToolStripSeparator3, Me.ToolStripButton5, Me.InPhieuBauHDQT, Me.InPhieuBauBKS, Me.ToolStripButton8, Me.ToolStripButton6, Me.ToolStripButton9})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1636, 39)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1512, 27)
         Me.ToolStrip1.TabIndex = 3
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -76,7 +76,7 @@ Partial Class DelegateList
         Me.ToolStripButton1.Image = Global.pmDHCD.My.Resources.Resources.Add
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(90, 36)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(90, 24)
         Me.ToolStripButton1.Text = "Thêm(A)"
         '
         'ToolStripButton2
@@ -84,7 +84,7 @@ Partial Class DelegateList
         Me.ToolStripButton2.Image = Global.pmDHCD.My.Resources.Resources.Document
         Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(76, 36)
+        Me.ToolStripButton2.Size = New System.Drawing.Size(76, 24)
         Me.ToolStripButton2.Text = "Sửa(E)"
         '
         'ToolStripButton3
@@ -92,102 +92,102 @@ Partial Class DelegateList
         Me.ToolStripButton3.Image = Global.pmDHCD.My.Resources.Resources.Delete
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(80, 36)
+        Me.ToolStripButton3.Size = New System.Drawing.Size(80, 24)
         Me.ToolStripButton3.Text = "Xóa(D)"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
         '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(88, 36)
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(88, 24)
         Me.ToolStripLabel1.Text = "Mã đại biểu"
         '
         'ToolStripTextBox1
         '
         Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(65, 39)
+        Me.ToolStripTextBox1.Size = New System.Drawing.Size(65, 27)
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
         '
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(91, 36)
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(91, 24)
         Me.ToolStripLabel2.Text = "CCCD/GPKD"
         '
         'ToolStripTextBox2
         '
         Me.ToolStripTextBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
-        Me.ToolStripTextBox2.Size = New System.Drawing.Size(132, 39)
+        Me.ToolStripTextBox2.Size = New System.Drawing.Size(132, 27)
         '
         'ToolStripButton4
         '
         Me.ToolStripButton4.Image = Global.pmDHCD.My.Resources.Resources.Search
         Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(58, 36)
+        Me.ToolStripButton4.Size = New System.Drawing.Size(58, 24)
         Me.ToolStripButton4.Text = "Tìm"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 39)
-        '
-        'ToolStripButton5
-        '
-        Me.ToolStripButton5.Image = Global.pmDHCD.My.Resources.Resources.Printer
-        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(94, 36)
-        Me.ToolStripButton5.Text = "In thẻ BQ"
         '
         'ToolStripButton10
         '
         Me.ToolStripButton10.Image = Global.pmDHCD.My.Resources.Resources.Printer
         Me.ToolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton10.Name = "ToolStripButton10"
-        Me.ToolStripButton10.Size = New System.Drawing.Size(124, 36)
+        Me.ToolStripButton10.Size = New System.Drawing.Size(124, 24)
         Me.ToolStripButton10.Text = "P.XN tham dự"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripButton5
+        '
+        Me.ToolStripButton5.Image = Global.pmDHCD.My.Resources.Resources.Printer
+        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton5.Name = "ToolStripButton5"
+        Me.ToolStripButton5.Size = New System.Drawing.Size(94, 24)
+        Me.ToolStripButton5.Text = "In thẻ BQ"
         '
         'ToolStripButton7
         '
         Me.ToolStripButton7.Image = Global.pmDHCD.My.Resources.Resources.Printer
         Me.ToolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton7.Name = "ToolStripButton7"
-        Me.ToolStripButton7.Size = New System.Drawing.Size(93, 36)
+        Me.ToolStripButton7.Size = New System.Drawing.Size(93, 24)
         Me.ToolStripButton7.Text = "Phiếu BQ"
-        '
-        'InPhieuBauBKS
-        '
-        Me.InPhieuBauBKS.Image = Global.pmDHCD.My.Resources.Resources.Printer
-        Me.InPhieuBauBKS.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.InPhieuBauBKS.Name = "InPhieuBauBKS"
-        Me.InPhieuBauBKS.Size = New System.Drawing.Size(103, 36)
-        Me.InPhieuBauBKS.Text = "P. Bầu BSK"
         '
         'InPhieuBauHDQT
         '
         Me.InPhieuBauHDQT.Image = Global.pmDHCD.My.Resources.Resources.Printer
         Me.InPhieuBauHDQT.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.InPhieuBauHDQT.Name = "InPhieuBauHDQT"
-        Me.InPhieuBauHDQT.Size = New System.Drawing.Size(117, 36)
+        Me.InPhieuBauHDQT.Size = New System.Drawing.Size(117, 24)
         Me.InPhieuBauHDQT.Text = "P. Bầu HDQT"
+        '
+        'InPhieuBauBKS
+        '
+        Me.InPhieuBauBKS.Image = Global.pmDHCD.My.Resources.Resources.Printer
+        Me.InPhieuBauBKS.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.InPhieuBauBKS.Name = "InPhieuBauBKS"
+        Me.InPhieuBauBKS.Size = New System.Drawing.Size(103, 24)
+        Me.InPhieuBauBKS.Text = "P. Bầu BSK"
         '
         'ToolStripButton8
         '
         Me.ToolStripButton8.Image = Global.pmDHCD.My.Resources.Resources.Printer
         Me.ToolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton8.Name = "ToolStripButton8"
-        Me.ToolStripButton8.Size = New System.Drawing.Size(105, 36)
+        Me.ToolStripButton8.Size = New System.Drawing.Size(105, 24)
         Me.ToolStripButton8.Text = "Phiếu BQ 2"
         Me.ToolStripButton8.Visible = False
         '
@@ -196,7 +196,7 @@ Partial Class DelegateList
         Me.ToolStripButton6.Image = Global.pmDHCD.My.Resources.Resources.Printer
         Me.ToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton6.Name = "ToolStripButton6"
-        Me.ToolStripButton6.Size = New System.Drawing.Size(110, 36)
+        Me.ToolStripButton6.Size = New System.Drawing.Size(110, 24)
         Me.ToolStripButton6.Text = "Phiếu bầu 1"
         Me.ToolStripButton6.Visible = False
         '
@@ -205,7 +205,7 @@ Partial Class DelegateList
         Me.ToolStripButton9.Image = Global.pmDHCD.My.Resources.Resources.Printer
         Me.ToolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton9.Name = "ToolStripButton9"
-        Me.ToolStripButton9.Size = New System.Drawing.Size(110, 36)
+        Me.ToolStripButton9.Size = New System.Drawing.Size(110, 24)
         Me.ToolStripButton9.Text = "Phiếu bầu 2"
         Me.ToolStripButton9.Visible = False
         '
@@ -218,13 +218,13 @@ Partial Class DelegateList
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Delegatecode, Me.Delegatename, Me.IdentityCard, Me.DelegateAddress, Me.Voterights})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 49)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 27)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1636, 793)
+        Me.DataGridView1.Size = New System.Drawing.Size(1512, 626)
         Me.DataGridView1.TabIndex = 6
         '
         'Delegatecode
@@ -279,10 +279,10 @@ Partial Class DelegateList
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripSplitButton1, Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel4})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 649)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 629)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.StatusStrip1.Size = New System.Drawing.Size(1309, 24)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1512, 24)
         Me.StatusStrip1.TabIndex = 7
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -324,7 +324,7 @@ Partial Class DelegateList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1309, 673)
+        Me.ClientSize = New System.Drawing.Size(1512, 653)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ToolStrip1)

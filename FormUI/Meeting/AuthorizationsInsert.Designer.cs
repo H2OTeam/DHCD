@@ -46,6 +46,7 @@ namespace pmDHCD
             Label7 = new Label();
             Label3 = new Label();
             MaskedTextBox2 = new MaskedTextBox();
+            MaskedTextBox2.KeyDown += new KeyEventHandler(MaskedTextBox2_KeyDown);
             MaskedTextBox3 = new MaskedTextBox();
             MaskedTextBox3.Leave += new EventHandler(MaskedTextBox3_Leave);
             MaskedTextBox3.KeyUp += new KeyEventHandler(MaskedTextBox3_KeyUp);
@@ -56,6 +57,7 @@ namespace pmDHCD
             Label5 = new Label();
             Label1 = new Label();
             MaskedTextBox8 = new MaskedTextBox();
+            MaskedTextBox8.KeyDown += new KeyEventHandler(MaskedTextBox8_KeyDown);
             MaskedTextBox7 = new MaskedTextBox();
             MaskedTextBox7.KeyDown += new KeyEventHandler(MaskedTextBox7_KeyDown);
             MaskedTextBox6 = new MaskedTextBox();
@@ -64,6 +66,8 @@ namespace pmDHCD
             Label10 = new Label();
             MaskedTextBox1 = new MaskedTextBox();
             Label11 = new Label();
+            btnext = new Button();
+            btnext.Click += new EventHandler(btnext_Click);
             SuspendLayout();
             // 
             // StockTextBox2
@@ -74,12 +78,12 @@ namespace pmDHCD
             StockTextBox2.CustomCultureInfo = new System.Globalization.CultureInfo("en-US");
             StockTextBox2.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             StockTextBox2.Location = new Point(285, 430);
-            StockTextBox2.Margin = new Padding(4, 4, 4, 4);
+            StockTextBox2.Margin = new Padding(4);
             StockTextBox2.MaxLength = 25;
             StockTextBox2.Name = "StockTextBox2";
             StockTextBox2.Precision = 0;
             StockTextBox2.Size = new Size(265, 26);
-            StockTextBox2.TabIndex = 2;
+            StockTextBox2.TabIndex = 4;
             StockTextBox2.Text = "0";
             StockTextBox2.TextAlign = HorizontalAlignment.Right;
             StockTextBox2.ValueAlarm = new decimal(new int[] { 1000000000, 0, 0, 0 });
@@ -98,11 +102,11 @@ namespace pmDHCD
             // Button1
             // 
             Button1.Font = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Button1.Location = new Point(251, 490);
-            Button1.Margin = new Padding(4, 4, 4, 4);
+            Button1.Location = new Point(88, 490);
+            Button1.Margin = new Padding(4);
             Button1.Name = "Button1";
             Button1.Size = new Size(193, 58);
-            Button1.TabIndex = 3;
+            Button1.TabIndex = 5;
             Button1.Text = "Thêm";
             Button1.UseVisualStyleBackColor = true;
             // 
@@ -110,10 +114,10 @@ namespace pmDHCD
             // 
             Button2.Font = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold, GraphicsUnit.Point, 0);
             Button2.Location = new Point(516, 490);
-            Button2.Margin = new Padding(4, 4, 4, 4);
+            Button2.Margin = new Padding(4);
             Button2.Name = "Button2";
             Button2.Size = new Size(193, 58);
-            Button2.TabIndex = 4;
+            Button2.TabIndex = 6;
             Button2.Text = "Thoát";
             Button2.UseVisualStyleBackColor = true;
             // 
@@ -153,29 +157,27 @@ namespace pmDHCD
             // MaskedTextBox2
             // 
             MaskedTextBox2.BackColor = SystemColors.InactiveBorder;
-            MaskedTextBox2.Enabled = false;
             MaskedTextBox2.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox2.Location = new Point(287, 37);
-            MaskedTextBox2.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox2.Margin = new Padding(4);
             MaskedTextBox2.Name = "MaskedTextBox2";
-            MaskedTextBox2.Size = new Size(265, 26);
-            MaskedTextBox2.TabIndex = 5;
-            MaskedTextBox2.TabStop = false;
+            MaskedTextBox2.Size = new Size(168, 26);
+            MaskedTextBox2.TabIndex = 0;
             // 
             // MaskedTextBox3
             // 
             MaskedTextBox3.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox3.Location = new Point(287, 90);
-            MaskedTextBox3.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox3.Margin = new Padding(4);
             MaskedTextBox3.Name = "MaskedTextBox3";
             MaskedTextBox3.Size = new Size(265, 26);
-            MaskedTextBox3.TabIndex = 0;
+            MaskedTextBox3.TabIndex = 1;
             // 
             // MaskedTextBox4
             // 
             MaskedTextBox4.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox4.Location = new Point(287, 140);
-            MaskedTextBox4.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox4.Margin = new Padding(4);
             MaskedTextBox4.Name = "MaskedTextBox4";
             MaskedTextBox4.ReadOnly = true;
             MaskedTextBox4.Size = new Size(505, 26);
@@ -229,29 +231,27 @@ namespace pmDHCD
             // MaskedTextBox8
             // 
             MaskedTextBox8.BackColor = SystemColors.InactiveBorder;
-            MaskedTextBox8.Enabled = false;
             MaskedTextBox8.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox8.Location = new Point(284, 229);
-            MaskedTextBox8.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox8.Margin = new Padding(4);
             MaskedTextBox8.Name = "MaskedTextBox8";
             MaskedTextBox8.Size = new Size(265, 26);
-            MaskedTextBox8.TabIndex = 7;
-            MaskedTextBox8.TabStop = false;
+            MaskedTextBox8.TabIndex = 2;
             // 
             // MaskedTextBox7
             // 
             MaskedTextBox7.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox7.Location = new Point(284, 267);
-            MaskedTextBox7.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox7.Margin = new Padding(4);
             MaskedTextBox7.Name = "MaskedTextBox7";
             MaskedTextBox7.Size = new Size(265, 26);
-            MaskedTextBox7.TabIndex = 1;
+            MaskedTextBox7.TabIndex = 3;
             // 
             // MaskedTextBox6
             // 
             MaskedTextBox6.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox6.Location = new Point(284, 305);
-            MaskedTextBox6.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox6.Margin = new Padding(4);
             MaskedTextBox6.Name = "MaskedTextBox6";
             MaskedTextBox6.ReadOnly = true;
             MaskedTextBox6.Size = new Size(505, 26);
@@ -266,7 +266,7 @@ namespace pmDHCD
             StockTextBox1.CustomCultureInfo = new System.Globalization.CultureInfo("en-US");
             StockTextBox1.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             StockTextBox1.Location = new Point(284, 388);
-            StockTextBox1.Margin = new Padding(4, 4, 4, 4);
+            StockTextBox1.Margin = new Padding(4);
             StockTextBox1.MaxLength = 25;
             StockTextBox1.Name = "StockTextBox1";
             StockTextBox1.Precision = 0;
@@ -304,7 +304,7 @@ namespace pmDHCD
             // 
             MaskedTextBox1.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox1.Location = new Point(284, 346);
-            MaskedTextBox1.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox1.Margin = new Padding(4);
             MaskedTextBox1.Name = "MaskedTextBox1";
             MaskedTextBox1.ReadOnly = true;
             MaskedTextBox1.Size = new Size(505, 26);
@@ -321,6 +321,17 @@ namespace pmDHCD
             Label11.Size = new Size(61, 20);
             Label11.TabIndex = 20;
             Label11.Text = "Địa chỉ";
+            // 
+            // btnext
+            // 
+            btnext.Font = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnext.Location = new Point(306, 490);
+            btnext.Margin = new Padding(4);
+            btnext.Name = "btnext";
+            btnext.Size = new Size(193, 58);
+            btnext.TabIndex = 5;
+            btnext.Text = "Tiếp tục";
+            btnext.UseVisualStyleBackColor = true;
             // 
             // AuthorizationsInsert
             // 
@@ -341,6 +352,7 @@ namespace pmDHCD
             Controls.Add(MaskedTextBox3);
             Controls.Add(MaskedTextBox8);
             Controls.Add(Label1);
+            Controls.Add(btnext);
             Controls.Add(Button1);
             Controls.Add(Label5);
             Controls.Add(MaskedTextBox2);
@@ -351,7 +363,7 @@ namespace pmDHCD
             Controls.Add(Label2);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             KeyPreview = true;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "AuthorizationsInsert";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Ủy quyền";
@@ -383,5 +395,6 @@ namespace pmDHCD
         internal Label Label10;
         internal MaskedTextBox MaskedTextBox1;
         internal Label Label11;
+        internal Button btnext;
     }
 }

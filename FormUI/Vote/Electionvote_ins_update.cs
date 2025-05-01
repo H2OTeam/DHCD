@@ -18,6 +18,7 @@ namespace pmDHCD
             this.updateelectioncode = updateelectioncode;
             updatedelegatecode = updatedelegationcode;
             this.controlcode = controlcode;
+            MaskedTextBox5.Focus();
         }
         private void Electionvote_ins_update_Load(object sender, EventArgs e)
         {
@@ -114,7 +115,7 @@ namespace pmDHCD
                 Text = "Cập nhật phiếu bầu cử";
                 Button2.Enabled = false;
             }
-
+            MaskedTextBox5.Focus();
         }
 
         private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -159,16 +160,26 @@ namespace pmDHCD
 
         private void MaskedTextBox5_Leave(object sender, EventArgs e)
         {
-            var dt = new DataTable();
             int delecode = 0;
             try
             {
                 delecode = Conversions.ToInteger(MaskedTextBox5.Text);
+                if (string.IsNullOrEmpty(delecode.ToString()))
+                {
+                    MaskedTextBox5.Focus();
+                    return;
+                }
+                LoadDelegate(delecode);
             }
             catch (Exception ex)
             {
                 delecode = 0;
             }
+        }
+
+        public void LoadDelegate(int delecode)
+        {
+            var dt = new DataTable();
             try
             {
                 dt = My.MyProject.Forms.Mainform.BenlyDal.Delegate_getlist(My.MyProject.Forms.Mainform.workingmeeting, delecode, "");
@@ -197,11 +208,6 @@ namespace pmDHCD
                 StockTextBox1.Text = "";
                 StockTextBox2.Text = "";
             }
-        }
-
-        private void MaskedTextBox5_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
         }
 
         private void MaskedTextBox2_Leave(object sender, EventArgs e)
@@ -310,9 +316,6 @@ namespace pmDHCD
 
             if (RadioButton1.Checked == true)
             {
-
-
-
                 int totalvoteingrid = 0;
                 int totalCandidateingrid = 0;
 
@@ -438,6 +441,28 @@ namespace pmDHCD
                 DataGridView1.ReadOnly = false;
                 Button4.Enabled = true;
                 Button5.Enabled = true;
+            }
+        }
+
+        private void MaskedTextBox5_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                int delecode = 0;
+                try
+                {
+                    delecode = Conversions.ToInteger(MaskedTextBox5.Text);
+                    if (string.IsNullOrEmpty(delecode.ToString()))
+                    {
+                        MaskedTextBox5.Focus();
+                        return;
+                    }
+                    LoadDelegate(delecode);
+                }
+                catch (Exception ex)
+                {
+                    delecode = 0;
+                }
             }
         }
     }

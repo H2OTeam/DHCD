@@ -54,17 +54,17 @@ namespace pmDHCD
             ToolStripTextBox2.KeyUp += new KeyEventHandler(ToolStripTextBox2_KeyUp);
             ToolStripButton4 = new ToolStripButton();
             ToolStripButton4.Click += new EventHandler(ToolStripButton4_Click);
+            ToolStripButton10 = new ToolStripButton();
+            ToolStripButton10.Click += new EventHandler(ToolStripButton10_Click);
             ToolStripSeparator3 = new ToolStripSeparator();
             ToolStripButton5 = new ToolStripButton();
             ToolStripButton5.Click += new EventHandler(ToolStripButton5_Click);
-            ToolStripButton10 = new ToolStripButton();
-            ToolStripButton10.Click += new EventHandler(ToolStripButton10_Click);
             ToolStripButton7 = new ToolStripButton();
             ToolStripButton7.Click += new EventHandler(ToolStripButton7_Click_1);
-            InPhieuBauBKS = new ToolStripButton();
-            InPhieuBauBKS.Click += new EventHandler(InPhieuBauBKS_Click);
             InPhieuBauHDQT = new ToolStripButton();
             InPhieuBauHDQT.Click += new EventHandler(InPhieuBauHDQT_Click);
+            InPhieuBauBKS = new ToolStripButton();
+            InPhieuBauBKS.Click += new EventHandler(InPhieuBauBKS_Click);
             ToolStripButton8 = new ToolStripButton();
             ToolStripButton8.Click += new EventHandler(ToolStripButton8_Click);
             ToolStripButton6 = new ToolStripButton();
@@ -90,10 +90,10 @@ namespace pmDHCD
             // ToolStrip1
             // 
             ToolStrip1.ImageScalingSize = new Size(20, 20);
-            ToolStrip1.Items.AddRange(new ToolStripItem[] { ToolStripButton1, ToolStripButton2, ToolStripButton3, ToolStripSeparator1, ToolStripLabel1, ToolStripTextBox1, ToolStripSeparator2, ToolStripLabel2, ToolStripTextBox2, ToolStripButton4, ToolStripButton10, ToolStripSeparator3, ToolStripButton5, ToolStripButton7, InPhieuBauBKS, InPhieuBauHDQT, ToolStripButton8, ToolStripButton6, ToolStripButton9 });
+            ToolStrip1.Items.AddRange(new ToolStripItem[] { ToolStripButton1, ToolStripButton2, ToolStripButton3, ToolStripSeparator1, ToolStripLabel1, ToolStripTextBox1, ToolStripSeparator2, ToolStripLabel2, ToolStripTextBox2, ToolStripButton4, ToolStripButton10, ToolStripButton7, ToolStripSeparator3, ToolStripButton5, InPhieuBauHDQT, InPhieuBauBKS, ToolStripButton8, ToolStripButton6, ToolStripButton9 });
             ToolStrip1.Location = new Point(0, 0);
             ToolStrip1.Name = "ToolStrip1";
-            ToolStrip1.Size = new Size(1636, 39);
+            ToolStrip1.Size = new Size(1512, 27);
             ToolStrip1.TabIndex = 3;
             ToolStrip1.Text = "ToolStrip1";
             // 
@@ -102,7 +102,7 @@ namespace pmDHCD
             ToolStripButton1.Image = My.Resources.Resources.Add;
             ToolStripButton1.ImageTransparentColor = Color.Magenta;
             ToolStripButton1.Name = "ToolStripButton1";
-            ToolStripButton1.Size = new Size(90, 36);
+            ToolStripButton1.Size = new Size(90, 24);
             ToolStripButton1.Text = "Thêm(A)";
             // 
             // ToolStripButton2
@@ -110,7 +110,7 @@ namespace pmDHCD
             ToolStripButton2.Image = My.Resources.Resources.Document;
             ToolStripButton2.ImageTransparentColor = Color.Magenta;
             ToolStripButton2.Name = "ToolStripButton2";
-            ToolStripButton2.Size = new Size(76, 36);
+            ToolStripButton2.Size = new Size(76, 24);
             ToolStripButton2.Text = "Sửa(E)";
             // 
             // ToolStripButton3
@@ -118,102 +118,102 @@ namespace pmDHCD
             ToolStripButton3.Image = My.Resources.Resources.Delete;
             ToolStripButton3.ImageTransparentColor = Color.Magenta;
             ToolStripButton3.Name = "ToolStripButton3";
-            ToolStripButton3.Size = new Size(80, 36);
+            ToolStripButton3.Size = new Size(80, 24);
             ToolStripButton3.Text = "Xóa(D)";
             // 
             // ToolStripSeparator1
             // 
             ToolStripSeparator1.Name = "ToolStripSeparator1";
-            ToolStripSeparator1.Size = new Size(6, 39);
+            ToolStripSeparator1.Size = new Size(6, 27);
             // 
             // ToolStripLabel1
             // 
             ToolStripLabel1.Name = "ToolStripLabel1";
-            ToolStripLabel1.Size = new Size(88, 36);
+            ToolStripLabel1.Size = new Size(88, 24);
             ToolStripLabel1.Text = "Mã đại biểu";
             // 
             // ToolStripTextBox1
             // 
             ToolStripTextBox1.Font = new Font("Segoe UI", 9.0f);
             ToolStripTextBox1.Name = "ToolStripTextBox1";
-            ToolStripTextBox1.Size = new Size(65, 39);
+            ToolStripTextBox1.Size = new Size(65, 27);
             // 
             // ToolStripSeparator2
             // 
             ToolStripSeparator2.Name = "ToolStripSeparator2";
-            ToolStripSeparator2.Size = new Size(6, 39);
+            ToolStripSeparator2.Size = new Size(6, 27);
             // 
             // ToolStripLabel2
             // 
             ToolStripLabel2.Name = "ToolStripLabel2";
-            ToolStripLabel2.Size = new Size(91, 36);
+            ToolStripLabel2.Size = new Size(91, 24);
             ToolStripLabel2.Text = "CCCD/GPKD";
             // 
             // ToolStripTextBox2
             // 
             ToolStripTextBox2.Font = new Font("Segoe UI", 9.0f);
             ToolStripTextBox2.Name = "ToolStripTextBox2";
-            ToolStripTextBox2.Size = new Size(132, 39);
+            ToolStripTextBox2.Size = new Size(132, 27);
             // 
             // ToolStripButton4
             // 
             ToolStripButton4.Image = My.Resources.Resources.Search;
             ToolStripButton4.ImageTransparentColor = Color.Magenta;
             ToolStripButton4.Name = "ToolStripButton4";
-            ToolStripButton4.Size = new Size(58, 36);
+            ToolStripButton4.Size = new Size(58, 24);
             ToolStripButton4.Text = "Tìm";
-            // 
-            // ToolStripSeparator3
-            // 
-            ToolStripSeparator3.Name = "ToolStripSeparator3";
-            ToolStripSeparator3.Size = new Size(6, 39);
-            // 
-            // ToolStripButton5
-            // 
-            ToolStripButton5.Image = My.Resources.Resources.Printer;
-            ToolStripButton5.ImageTransparentColor = Color.Magenta;
-            ToolStripButton5.Name = "ToolStripButton5";
-            ToolStripButton5.Size = new Size(94, 36);
-            ToolStripButton5.Text = "In thẻ BQ";
             // 
             // ToolStripButton10
             // 
             ToolStripButton10.Image = My.Resources.Resources.Printer;
             ToolStripButton10.ImageTransparentColor = Color.Magenta;
             ToolStripButton10.Name = "ToolStripButton10";
-            ToolStripButton10.Size = new Size(124, 36);
+            ToolStripButton10.Size = new Size(124, 24);
             ToolStripButton10.Text = "P.XN tham dự";
+            // 
+            // ToolStripSeparator3
+            // 
+            ToolStripSeparator3.Name = "ToolStripSeparator3";
+            ToolStripSeparator3.Size = new Size(6, 27);
+            // 
+            // ToolStripButton5
+            // 
+            ToolStripButton5.Image = My.Resources.Resources.Printer;
+            ToolStripButton5.ImageTransparentColor = Color.Magenta;
+            ToolStripButton5.Name = "ToolStripButton5";
+            ToolStripButton5.Size = new Size(94, 24);
+            ToolStripButton5.Text = "In thẻ BQ";
             // 
             // ToolStripButton7
             // 
             ToolStripButton7.Image = My.Resources.Resources.Printer;
             ToolStripButton7.ImageTransparentColor = Color.Magenta;
             ToolStripButton7.Name = "ToolStripButton7";
-            ToolStripButton7.Size = new Size(93, 36);
+            ToolStripButton7.Size = new Size(93, 24);
             ToolStripButton7.Text = "Phiếu BQ";
-            // 
-            // InPhieuBauBKS
-            // 
-            InPhieuBauBKS.Image = My.Resources.Resources.Printer;
-            InPhieuBauBKS.ImageTransparentColor = Color.Magenta;
-            InPhieuBauBKS.Name = "InPhieuBauBKS";
-            InPhieuBauBKS.Size = new Size(103, 36);
-            InPhieuBauBKS.Text = "P. Bầu BSK";
             // 
             // InPhieuBauHDQT
             // 
             InPhieuBauHDQT.Image = My.Resources.Resources.Printer;
             InPhieuBauHDQT.ImageTransparentColor = Color.Magenta;
             InPhieuBauHDQT.Name = "InPhieuBauHDQT";
-            InPhieuBauHDQT.Size = new Size(117, 36);
+            InPhieuBauHDQT.Size = new Size(117, 24);
             InPhieuBauHDQT.Text = "P. Bầu HDQT";
+            // 
+            // InPhieuBauBKS
+            // 
+            InPhieuBauBKS.Image = My.Resources.Resources.Printer;
+            InPhieuBauBKS.ImageTransparentColor = Color.Magenta;
+            InPhieuBauBKS.Name = "InPhieuBauBKS";
+            InPhieuBauBKS.Size = new Size(103, 24);
+            InPhieuBauBKS.Text = "P. Bầu BSK";
             // 
             // ToolStripButton8
             // 
             ToolStripButton8.Image = My.Resources.Resources.Printer;
             ToolStripButton8.ImageTransparentColor = Color.Magenta;
             ToolStripButton8.Name = "ToolStripButton8";
-            ToolStripButton8.Size = new Size(105, 36);
+            ToolStripButton8.Size = new Size(105, 24);
             ToolStripButton8.Text = "Phiếu BQ 2";
             ToolStripButton8.Visible = false;
             // 
@@ -222,7 +222,7 @@ namespace pmDHCD
             ToolStripButton6.Image = My.Resources.Resources.Printer;
             ToolStripButton6.ImageTransparentColor = Color.Magenta;
             ToolStripButton6.Name = "ToolStripButton6";
-            ToolStripButton6.Size = new Size(110, 36);
+            ToolStripButton6.Size = new Size(110, 24);
             ToolStripButton6.Text = "Phiếu bầu 1";
             ToolStripButton6.Visible = false;
             // 
@@ -231,7 +231,7 @@ namespace pmDHCD
             ToolStripButton9.Image = My.Resources.Resources.Printer;
             ToolStripButton9.ImageTransparentColor = Color.Magenta;
             ToolStripButton9.Name = "ToolStripButton9";
-            ToolStripButton9.Size = new Size(110, 36);
+            ToolStripButton9.Size = new Size(110, 24);
             ToolStripButton9.Text = "Phiếu bầu 2";
             ToolStripButton9.Visible = false;
             // 
@@ -244,13 +244,13 @@ namespace pmDHCD
             DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DataGridView1.Columns.AddRange(new DataGridViewColumn[] { Delegatecode, Delegatename, IdentityCard, DelegateAddress, Voterights });
             DataGridView1.Dock = DockStyle.Fill;
-            DataGridView1.Location = new Point(0, 49);
+            DataGridView1.Location = new Point(0, 27);
             DataGridView1.Margin = new Padding(4);
             DataGridView1.Name = "DataGridView1";
             DataGridView1.ReadOnly = true;
             DataGridView1.RowHeadersWidth = 51;
             DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DataGridView1.Size = new Size(1636, 793);
+            DataGridView1.Size = new Size(1512, 626);
             DataGridView1.TabIndex = 6;
             // 
             // Delegatecode
@@ -305,10 +305,10 @@ namespace pmDHCD
             // 
             StatusStrip1.ImageScalingSize = new Size(20, 20);
             StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1, ToolStripStatusLabel2, ToolStripSplitButton1, ToolStripStatusLabel3, ToolStripStatusLabel4 });
-            StatusStrip1.Location = new Point(0, 649);
+            StatusStrip1.Location = new Point(0, 629);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Padding = new Padding(1, 0, 19, 0);
-            StatusStrip1.Size = new Size(1309, 24);
+            StatusStrip1.Size = new Size(1512, 24);
             StatusStrip1.TabIndex = 7;
             StatusStrip1.Text = "StatusStrip1";
             // 
@@ -350,7 +350,7 @@ namespace pmDHCD
             // 
             AutoScaleDimensions = new SizeF(8.0f, 16.0f);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1309, 673);
+            ClientSize = new Size(1512, 653);
             Controls.Add(StatusStrip1);
             Controls.Add(DataGridView1);
             Controls.Add(ToolStrip1);

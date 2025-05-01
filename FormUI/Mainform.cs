@@ -10,6 +10,7 @@ using Microsoft.VisualBasic;
 
 namespace pmDHCD
 {
+
     public partial class Mainform
     {
         public SqlConnection conn = new SqlConnection();
@@ -142,7 +143,7 @@ namespace pmDHCD
 
         private void KếtQuảBiểuQuyếtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            My.MyProject.Forms.MatterVoteResult.Show();
+            My.MyProject.Forms.sodbhl.Show();
         }
 
         private void ThôngTinCuộcHọpToolStripMenuItem_Click(object sender, EventArgs e)

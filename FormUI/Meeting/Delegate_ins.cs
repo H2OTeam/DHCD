@@ -18,6 +18,7 @@ namespace pmDHCD
         private void Delegate_ins_Load(object sender, EventArgs e)
         {
             MaskedTextBox1.Text = My.MyProject.Forms.Mainform.workingmeeting;
+            MaskedTextBox6.Focus();
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -25,7 +26,24 @@ namespace pmDHCD
             var holders = new DataTable();
             try
             {
-                holders = My.MyProject.Forms.Mainform.BenlyDal.Holder_getlist(My.MyProject.Forms.Mainform.workingmeeting, "", MaskedTextBox3.Text);
+                if (string.IsNullOrEmpty(MaskedTextBox6.Text) == false)
+                {
+                    if (string.IsNullOrEmpty(MaskedTextBox6.Text) == true)
+                    {
+                        MaskedTextBox6.Focus();
+                        return;
+                    }
+                    holders = My.MyProject.Forms.Mainform.BenlyDal.Holder_getlist(My.MyProject.Forms.Mainform.workingmeeting, MaskedTextBox6.Text, "");
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(MaskedTextBox3.Text) == true)
+                    {
+                        MaskedTextBox3.Focus();
+                        return;
+                    }
+                    holders = My.MyProject.Forms.Mainform.BenlyDal.Holder_getlist(My.MyProject.Forms.Mainform.workingmeeting, "", MaskedTextBox3.Text);
+                }
             }
             catch (Exception ex)
             {
@@ -52,8 +70,9 @@ namespace pmDHCD
             else if (holders.Rows.Count == 0)
             {
                 MessageBox.Show("Không tìm thấy cổ đông !");
-                MaskedTextBox3.Focus();
-                MaskedTextBox3.SelectAll();
+                MaskedTextBox6.Focus();
+
+                MaskedTextBox6.SelectAll();
             }
 
         }
@@ -105,7 +124,7 @@ namespace pmDHCD
             MaskedTextBox6.Text = "";
             StockTextBox1.Text = "";
             StockTextBox2.Text = "";
-            MaskedTextBox3.Focus();
+            MaskedTextBox6.Focus();
         }
 
 
@@ -224,6 +243,21 @@ namespace pmDHCD
                 Interaction.MsgBox("Lỗi :" + ex.Message);
             }
 
+        }
+
+        private void MaskedTextBox6_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrEmpty(MaskedTextBox6.Text) == true)
+                {
+                    MaskedTextBox6.Focus();
+                }
+                else
+                {
+                    Button4_Click(sender, e);
+                }
+            }
         }
     }
 }

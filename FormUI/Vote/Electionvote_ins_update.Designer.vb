@@ -297,7 +297,7 @@ Partial Class Electionvote_ins_update
         Me.Label4.Location = New System.Drawing.Point(15, 64)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(110, 25)
+        Me.Label4.Size = New System.Drawing.Size(88, 20)
         Me.Label4.TabIndex = 35
         Me.Label4.Text = "CCCD/HC"
         '

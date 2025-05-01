@@ -31,6 +31,7 @@ namespace pmDHCD
             {
                 string HolderIdentify;
                 int mattcode = 0;
+                int delecode = 0;
                 try
                 {
                     mattcode = Conversions.ToInteger(ToolStripTextBox1.Text);
@@ -47,8 +48,16 @@ namespace pmDHCD
                 {
                     HolderIdentify = "";
                 }
+                try
+                {
+                    delecode = Conversions.ToInteger(ToolStriptxtDbCode.Text);
+                }
+                catch (Exception ex)
+                {
+                    delecode = 0;
+                }
 
-                t = My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_getlist(My.MyProject.Forms.Mainform.workingmeeting, mattcode, HolderIdentify);
+                t = My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_getlist(My.MyProject.Forms.Mainform.workingmeeting, mattcode, HolderIdentify, delecode);
             }
 
             catch (Exception ex)
@@ -56,36 +65,53 @@ namespace pmDHCD
                 Interaction.MsgBox("Lỗi :" + ex.Message);
             }
 
-            int totalright = 0;
-            int agreecount = 0;
-            int agreeright = 0;
-            int disagreecount = 0;
-            int disagreeright = 0;
-            int noideacount = 0;
-            int noidearight = 0;
+            decimal totalright = 0m;
+            decimal agreecount = 0m;
+            decimal agreeright = 0m;
+            decimal disagreecount = 0m;
+            decimal disagreeright = 0m;
+            decimal noideacount = 0m;
+            decimal noidearight = 0m;
+            decimal illegalacount = 0m;
+            decimal illegalright = 0m;
 
             foreach (DataRow dr in t.Rows)
             {
-                totalright = Conversions.ToInteger(Operators.AddObject(totalright, dr["Voterights"]));
+
+                try
+                {
+                    totalright = Conversions.ToDecimal(Operators.AddObject(totalright, dr["Voterights"]));
+                }
+                catch (Exception ex)
+                {
+                    Interaction.MsgBox("Lỗi :" + ex.Message);
+                }
+
                 if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(dr["Agree"], true, false)))
                 {
-                    agreecount = agreecount + 1;
-                    agreeright = Conversions.ToInteger(Operators.AddObject(agreeright, dr["Voterights"]));
+                    agreecount = agreecount + 1m;
+                    agreeright = Conversions.ToDecimal(Operators.AddObject(agreeright, dr["Voterights"]));
                 }
                 else if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(dr["DisAgree"], true, false)))
                 {
-                    disagreecount = disagreecount + 1;
-                    disagreeright = Conversions.ToInteger(Operators.AddObject(disagreeright, dr["Voterights"]));
+                    disagreecount = disagreecount + 1m;
+                    disagreeright = Conversions.ToDecimal(Operators.AddObject(disagreeright, dr["Voterights"]));
                 }
-                else
+                else if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(dr["NoIdea"], true, false)))
                 {
-                    noideacount = noideacount + 1;
-                    noidearight = Conversions.ToInteger(Operators.AddObject(noidearight, dr["Voterights"]));
+                    noideacount = noideacount + 1m;
+                    noidearight = Conversions.ToDecimal(Operators.AddObject(noidearight, dr["NoIdea"]));
+                }
+                else if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(dr["Illegal"], true, false)))
+                {
+                    illegalacount = illegalacount + 1m;
+                    illegalright = Conversions.ToDecimal(Operators.AddObject(illegalright, dr["Voterights"]));
                 }
             }
             DataGridView1.DataSource = t;
             ToolStripStatusLabel2.Text = DataGridView1.RowCount.ToString();
             ToolStripStatusLabel16.Text = My.MyProject.Forms.Mainform.addthousandseperator(totalright.ToString());
+
             // --------
             ToolStripStatusLabel4.Text = My.MyProject.Forms.Mainform.addthousandseperator(agreecount.ToString()) + " -- ";
             ToolStripStatusLabel5.Text = My.MyProject.Forms.Mainform.addthousandseperator(agreeright.ToString()) + " -- ";
@@ -94,17 +120,26 @@ namespace pmDHCD
 
             ToolStripStatusLabel12.Text = My.MyProject.Forms.Mainform.addthousandseperator(noideacount.ToString()) + " -- ";
             ToolStripStatusLabel13.Text = My.MyProject.Forms.Mainform.addthousandseperator(noidearight.ToString()) + " -- ";
-            if (totalright > 0)
+
+
+            if (totalright > 0m)
             {
-                ToolStripStatusLabel6.Text = Math.Round(agreeright / (double)totalright * 100d, 2).ToString() + "% ";
-                ToolStripStatusLabel10.Text = Math.Round(disagreeright / (double)totalright * 100d, 2).ToString() + "% ";
-                ToolStripStatusLabel14.Text = Math.Round(noidearight / (double)totalright * 100d, 2).ToString() + "% ";
+                ToolStripStatusLabel6.Text = Math.Round(agreeright / totalright * 100m, 2).ToString() + "% ";
+                ToolStripStatusLabel10.Text = Math.Round(disagreeright / totalright * 100m, 2).ToString() + "% ";
+                ToolStripStatusLabel14.Text = Math.Round(noidearight / totalright * 100m, 2).ToString() + "% ";
+                decimal tyleIllegal = Math.Round(illegalright / totalright * 100m, 2);
+                // --------Hop lệ
+                txtCounthople.Text = "Số phiếu hợp lệ:" + (DataGridView1.RowCount - illegalacount).ToString() + "đại biểu - với tổng số quyền hợp lệ: " + (totalright - illegalright).ToString("#,###") + " - chiếm tỷ lệ:" + (100m - tyleIllegal).ToString() + "% ";
+                // --------Không Hoplệ
+                txtRighthl.Text = "Số phiếu hợp lệ:" + illegalacount.ToString() + " đại biểu - với tống số quyền không hợp lệ: " + illegalright.ToString("#,###") + " - chiếm tỷ lệ:" + tyleIllegal.ToString() + "% ";
             }
             else
             {
                 ToolStripStatusLabel6.Text = "";
                 ToolStripStatusLabel10.Text = "";
                 ToolStripStatusLabel14.Text = "";
+                txtCounthople.Text = "";
+                txtRighthl.Text = "";
             }
 
         }
@@ -198,7 +233,7 @@ namespace pmDHCD
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 string colName = DataGridView1.Columns[e.ColumnIndex].Name;
-                if (colName == "Agree" || colName == "Disagree" || colName == "Noidea")
+                if (colName == "Agree" || colName == "Disagree" || colName == "Noidea" || colName == "Illegal")
                 {
                     try
                     {
@@ -209,34 +244,54 @@ namespace pmDHCD
                         bool agree = false;
                         bool disagree = false;
                         bool noidea = false;
+                        bool illegal = false;
                         // Nếu chọn Agree
                         if (colName == "Agree" && Conversions.ToBoolean(row.Cells["Agree"].Value) == true)
                         {
                             row.Cells["Disagree"].Value = false;
                             row.Cells["Noidea"].Value = false;
+                            row.Cells["Illegal"].Value = false;
                             agree = true;
                             noidea = false;
                             disagree = false;
+                            illegal = false;
                         }
+                        // Nếu chọn Disagree
                         else if (colName == "Disagree" && Conversions.ToBoolean(row.Cells["Disagree"].Value) == true)
                         {
                             row.Cells["Agree"].Value = false;
                             row.Cells["Noidea"].Value = false;
+                            row.Cells["Illegal"].Value = false;
                             disagree = true;
                             noidea = false;
                             agree = false;
+                            illegal = false;
                         }
+                        // Nếu chọn Noidea
                         else if (colName == "Noidea" && Conversions.ToBoolean(row.Cells["Noidea"].Value) == true)
                         {
                             row.Cells["Agree"].Value = false;
                             row.Cells["Disagree"].Value = false;
+                            row.Cells["Illegal"].Value = false;
                             noidea = true;
                             disagree = false;
                             agree = false;
+                            illegal = false;
                         }
-
-                        My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_update(My.MyProject.Forms.Mainform.workingmeeting, Conversions.ToDecimal(mattercode), Conversions.ToDecimal(delegatecode), agree, disagree, noidea);
+                        // Nếu chọn Illegal
+                        else if (colName == "Illegal" && Conversions.ToBoolean(row.Cells["Illegal"].Value) == true)
+                        {
+                            row.Cells["Agree"].Value = false;
+                            row.Cells["Disagree"].Value = false;
+                            row.Cells["Noidea"].Value = false;
+                            illegal = true;
+                            disagree = false;
+                            agree = false;
+                            noidea = false;
+                        }
+                        My.MyProject.Forms.Mainform.BenlyDal.MatterVotes_update(My.MyProject.Forms.Mainform.workingmeeting, Conversions.ToDecimal(mattercode), Conversions.ToDecimal(delegatecode), agree, disagree, noidea, illegal);
                         filldgv();
+                        DataGridView1.Refresh();
                     }
                     catch (Exception ex)
                     {
@@ -244,6 +299,31 @@ namespace pmDHCD
                     }
 
                 }
+            }
+        }
+
+
+        private void ToolStripTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ToolStripButton4_Click(sender, e);
+            }
+        }
+
+        private void ToolStripTextBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ToolStripButton4_Click(sender, e);
+            }
+        }
+
+        private void ToolStriptxtDbCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ToolStripButton4_Click(sender, e);
             }
         }
     }

@@ -2,7 +2,7 @@
 Public Class AuthorizationsInsert
 
     Private Sub AuthorizationsInsert_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        MaskedTextBox3.Focus()
+        MaskedTextBox2.Focus()
     End Sub
 
     Private Sub MaskedTextBox3_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles MaskedTextBox3.Leave
@@ -12,8 +12,12 @@ Public Class AuthorizationsInsert
     Private Sub TimDaiBieu()
         Dim daibieu As New DataTable
         Try
-            'daibieu = Mainform.BenlyDal.Delegate_getlist(Mainform.workingmeeting, 0, MaskedTextBox3.Text)
-            daibieu = Mainform.BenlyDal.Delegate_getlist(Mainform.workingmeeting, 0, MaskedTextBox3.Text)
+            If String.IsNullOrEmpty(MaskedTextBox2.Text) = False Then
+                daibieu = Mainform.BenlyDal.Delegate_getlist(Mainform.workingmeeting, MaskedTextBox2.Text, "")
+            ElseIf String.IsNullOrEmpty(MaskedTextBox3.Text) = False Then
+                daibieu = Mainform.BenlyDal.Delegate_getlist(Mainform.workingmeeting, 0, MaskedTextBox3.Text)
+            End If
+
         Catch ex As Exception
             MsgBox("Lỗi" + ex.Message)
             Exit Sub
@@ -22,7 +26,7 @@ Public Class AuthorizationsInsert
             MaskedTextBox2.Text = daibieu.Rows(0).Item("DelegateCode")
             MaskedTextBox3.Text = daibieu.Rows(0).Item("IdentityCard")
             MaskedTextBox4.Text = daibieu.Rows(0).Item("DelegateName")
-            MaskedTextBox7.Focus()
+            MaskedTextBox8.Focus()
         ElseIf daibieu.Rows.Count > 1 Then
             Dim objDelegateListForSelect As New DelegateListForSelect()
             objDelegateListForSelect.IdentifyCard = MaskedTextBox3.Text
@@ -44,7 +48,9 @@ Public Class AuthorizationsInsert
             'If (MessageBox.Show("Bạn có muốn in phiếu xác nhận tham dự không?", "In phiếu xác nhận tham dự", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Yes) Then
             '    Me.InPhieuXacNhan(MaskedTextBox6.Text, MaskedTextBox2.Text, MaskedTextBox4.Text, MaskedTextBox7.Text, MaskedTextBox1.Text, StockTextBox2.Text)
             'End If
-            Me.Close()
+            'Me.Close()
+            Button1.Enabled = False
+            btnext.Enabled = True
         Catch ex As Exception
             MsgBox("Lỗi" + ex.Message)
         End Try
@@ -76,7 +82,11 @@ Public Class AuthorizationsInsert
     Private Sub ThucHienUyQuyen()
         Dim codong As New DataTable
         Try
-            codong = Mainform.BenlyDal.Holder_getlist(Mainform.workingmeeting, "", MaskedTextBox7.Text)
+            If String.IsNullOrEmpty(MaskedTextBox8.Text) = False Then
+                codong = Mainform.BenlyDal.Holder_getlist(Mainform.workingmeeting, MaskedTextBox8.Text, "")
+            ElseIf String.IsNullOrEmpty(MaskedTextBox7.Text) = False Then
+                codong = Mainform.BenlyDal.Holder_getlist(Mainform.workingmeeting, "", MaskedTextBox7.Text)
+            End If
         Catch ex As Exception
             MsgBox("Lỗi" + ex.Message)
             Exit Sub
@@ -136,6 +146,33 @@ Public Class AuthorizationsInsert
         Catch ex As Exception
             MsgBox("Lỗi :" + ex.Message)
         End Try
+
+    End Sub
+
+    Private Sub MaskedTextBox2_KeyDown(sender As Object, e As KeyEventArgs) Handles MaskedTextBox2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Me.TimDaiBieu()
+        End If
+    End Sub
+    Private Sub MaskedTextBox8_KeyDown(sender As Object, e As KeyEventArgs) Handles MaskedTextBox8.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If String.IsNullOrEmpty(MaskedTextBox8.Text) = False Then
+                Me.ThucHienUyQuyen()
+            End If
+
+        End If
+    End Sub
+
+    Private Sub btnext_Click(sender As Object, e As EventArgs) Handles btnext.Click
+        MaskedTextBox8.Text = ""
+        MaskedTextBox7.Text = ""
+        MaskedTextBox6.Text = ""
+        MaskedTextBox1.Text = ""
+        StockTextBox1.Text = ""
+        StockTextBox2.Text = ""
+        MaskedTextBox8.Focus()
+        btnext.Enabled = False
+        Button1.Enabled = True
 
     End Sub
 End Class

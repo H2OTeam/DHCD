@@ -24,9 +24,10 @@ Partial Class MatterVoteList
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MatterVoteList))
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
@@ -36,26 +37,30 @@ Partial Class MatterVoteList
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStriptxtDbCode = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripTextBox2 = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Mattercode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MatterName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HolderName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Delegatename = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Voterights = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.agree = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Disagree = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Noidea = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Illegal = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Voterights = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DelegateCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HolderCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Delegatename = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdentityCard = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripSplitButton3 = New System.Windows.Forms.ToolStripSplitButton()
         Me.ToolStripStatusLabel15 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel16 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.txtCounthople = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.txtRighthl = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip2 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -80,10 +85,10 @@ Partial Class MatterVoteList
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.ToolStripTextBox2, Me.ToolStripButton4})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripLabel1, Me.ToolStripTextBox1, Me.ToolStripSeparator1, Me.ToolStripLabel3, Me.ToolStriptxtDbCode, Me.ToolStripLabel2, Me.ToolStripTextBox2, Me.ToolStripButton4})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1136, 27)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1136, 31)
         Me.ToolStrip1.TabIndex = 11
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -92,7 +97,7 @@ Partial Class MatterVoteList
         Me.ToolStripButton1.Image = Global.pmDHCD.My.Resources.Resources.Add
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(90, 24)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(90, 28)
         Me.ToolStripButton1.Text = "Thêm(A)"
         '
         'ToolStripButton2
@@ -100,7 +105,7 @@ Partial Class MatterVoteList
         Me.ToolStripButton2.Image = Global.pmDHCD.My.Resources.Resources.Document
         Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(76, 24)
+        Me.ToolStripButton2.Size = New System.Drawing.Size(76, 28)
         Me.ToolStripButton2.Text = "Sửa(E)"
         '
         'ToolStripButton3
@@ -108,49 +113,61 @@ Partial Class MatterVoteList
         Me.ToolStripButton3.Image = Global.pmDHCD.My.Resources.Resources.Delete
         Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(80, 24)
+        Me.ToolStripButton3.Size = New System.Drawing.Size(80, 28)
         Me.ToolStripButton3.Text = "Xóa(D)"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 31)
         '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(130, 24)
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(130, 28)
         Me.ToolStripLabel1.Text = "Mã v/đ biểu quyết"
         '
         'ToolStripTextBox1
         '
         Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(132, 27)
+        Me.ToolStripTextBox1.Size = New System.Drawing.Size(132, 31)
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 31)
+        '
+        'ToolStripLabel3
+        '
+        Me.ToolStripLabel3.Name = "ToolStripLabel3"
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(88, 28)
+        Me.ToolStripLabel3.Text = "Mã đại biểu"
+        '
+        'ToolStriptxtDbCode
+        '
+        Me.ToolStriptxtDbCode.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ToolStriptxtDbCode.Name = "ToolStriptxtDbCode"
+        Me.ToolStriptxtDbCode.Size = New System.Drawing.Size(100, 31)
         '
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(65, 24)
-        Me.ToolStripLabel2.Text = "CMT/HC"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(73, 28)
+        Me.ToolStripLabel2.Text = "CCCD/HC"
         '
         'ToolStripTextBox2
         '
         Me.ToolStripTextBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox2.Name = "ToolStripTextBox2"
-        Me.ToolStripTextBox2.Size = New System.Drawing.Size(132, 27)
+        Me.ToolStripTextBox2.Size = New System.Drawing.Size(132, 31)
         '
         'ToolStripButton4
         '
         Me.ToolStripButton4.Image = Global.pmDHCD.My.Resources.Resources.Search
         Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(58, 24)
+        Me.ToolStripButton4.Size = New System.Drawing.Size(58, 28)
         Me.ToolStripButton4.Text = "Tìm"
         '
         'DataGridView1
@@ -169,31 +186,31 @@ Partial Class MatterVoteList
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Mattercode, Me.MatterName, Me.HolderName, Me.Delegatename, Me.Voterights, Me.agree, Me.Disagree, Me.Noidea, Me.DelegateCode, Me.HolderCode})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle4
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 27)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
-        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Mattercode, Me.MatterName, Me.agree, Me.Disagree, Me.Noidea, Me.Illegal, Me.Voterights, Me.DelegateCode, Me.Delegatename, Me.IdentityCard})
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 31)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
+        Me.DataGridView1.Name = "DataGridView1"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1136, 583)
+        Me.DataGridView1.Size = New System.Drawing.Size(1136, 579)
         Me.DataGridView1.TabIndex = 12
         '
         'Mattercode
@@ -209,43 +226,14 @@ Partial Class MatterVoteList
         '
         'MatterName
         '
-        Me.MatterName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.MatterName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.MatterName.DataPropertyName = "MatterName"
         Me.MatterName.FillWeight = 59.08628!
         Me.MatterName.Frozen = True
         Me.MatterName.HeaderText = "Tên vấn đề"
         Me.MatterName.MinimumWidth = 6
         Me.MatterName.Name = "MatterName"
-        Me.MatterName.Width = 150
-        '
-        'HolderName
-        '
-        Me.HolderName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.HolderName.DataPropertyName = "HolderName"
-        Me.HolderName.HeaderText = "Cổ đông"
-        Me.HolderName.MinimumWidth = 6
-        Me.HolderName.Name = "HolderName"
-        Me.HolderName.Width = 180
-        '
-        'Delegatename
-        '
-        Me.Delegatename.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.Delegatename.DataPropertyName = "Delegatename"
-        Me.Delegatename.HeaderText = "Cổ đông/Người đại diện"
-        Me.Delegatename.MinimumWidth = 6
-        Me.Delegatename.Name = "Delegatename"
-        Me.Delegatename.Width = 150
-        '
-        'Voterights
-        '
-        Me.Voterights.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.Voterights.DataPropertyName = "Voterights"
-        DataGridViewCellStyle3.Format = "N0"
-        Me.Voterights.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Voterights.HeaderText = "Số quyền biểu quyết"
-        Me.Voterights.MinimumWidth = 6
-        Me.Voterights.Name = "Voterights"
-        Me.Voterights.Width = 125
+        Me.MatterName.Width = 86
         '
         'agree
         '
@@ -281,26 +269,63 @@ Partial Class MatterVoteList
         Me.Noidea.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Noidea.Width = 70
         '
+        'Illegal
+        '
+        Me.Illegal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Illegal.DataPropertyName = "Illegal"
+        Me.Illegal.HeaderText = "Không hợp lệ"
+        Me.Illegal.MinimumWidth = 6
+        Me.Illegal.Name = "Illegal"
+        Me.Illegal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Illegal.Width = 70
+        '
+        'Voterights
+        '
+        Me.Voterights.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Voterights.DataPropertyName = "Voterights"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N0"
+        Me.Voterights.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Voterights.HeaderText = "Số quyền biểu quyết"
+        Me.Voterights.MinimumWidth = 6
+        Me.Voterights.Name = "Voterights"
+        Me.Voterights.Width = 120
+        '
         'DelegateCode
         '
+        Me.DelegateCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.DelegateCode.DataPropertyName = "DelegateCode"
-        Me.DelegateCode.HeaderText = "DelegateCode"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DelegateCode.DefaultCellStyle = DataGridViewCellStyle4
+        Me.DelegateCode.HeaderText = "Mã đại biểu"
         Me.DelegateCode.MinimumWidth = 6
         Me.DelegateCode.Name = "DelegateCode"
-        Me.DelegateCode.Visible = False
+        Me.DelegateCode.Width = 50
         '
-        'HolderCode
+        'Delegatename
         '
-        Me.HolderCode.DataPropertyName = "HolderCode"
-        Me.HolderCode.HeaderText = "HolderCode"
-        Me.HolderCode.MinimumWidth = 6
-        Me.HolderCode.Name = "HolderCode"
-        Me.HolderCode.Visible = False
+        Me.Delegatename.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Delegatename.DataPropertyName = "Delegatename"
+        Me.Delegatename.HeaderText = "Tên đại biểu"
+        Me.Delegatename.MinimumWidth = 6
+        Me.Delegatename.Name = "Delegatename"
+        Me.Delegatename.Width = 150
+        '
+        'IdentityCard
+        '
+        Me.IdentityCard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.IdentityCard.DataPropertyName = "IdentityCard"
+        Me.IdentityCard.HeaderText = "CCCD/HC"
+        Me.IdentityCard.MinimumWidth = 6
+        Me.IdentityCard.Name = "IdentityCard"
+        Me.IdentityCard.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.IdentityCard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.IdentityCard.Width = 125
         '
         'StatusStrip1
         '
         Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripSplitButton3, Me.ToolStripStatusLabel15, Me.ToolStripStatusLabel16})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripSplitButton3, Me.ToolStripStatusLabel15, Me.ToolStripStatusLabel16, Me.txtCounthople, Me.txtRighthl})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 584)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
@@ -340,6 +365,18 @@ Partial Class MatterVoteList
         Me.ToolStripStatusLabel16.Name = "ToolStripStatusLabel16"
         Me.ToolStripStatusLabel16.Size = New System.Drawing.Size(154, 20)
         Me.ToolStripStatusLabel16.Text = "ToolStripStatusLabel16"
+        '
+        'txtCounthople
+        '
+        Me.txtCounthople.Name = "txtCounthople"
+        Me.txtCounthople.Size = New System.Drawing.Size(17, 20)
+        Me.txtCounthople.Text = "0"
+        '
+        'txtRighthl
+        '
+        Me.txtRighthl.Name = "txtRighthl"
+        Me.txtRighthl.Size = New System.Drawing.Size(17, 20)
+        Me.txtRighthl.Text = "0"
         '
         'StatusStrip2
         '
@@ -510,14 +547,18 @@ Partial Class MatterVoteList
     Friend WithEvents ToolStripStatusLabel12 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel13 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel14 As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents Mattercode As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents MatterName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents HolderName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Delegatename As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Voterights As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents agree As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Disagree As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Noidea As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents DelegateCode As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents HolderCode As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ToolStripLabel3 As ToolStripLabel
+    Friend WithEvents ToolStriptxtDbCode As ToolStripTextBox
+    Friend WithEvents txtCounthople As ToolStripStatusLabel
+    Friend WithEvents txtRighthl As ToolStripStatusLabel
+    Friend WithEvents Mattercode As DataGridViewTextBoxColumn
+    Friend WithEvents MatterName As DataGridViewTextBoxColumn
+    Friend WithEvents agree As DataGridViewCheckBoxColumn
+    Friend WithEvents Disagree As DataGridViewCheckBoxColumn
+    Friend WithEvents Noidea As DataGridViewCheckBoxColumn
+    Friend WithEvents Illegal As DataGridViewCheckBoxColumn
+    Friend WithEvents Voterights As DataGridViewTextBoxColumn
+    Friend WithEvents DelegateCode As DataGridViewTextBoxColumn
+    Friend WithEvents Delegatename As DataGridViewTextBoxColumn
+    Friend WithEvents IdentityCard As DataGridViewTextBoxColumn
 End Class

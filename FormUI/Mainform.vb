@@ -8,6 +8,8 @@ Imports System.Data.SqlClient
 Imports System.Threading
 Imports System.Globalization
 Imports BenlyDAL.BenlyDAL
+Imports System.IO
+
 Public Class Mainform
     Public conn As New SqlConnection
     Public BenlyDal As New DAL(conn)
@@ -107,7 +109,7 @@ Public Class Mainform
     End Sub
 
     Private Sub KếtQuảBiểuQuyếtToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KếtQuảBiểuQuyếtToolStripMenuItem.Click
-        MatterVoteResult.Show()
+        sodbhl.Show()
     End Sub
 
     Private Sub ThôngTinCuộcHọpToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ThôngTinCuộcHọpToolStripMenuItem.Click

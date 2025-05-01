@@ -251,8 +251,11 @@ Namespace BenlyDAL
             End Try
         End Sub
 
-        Public Function getAuthorizationByDelegateCode(ByVal workingmeeting As String, ByVal DelegateCode As String) As String
+        Public Function getAuthorizationByDelegateCode(ByVal workingmeeting As String, ByVal DelegateCode As String, ByRef isOnlyAuthori As Boolean, ByRef isHolder As Boolean) As String
             Dim strHolders As String
+            Dim holderName As String
+            isOnlyAuthori = True
+            isHolder = False
             strHolders = ""
             Dim dt As New DataTable
             Try
@@ -262,9 +265,18 @@ Namespace BenlyDAL
             End Try
 
             For Each dr As DataRow In dt.Rows
-                strHolders = strHolders + dr.Item("holdername") + ", "
+                If dr.Item("HolderIdentity") = dr.Item("IdentityCard") Then
+                    isHolder = True
+                    'holderName = dr.Item("holdername")
+                Else
+                    strHolders = strHolders + dr.Item("holdername") + ", "
+                End If
+
             Next
-            Return strHolders.Remove(strHolders.Length - 2, 2)
+            If isHolder AndAlso dt.Rows.Count = 1 Then
+                isOnlyAuthori = False
+            End If
+            Return strHolders '.Remove(strHolders.Length - 2, 2)
 
         End Function
 
@@ -536,7 +548,7 @@ Namespace BenlyDAL
             End Try
         End Sub
 
-        Public Sub MatterVotes_insert(ByVal meetingcode As String, ByVal mattercode As Decimal, ByVal HolderCode As Decimal, ByVal DelegateCode As Decimal, ByVal Agree As Boolean, ByVal disAgree As Boolean, ByVal noidea As Boolean)
+        Public Sub MatterVotes_insert(ByVal meetingcode As String, ByVal mattercode As Decimal, ByVal HolderCode As Decimal, ByVal DelegateCode As Decimal, ByVal Agree As Boolean, ByVal disAgree As Boolean, ByVal noidea As Boolean, ByVal illegal As Boolean)
             Dim strquerry As String = "Mattervotes_insert"
             Dim cmd As New SqlCommand(strquerry, conn)
             cmd.Parameters.Add("@meetingcode", SqlDbType.VarChar).Value = meetingcode
@@ -546,6 +558,7 @@ Namespace BenlyDAL
             cmd.Parameters.Add("@Agree", SqlDbType.Bit).Value = Agree
             cmd.Parameters.Add("@Disagree", SqlDbType.Bit).Value = disAgree
             cmd.Parameters.Add("@Noidea", SqlDbType.Bit).Value = noidea
+            cmd.Parameters.Add("@Illegal", SqlDbType.Bit).Value = illegal
             cmd.CommandType = CommandType.StoredProcedure
 
             Try
@@ -554,7 +567,7 @@ Namespace BenlyDAL
                 Throw (ex)
             End Try
         End Sub
-        Public Sub MatterVotes_insert_remain(ByVal meetingcode As String, ByVal mattercode As Decimal, ByVal DelegateCode As Decimal, ByVal Agree As Boolean, ByVal disAgree As Boolean, ByVal noidea As Boolean)
+        Public Sub MatterVotes_insert_remain(ByVal meetingcode As String, ByVal mattercode As Decimal, ByVal DelegateCode As Decimal, ByVal Agree As Boolean, ByVal disAgree As Boolean, ByVal noidea As Boolean, ByVal illegal As Boolean)
             Dim strquerry As String = "Mattervotes_insert_remain"
             Dim cmd As New SqlCommand(strquerry, conn)
             cmd.Parameters.Add("@meetingcode", SqlDbType.VarChar).Value = meetingcode
@@ -562,6 +575,7 @@ Namespace BenlyDAL
             cmd.Parameters.Add("@Agree", SqlDbType.Bit).Value = Agree
             cmd.Parameters.Add("@Disagree", SqlDbType.Bit).Value = disAgree
             cmd.Parameters.Add("@Noidea", SqlDbType.Bit).Value = noidea
+            cmd.Parameters.Add("@Illegal", SqlDbType.Bit).Value = illegal
             cmd.CommandType = CommandType.StoredProcedure
 
             Try
@@ -570,7 +584,7 @@ Namespace BenlyDAL
                 Throw (ex)
             End Try
         End Sub
-        Public Sub MatterVotes_update(ByVal meetingcode As String, ByVal mattercode As Decimal, ByVal delegatecode As Decimal, ByVal Agree As Boolean, ByVal disAgree As Boolean, ByVal noidea As Boolean)
+        Public Sub MatterVotes_update(ByVal meetingcode As String, ByVal mattercode As Decimal, ByVal delegatecode As Decimal, ByVal Agree As Boolean, ByVal disAgree As Boolean, ByVal noidea As Boolean, ByVal illegal As Boolean)
             Dim strquerry As String = "Mattervotes_update"
             Dim cmd As New SqlCommand(strquerry, conn)
             cmd.Parameters.Add("@meetingcode", SqlDbType.VarChar).Value = meetingcode
@@ -578,7 +592,8 @@ Namespace BenlyDAL
             cmd.Parameters.Add("@delegatecode", SqlDbType.Int).Value = delegatecode
             cmd.Parameters.Add("@Agree", SqlDbType.Bit).Value = Agree
             cmd.Parameters.Add("@DisAgree", SqlDbType.Bit).Value = disAgree
-            cmd.Parameters.Add("@Noidea", SqlDbType.Bit).Value = noidea
+            cmd.Parameters.Add("@Noidea", SqlDbType.Bit).Value = noidea 'illegal
+            cmd.Parameters.Add("@Illegal", SqlDbType.Bit).Value = illegal 'illegal
             cmd.CommandType = CommandType.StoredProcedure
 
             Try
@@ -603,14 +618,14 @@ Namespace BenlyDAL
             End Try
         End Sub
 
-        Public Function MatterVotes_getlist(ByVal meetingcode As String, ByVal mattercode As Decimal, ByVal holderIdentify As String) As DataTable
+        Public Function MatterVotes_getlist(ByVal meetingcode As String, ByVal mattercode As Decimal, ByVal holderIdentify As String, ByVal delegateCode As Decimal) As DataTable
             Dim result As New DataTable
             Dim strquerry As String = "Mattervotes_getlist"
             Dim cmd As New SqlCommand(strquerry, conn)
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Parameters.Add("@Meetingcode", SqlDbType.VarChar).Value = meetingcode
             cmd.Parameters.Add("@mattercode", SqlDbType.VarChar).Value = mattercode
-            cmd.Parameters.Add("@DelegateCode", SqlDbType.VarChar).Value = 0
+            cmd.Parameters.Add("@DelegateCode", SqlDbType.VarChar).Value = delegateCode
             cmd.Parameters.Add("@holderIdentify", SqlDbType.VarChar).Value = holderIdentify
             Dim da As New SqlDataAdapter(cmd)
             Try

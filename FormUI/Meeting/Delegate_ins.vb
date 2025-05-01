@@ -4,12 +4,25 @@ Public Class Delegate_ins
 
     Private Sub Delegate_ins_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         MaskedTextBox1.Text = Mainform.workingmeeting
+        MaskedTextBox6.Focus()
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         Dim holders As New DataTable
         Try
-            holders = Mainform.BenlyDal.Holder_getlist(Mainform.workingmeeting, "", MaskedTextBox3.Text)
+            If String.IsNullOrEmpty(MaskedTextBox6.Text) = False Then
+                If String.IsNullOrEmpty(MaskedTextBox6.Text) = True Then
+                    MaskedTextBox6.Focus()
+                    Return
+                End If
+                holders = Mainform.BenlyDal.Holder_getlist(Mainform.workingmeeting, MaskedTextBox6.Text, "")
+            Else
+                If String.IsNullOrEmpty(MaskedTextBox3.Text) = True Then
+                    MaskedTextBox3.Focus()
+                    Return
+                End If
+                holders = Mainform.BenlyDal.Holder_getlist(Mainform.workingmeeting, "", MaskedTextBox3.Text)
+            End If
         Catch ex As Exception
             MsgBox("Lỗi tìm cổ đông : " + ex.Message)
         End Try
@@ -29,8 +42,9 @@ Public Class Delegate_ins
             Button4_Click(sender, e)
         ElseIf holders.Rows.Count = 0 Then
             MessageBox.Show("Không tìm thấy cổ đông !")
-            MaskedTextBox3.Focus()
-            MaskedTextBox3.SelectAll()
+            MaskedTextBox6.Focus()
+
+            MaskedTextBox6.SelectAll()
         End If
 
     End Sub
@@ -74,7 +88,7 @@ Public Class Delegate_ins
         MaskedTextBox6.Text = ""
         StockTextBox1.Text = ""
         StockTextBox2.Text = ""
-        MaskedTextBox3.Focus()
+        MaskedTextBox6.Focus()
     End Sub
 
 
@@ -173,5 +187,15 @@ Public Class Delegate_ins
             MsgBox("Lỗi :" + ex.Message)
         End Try
 
+    End Sub
+
+    Private Sub MaskedTextBox6_KeyDown(sender As Object, e As KeyEventArgs) Handles MaskedTextBox6.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            If String.IsNullOrEmpty(MaskedTextBox6.Text) = True Then
+                MaskedTextBox6.Focus()
+            Else
+                Button4_Click(sender, e)
+            End If
+        End If
     End Sub
 End Class

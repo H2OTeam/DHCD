@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 using Microsoft.VisualBasic;
 
 namespace pmDHCD
 {
+
     public partial class MeetingInfoshow
     {
         private DateTime dateMeeting = My.MyProject.Forms.Mainform.dateMeeting;
@@ -56,7 +58,24 @@ namespace pmDHCD
 
         private void PrintButton1_Click(object sender, EventArgs e)
         {
-            var cr = new ThongTinCuocHop();
+            var cr = new ReportDocument();
+            string reportPath = System.IO.Path.Combine(Application.StartupPath, @"Report\ThongTinCuocHop.rpt");
+            if (!System.IO.File.Exists(reportPath))
+            {
+                MessageBox.Show("Không tìm thấy file báo cáo: " + reportPath);
+                return;
+            }
+
+            try
+            {
+                cr.Load(reportPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load báo cáo: " + ex.Message);
+                return;
+                // End TryDim cr As New ThongTinCuocHop
+            }
 
             cr.SetParameterValue("TenCongTy", MaskedTextBox1.Text);
             cr.SetParameterValue("dateMeeting", dateMeeting);

@@ -39,6 +39,7 @@ Partial Class Mattervote_ins_update
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.rbillegal = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
@@ -64,9 +65,9 @@ Partial Class Mattervote_ins_update
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(1, 1)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Size = New System.Drawing.Size(932, 188)
         Me.GroupBox1.TabIndex = 55
         Me.GroupBox1.TabStop = False
@@ -76,20 +77,21 @@ Partial Class Mattervote_ins_update
         '
         Me.NumericUpDown1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown1.Location = New System.Drawing.Point(217, 78)
-        Me.NumericUpDown1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.NumericUpDown1.Margin = New System.Windows.Forms.Padding(4)
         Me.NumericUpDown1.Maximum = New Decimal(New Integer() {50, 0, 0, 0})
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(81, 29)
         Me.NumericUpDown1.TabIndex = 2
         Me.NumericUpDown1.TabStop = False
+        Me.NumericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'MaskedTextBox3
         '
         Me.MaskedTextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox3.Location = New System.Drawing.Point(217, 133)
-        Me.MaskedTextBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox3.Name = "MaskedTextBox3"
         Me.MaskedTextBox3.ReadOnly = True
         Me.MaskedTextBox3.Size = New System.Drawing.Size(635, 26)
@@ -100,7 +102,7 @@ Partial Class Mattervote_ins_update
         '
         Me.MaskedTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox1.Location = New System.Drawing.Point(217, 37)
-        Me.MaskedTextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox1.Name = "MaskedTextBox1"
         Me.MaskedTextBox1.ReadOnly = True
         Me.MaskedTextBox1.Size = New System.Drawing.Size(265, 26)
@@ -147,7 +149,7 @@ Partial Class Mattervote_ins_update
         Me.StockTextBox1.CustomCulture = False
         Me.StockTextBox1.CustomCultureInfo = New System.Globalization.CultureInfo("en-US")
         Me.StockTextBox1.Location = New System.Drawing.Point(237, 384)
-        Me.StockTextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.StockTextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.StockTextBox1.MaxLength = 25
         Me.StockTextBox1.Name = "StockTextBox1"
         Me.StockTextBox1.Precision = 0
@@ -163,7 +165,7 @@ Partial Class Mattervote_ins_update
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Location = New System.Drawing.Point(605, 220)
-        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(155, 21)
         Me.CheckBox1.TabIndex = 37
@@ -176,7 +178,7 @@ Partial Class Mattervote_ins_update
         '
         Me.MaskedTextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox4.Location = New System.Drawing.Point(237, 297)
-        Me.MaskedTextBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox4.Name = "MaskedTextBox4"
         Me.MaskedTextBox4.ReadOnly = True
         Me.MaskedTextBox4.Size = New System.Drawing.Size(635, 26)
@@ -187,7 +189,7 @@ Partial Class Mattervote_ins_update
         '
         Me.HolderIdentifyMaskedTextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HolderIdentifyMaskedTextBox2.Location = New System.Drawing.Point(237, 260)
-        Me.HolderIdentifyMaskedTextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.HolderIdentifyMaskedTextBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.HolderIdentifyMaskedTextBox2.Name = "HolderIdentifyMaskedTextBox2"
         Me.HolderIdentifyMaskedTextBox2.Size = New System.Drawing.Size(265, 26)
         Me.HolderIdentifyMaskedTextBox2.TabIndex = 1
@@ -195,14 +197,12 @@ Partial Class Mattervote_ins_update
         'HolderCodeMaskedTextBox
         '
         Me.HolderCodeMaskedTextBox.BackColor = System.Drawing.SystemColors.InactiveBorder
-        Me.HolderCodeMaskedTextBox.Enabled = False
         Me.HolderCodeMaskedTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HolderCodeMaskedTextBox.Location = New System.Drawing.Point(237, 220)
-        Me.HolderCodeMaskedTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.HolderCodeMaskedTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.HolderCodeMaskedTextBox.Name = "HolderCodeMaskedTextBox"
         Me.HolderCodeMaskedTextBox.Size = New System.Drawing.Size(265, 26)
         Me.HolderCodeMaskedTextBox.TabIndex = 0
-        Me.HolderCodeMaskedTextBox.TabStop = False
         '
         'Label6
         '
@@ -233,9 +233,9 @@ Partial Class Mattervote_ins_update
         Me.Label4.Location = New System.Drawing.Point(35, 267)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(75, 20)
+        Me.Label4.Size = New System.Drawing.Size(88, 20)
         Me.Label4.TabIndex = 35
-        Me.Label4.Text = "CMT/HC"
+        Me.Label4.Text = "CCCD/HC"
         '
         'Label5
         '
@@ -244,29 +244,41 @@ Partial Class Mattervote_ins_update
         Me.Label5.Location = New System.Drawing.Point(35, 228)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(96, 20)
+        Me.Label5.Size = New System.Drawing.Size(95, 20)
         Me.Label5.TabIndex = 34
-        Me.Label5.Text = "Mã cổ đông"
+        Me.Label5.Text = "Mã đại biểu"
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.rbillegal)
         Me.GroupBox3.Controls.Add(Me.RadioButton3)
         Me.GroupBox3.Controls.Add(Me.RadioButton2)
         Me.GroupBox3.Controls.Add(Me.RadioButton1)
         Me.GroupBox3.Location = New System.Drawing.Point(17, 452)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Size = New System.Drawing.Size(916, 92)
         Me.GroupBox3.TabIndex = 57
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Biểu quyết"
         '
+        'rbillegal
+        '
+        Me.rbillegal.AutoSize = True
+        Me.rbillegal.Location = New System.Drawing.Point(591, 41)
+        Me.rbillegal.Margin = New System.Windows.Forms.Padding(4)
+        Me.rbillegal.Name = "rbillegal"
+        Me.rbillegal.Size = New System.Drawing.Size(113, 21)
+        Me.rbillegal.TabIndex = 2
+        Me.rbillegal.Text = "Không hợp lệ"
+        Me.rbillegal.UseVisualStyleBackColor = True
+        '
         'RadioButton3
         '
         Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(663, 41)
-        Me.RadioButton3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RadioButton3.Location = New System.Drawing.Point(400, 41)
+        Me.RadioButton3.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(111, 21)
         Me.RadioButton3.TabIndex = 2
@@ -276,8 +288,8 @@ Partial Class Mattervote_ins_update
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(348, 41)
-        Me.RadioButton2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RadioButton2.Location = New System.Drawing.Point(202, 41)
+        Me.RadioButton2.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(117, 21)
         Me.RadioButton2.TabIndex = 1
@@ -289,7 +301,7 @@ Partial Class Mattervote_ins_update
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Checked = True
         Me.RadioButton1.Location = New System.Drawing.Point(39, 41)
-        Me.RadioButton1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.RadioButton1.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(74, 21)
         Me.RadioButton1.TabIndex = 0
@@ -302,7 +314,7 @@ Partial Class Mattervote_ins_update
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.Blue
         Me.Button3.Location = New System.Drawing.Point(467, 559)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(188, 43)
         Me.Button3.TabIndex = 7
@@ -313,7 +325,7 @@ Partial Class Mattervote_ins_update
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(36, 559)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(153, 43)
         Me.Button1.TabIndex = 4
@@ -324,7 +336,7 @@ Partial Class Mattervote_ins_update
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(256, 559)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(161, 43)
         Me.Button2.TabIndex = 5
@@ -335,7 +347,7 @@ Partial Class Mattervote_ins_update
         '
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Location = New System.Drawing.Point(780, 559)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(153, 43)
         Me.Button4.TabIndex = 6
@@ -347,7 +359,7 @@ Partial Class Mattervote_ins_update
         '
         Me.delegateNameTextbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.delegateNameTextbox.Location = New System.Drawing.Point(237, 338)
-        Me.delegateNameTextbox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.delegateNameTextbox.Margin = New System.Windows.Forms.Padding(4)
         Me.delegateNameTextbox.Name = "delegateNameTextbox"
         Me.delegateNameTextbox.ReadOnly = True
         Me.delegateNameTextbox.Size = New System.Drawing.Size(635, 26)
@@ -371,7 +383,7 @@ Partial Class Mattervote_ins_update
         Me.delegateIdentityTextBox.Enabled = False
         Me.delegateIdentityTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.delegateIdentityTextBox.Location = New System.Drawing.Point(733, 373)
-        Me.delegateIdentityTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.delegateIdentityTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.delegateIdentityTextBox.Name = "delegateIdentityTextBox"
         Me.delegateIdentityTextBox.Size = New System.Drawing.Size(139, 26)
         Me.delegateIdentityTextBox.TabIndex = 60
@@ -384,7 +396,7 @@ Partial Class Mattervote_ins_update
         Me.delegateCodeMaskedTextBox.Enabled = False
         Me.delegateCodeMaskedTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.delegateCodeMaskedTextBox.Location = New System.Drawing.Point(588, 373)
-        Me.delegateCodeMaskedTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.delegateCodeMaskedTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.delegateCodeMaskedTextBox.Name = "delegateCodeMaskedTextBox"
         Me.delegateCodeMaskedTextBox.Size = New System.Drawing.Size(124, 26)
         Me.delegateCodeMaskedTextBox.TabIndex = 61
@@ -417,7 +429,7 @@ Partial Class Mattervote_ins_update
         Me.Controls.Add(Me.Label5)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Mattervote_ins_update"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Thêm phiếu biểu quyết"
@@ -458,4 +470,5 @@ Partial Class Mattervote_ins_update
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents delegateIdentityTextBox As System.Windows.Forms.MaskedTextBox
     Friend WithEvents delegateCodeMaskedTextBox As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents rbillegal As RadioButton
 End Class

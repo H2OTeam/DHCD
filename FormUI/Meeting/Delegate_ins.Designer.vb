@@ -54,7 +54,7 @@ Partial Class Delegate_ins
         Me.StockTextBox2.CustomCulture = False
         Me.StockTextBox2.CustomCultureInfo = New System.Globalization.CultureInfo("en-US")
         Me.StockTextBox2.Location = New System.Drawing.Point(233, 345)
-        Me.StockTextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.StockTextBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.StockTextBox2.MaxLength = 25
         Me.StockTextBox2.Name = "StockTextBox2"
         Me.StockTextBox2.Precision = 0
@@ -73,7 +73,7 @@ Partial Class Delegate_ins
         Me.StockTextBox1.CustomCulture = False
         Me.StockTextBox1.CustomCultureInfo = New System.Globalization.CultureInfo("en-US")
         Me.StockTextBox1.Location = New System.Drawing.Point(233, 298)
-        Me.StockTextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.StockTextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.StockTextBox1.MaxLength = 25
         Me.StockTextBox1.Name = "StockTextBox1"
         Me.StockTextBox1.Precision = 0
@@ -89,10 +89,10 @@ Partial Class Delegate_ins
         '
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Location = New System.Drawing.Point(573, 417)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(199, 75)
-        Me.Button3.TabIndex = 5
+        Me.Button3.TabIndex = 8
         Me.Button3.Text = "Tiếp tục"
         Me.Button3.UseVisualStyleBackColor = True
         '
@@ -100,10 +100,10 @@ Partial Class Delegate_ins
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(84, 417)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(189, 75)
-        Me.Button1.TabIndex = 3
+        Me.Button1.TabIndex = 6
         Me.Button1.Text = "Thêm đại biểu và tự ủy quyền"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -111,34 +111,34 @@ Partial Class Delegate_ins
         '
         Me.MaskedTextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox5.Location = New System.Drawing.Point(233, 217)
-        Me.MaskedTextBox5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox5.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox5.Name = "MaskedTextBox5"
         Me.MaskedTextBox5.Size = New System.Drawing.Size(505, 26)
-        Me.MaskedTextBox5.TabIndex = 2
+        Me.MaskedTextBox5.TabIndex = 5
         '
         'MaskedTextBox4
         '
         Me.MaskedTextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox4.Location = New System.Drawing.Point(233, 170)
-        Me.MaskedTextBox4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox4.Name = "MaskedTextBox4"
         Me.MaskedTextBox4.Size = New System.Drawing.Size(505, 26)
-        Me.MaskedTextBox4.TabIndex = 1
+        Me.MaskedTextBox4.TabIndex = 4
         '
         'MaskedTextBox3
         '
         Me.MaskedTextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MaskedTextBox3.Location = New System.Drawing.Point(233, 119)
-        Me.MaskedTextBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox3.Name = "MaskedTextBox3"
         Me.MaskedTextBox3.Size = New System.Drawing.Size(265, 26)
-        Me.MaskedTextBox3.TabIndex = 0
+        Me.MaskedTextBox3.TabIndex = 2
         '
         'MaskedTextBox2
         '
         Me.MaskedTextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MaskedTextBox2.Location = New System.Drawing.Point(233, 66)
-        Me.MaskedTextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox2.Location = New System.Drawing.Point(233, 251)
+        Me.MaskedTextBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox2.Name = "MaskedTextBox2"
         Me.MaskedTextBox2.ReadOnly = True
         Me.MaskedTextBox2.Size = New System.Drawing.Size(265, 26)
@@ -148,8 +148,8 @@ Partial Class Delegate_ins
         'MaskedTextBox1
         '
         Me.MaskedTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MaskedTextBox1.Location = New System.Drawing.Point(233, 23)
-        Me.MaskedTextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox1.Location = New System.Drawing.Point(233, 27)
+        Me.MaskedTextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox1.Name = "MaskedTextBox1"
         Me.MaskedTextBox1.ReadOnly = True
         Me.MaskedTextBox1.Size = New System.Drawing.Size(265, 26)
@@ -171,7 +171,7 @@ Partial Class Delegate_ins
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(31, 298)
+        Me.Label5.Location = New System.Drawing.Point(29, 298)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(93, 20)
@@ -182,7 +182,7 @@ Partial Class Delegate_ins
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(31, 224)
+        Me.Label4.Location = New System.Drawing.Point(29, 224)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(61, 20)
@@ -204,7 +204,7 @@ Partial Class Delegate_ins
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(31, 119)
+        Me.Label7.Location = New System.Drawing.Point(29, 119)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(88, 20)
@@ -215,7 +215,7 @@ Partial Class Delegate_ins
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(31, 74)
+        Me.Label2.Location = New System.Drawing.Point(29, 259)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(95, 20)
@@ -226,7 +226,7 @@ Partial Class Delegate_ins
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(31, 23)
+        Me.Label1.Location = New System.Drawing.Point(29, 33)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(105, 20)
@@ -237,20 +237,20 @@ Partial Class Delegate_ins
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Location = New System.Drawing.Point(317, 417)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(189, 75)
-        Me.Button2.TabIndex = 4
+        Me.Button2.TabIndex = 7
         Me.Button2.Text = "Thêm đại biểu không có cổ phần"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button4
         '
         Me.Button4.Location = New System.Drawing.Point(536, 117)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(204, 30)
-        Me.Button4.TabIndex = 31
+        Me.Button4.TabIndex = 3
         Me.Button4.Text = "Tìm trong DS cổ đông"
         Me.Button4.UseVisualStyleBackColor = True
         '
@@ -258,7 +258,7 @@ Partial Class Delegate_ins
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(29, 262)
+        Me.Label8.Location = New System.Drawing.Point(29, 80)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(96, 20)
@@ -268,42 +268,42 @@ Partial Class Delegate_ins
         'MaskedTextBox6
         '
         Me.MaskedTextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MaskedTextBox6.Location = New System.Drawing.Point(233, 255)
-        Me.MaskedTextBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaskedTextBox6.Location = New System.Drawing.Point(233, 77)
+        Me.MaskedTextBox6.Margin = New System.Windows.Forms.Padding(4)
         Me.MaskedTextBox6.Name = "MaskedTextBox6"
-        Me.MaskedTextBox6.ReadOnly = True
-        Me.MaskedTextBox6.Size = New System.Drawing.Size(265, 26)
-        Me.MaskedTextBox6.TabIndex = 16
-        Me.MaskedTextBox6.TabStop = False
+        Me.MaskedTextBox6.Size = New System.Drawing.Size(180, 26)
+        Me.MaskedTextBox6.TabIndex = 1
         '
         'Button5
         '
         Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button5.Location = New System.Drawing.Point(84, 514)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(4)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(189, 54)
         Me.Button5.TabIndex = 6
         Me.Button5.Text = "&In thẻ biểu quyết"
         Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'Button6
         '
         Me.Button6.Enabled = False
         Me.Button6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.Location = New System.Drawing.Point(317, 514)
-        Me.Button6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(4)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(189, 54)
         Me.Button6.TabIndex = 7
         Me.Button6.Text = "In &phiếu bầu"
         Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Visible = False
         '
         'Button7
         '
         Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button7.Location = New System.Drawing.Point(573, 514)
-        Me.Button7.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button7.Margin = New System.Windows.Forms.Padding(4)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(199, 54)
         Me.Button7.TabIndex = 8
@@ -340,7 +340,7 @@ Partial Class Delegate_ins
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Delegate_ins"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Thêm đại biểu"

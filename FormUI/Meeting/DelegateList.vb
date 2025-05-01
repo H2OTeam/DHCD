@@ -1,4 +1,5 @@
-﻿Imports CrystalDecisions.CrystalReports.Engine
+﻿Imports System.Linq
+Imports CrystalDecisions.CrystalReports.Engine
 
 Public Class DelegateList
     Private dateMeeting As DateTime = Mainform.dateMeeting
@@ -78,15 +79,13 @@ Public Class DelegateList
             Exit Sub
         End Try
 
-
-
         Try
             Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
             cr.SetParameterValue("LogoPath", logoPath)
             Dim qrcodepath As String = IO.Path.Combine(Application.StartupPath, "Resources\qrcode.jpeg")
             cr.SetParameterValue("qrcodepath", qrcodepath)
             cr.SetParameterValue("HolderName", DataGridView1.CurrentRow.Cells("Delegatename").Value)
-            cr.SetParameterValue("Delegatecode", Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
+            cr.SetParameterValue("Delegatecode", "DB" + Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
             cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())
             cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
             cr.SetParameterValue("Address", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
@@ -133,7 +132,7 @@ Public Class DelegateList
             Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
             cr.SetParameterValue("LogoPath", logoPath)
             cr.SetDataSource(Mainform.BenlyDal.Matter_getlist(Mainform.workingmeeting, 0))
-            cr.SetParameterValue("Delegatecode", Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
+            cr.SetParameterValue("Delegatecode", "DB" + Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
             cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())
             cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
             cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
@@ -264,10 +263,12 @@ Public Class DelegateList
 
     Private Sub ToolStripButton10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton10.Click
 
-        Dim strHolders As String = Mainform.BenlyDal.getAuthorizationByDelegateCode(Mainform.workingmeeting, DataGridView1.CurrentRow.Cells("DelegateCode").Value.ToString())
+        Dim isOnlyAuthori As Boolean
+        Dim isHolder As Boolean
+        Dim strHolders As String = Mainform.BenlyDal.getAuthorizationByDelegateCode(Mainform.workingmeeting, DataGridView1.CurrentRow.Cells("DelegateCode").Value.ToString(), isOnlyAuthori, isHolder)
         Try
             'Me.InPhieuXacNhan(DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper(), DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper(), DataGridView1.CurrentRow.Cells("IdentityCard").Value, DataGridView1.CurrentRow.Cells("DelegateAddress").Value, Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value))
-            Me.InPhieuXacNhan(strHolders.ToUpper(), DataGridView1.CurrentRow.Cells("Delegatecode").Value, DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper(), DataGridView1.CurrentRow.Cells("IdentityCard").Value, DataGridView1.CurrentRow.Cells("DelegateAddress").Value, Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value))
+            Me.InPhieuXacNhan(strHolders.ToUpper(), DataGridView1.CurrentRow.Cells("Delegatecode").Value, DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper(), DataGridView1.CurrentRow.Cells("IdentityCard").Value, DataGridView1.CurrentRow.Cells("DelegateAddress").Value, Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value), isOnlyAuthori, isHolder)
         Catch ex As Exception
             MsgBox("Lỗi :" + ex.Message)
         End Try
@@ -275,7 +276,7 @@ Public Class DelegateList
 
     End Sub
 
-    Private Sub InPhieuXacNhan(ByVal strHolderName As String, ByVal strDelegateCode As String, ByVal strDelegateName As String, ByVal strIndentityCard As String, ByVal strAddress As String, ByVal strVoteRight As String)
+    Private Sub InPhieuXacNhan(ByVal strHolderName As String, ByVal strDelegateCode As String, ByVal strDelegateName As String, ByVal strIndentityCard As String, ByVal strAddress As String, ByVal strVoteRight As String, ByVal isOnlyAuthori As Boolean, ByVal isHolder As Boolean)
 
         'Dim cr As New PhieuXacNhan
         Dim cr As New ReportDocument()
@@ -290,15 +291,18 @@ Public Class DelegateList
             cr.Load(reportPath)
             Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
             cr.SetParameterValue("LogoPath", logoPath)
-            Dim holderName() As String = strHolderName.Split(",")
-            If (holderName.Length > 1) Then
-                For i As Integer = 0 To holderName.Length - 1
-                    holderName(i) = (i + 1).ToString() + ". " + holderName(i).Trim()
+            Dim holderName() = strHolderName.Split(","c)
+            Dim holderName2() = {}
+            If (holderName.Length > 0) Then
+                holderName2 = holderName.Where(Function(s) s.Trim().ToUpper() <> "").
+                ToArray()
+                For i As Integer = 0 To holderName2.Length - 1
+                    holderName2(i) = (i + 1).ToString() + ". " + holderName2(i).Trim()
                 Next
             End If
 
-            cr.SetParameterValue("HolderName", String.Join(Environment.NewLine, holderName).ToUpper())
-            cr.SetParameterValue("Delegatecode", Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
+            cr.SetParameterValue("HolderName", String.Join(Environment.NewLine, holderName2).ToUpper())
+            cr.SetParameterValue("Delegatecode", "DB" + Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
             cr.SetParameterValue("Delegatename", strDelegateName.ToUpper())
             cr.SetParameterValue("IdentityCard", strIndentityCard)
             cr.SetParameterValue("Address", strAddress)
@@ -307,7 +311,8 @@ Public Class DelegateList
             cr.SetParameterValue("Period", Mainform.period)
             cr.SetParameterValue("MettingType", Mainform.mettingType)
             cr.SetParameterValue("CompanyName", Mainform.companyName)
-            'cr.PrintToPrinter(1, True, 1, 10)
+            cr.SetParameterValue("isOnlyAuthori", isOnlyAuthori)
+            cr.SetParameterValue("isHolder", isHolder)
             ReportViewer.LoadReport(cr, Me)
         Catch ex As Exception
             MsgBox("Lỗi :" + ex.Message)
@@ -331,7 +336,7 @@ Public Class DelegateList
             cr.SetDataSource(dt)
             Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
             cr.SetParameterValue("LogoPath", logoPath)
-            cr.SetParameterValue("Delegatecode", Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
+            cr.SetParameterValue("Delegatecode", "DB" + Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
             cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value)
             cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
             cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)
@@ -365,7 +370,7 @@ Public Class DelegateList
             cr.SetDataSource(dt)
             Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
             cr.SetParameterValue("LogoPath", logoPath)
-            cr.SetParameterValue("Delegatecode", Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
+            cr.SetParameterValue("Delegatecode", "DB" + Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
             cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value)
             cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
             cr.SetParameterValue("CountCandidate", dt.Rows.Count.ToString())
@@ -395,7 +400,7 @@ Public Class DelegateList
             Dim logoPath As String = IO.Path.Combine(Application.StartupPath, "Resources\Logo.jpg")
 
             cr.SetDataSource(Mainform.BenlyDal.Matter_getlist(Mainform.workingmeeting, 0))
-            cr.SetParameterValue("Delegatecode", Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
+            cr.SetParameterValue("Delegatecode", "DB" + Mainform.stockCode + DataGridView1.CurrentRow.Cells("Delegatecode").Value.ToString().PadLeft(4, "0"c))
             cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper())
             cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells("IdentityCard").Value)
             cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells("DelegateAddress").Value)

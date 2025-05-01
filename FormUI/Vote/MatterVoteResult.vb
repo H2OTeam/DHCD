@@ -1,4 +1,4 @@
-﻿Public Class MatterVoteResult
+﻿Public Class sodbhl
 
     Private Sub MatterVoteResult_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -22,7 +22,7 @@
     Public Sub filltextbox()
         Dim t As New DataTable
         Try
-            t = Mainform.BenlyDal.MatterVotes_getlist(Mainform.workingmeeting, NumericUpDown1.Value, "")
+            t = Mainform.BenlyDal.MatterVotes_getlist(Mainform.workingmeeting, NumericUpDown1.Value, "", 0)
         Catch ex As Exception
             MsgBox("Lỗi :" + ex.Message)
         End Try
@@ -34,6 +34,8 @@
         Dim disagreeright As Integer = 0
         Dim noideacount As Integer = 0
         Dim noidearight As Integer = 0
+        Dim illegalacount As Integer = 0
+        Dim illegalright As Integer = 0
 
         For Each dr As DataRow In t.Rows
             totalright = totalright + dr.Item("Voterights")
@@ -43,6 +45,9 @@
             ElseIf dr.Item("DisAgree") = True Then
                 disagreecount = disagreecount + 1
                 disagreeright = disagreeright + dr.Item("Voterights")
+            ElseIf dr.Item("Illegal") = True Then
+                illegalacount = illegalacount + 1
+                illegalright = illegalright + dr.Item("Voterights")
             Else
                 noideacount = noideacount + 1
                 noidearight = noidearight + dr.Item("Voterights")
@@ -62,10 +67,25 @@
             MaskedTextBox8.Text = (Math.Round(((agreeright / totalright) * 100), 2)).ToString + "% "
             MaskedTextBox9.Text = (Math.Round(((disagreeright / totalright) * 100), 2)).ToString + "% "
             MaskedTextBox10.Text = (Math.Round(((noidearight / totalright) * 100), 2)).ToString + "% "
+            Dim tyleIllegal As Decimal = Math.Round(((illegalright / totalright) * 100), 2)
+            textsodbhl.Text = (agreecount + disagreecount + noideacount).ToString()
+            sodbkhl.Text = illegalacount.ToString()
+
+            tongqbqhl.Text = (agreeright + disagreeright + noidearight).ToString("#,###")
+            tongqbqkhl.Text = illegalright.ToString("#,###")
+
+            tylebqkhl.Text = tyleIllegal.ToString + "% "
+            tylebqhl.Text = (100 - tyleIllegal).ToString + "% "
         Else
             MaskedTextBox8.Text = ""
             MaskedTextBox9.Text = ""
             MaskedTextBox10.Text = ""
+            textsodbhl.Text = ""
+            sodbkhl.Text = ""
+            tongqbqhl.Text = ""
+            tongqbqkhl.Text = ""
+            tylebqhl.Text = ""
+            tylebqkhl.Text = ""
         End If
     End Sub
 End Class

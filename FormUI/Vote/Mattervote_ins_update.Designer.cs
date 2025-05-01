@@ -38,6 +38,7 @@ namespace pmDHCD
             GroupBox1 = new GroupBox();
             NumericUpDown1 = new NumericUpDown();
             NumericUpDown1.ValueChanged += new EventHandler(NumericUpDown1_ValueChanged);
+            NumericUpDown1.Validating += new System.ComponentModel.CancelEventHandler(NumericUpDown1_Validating);
             MaskedTextBox3 = new MaskedTextBox();
             MaskedTextBox1 = new MaskedTextBox();
             Label7 = new Label();
@@ -51,12 +52,12 @@ namespace pmDHCD
             HolderCodeMaskedTextBox = new MaskedTextBox();
             HolderCodeMaskedTextBox.KeyDown += new KeyEventHandler(MaskedTextBox5_KeyDown);
             HolderCodeMaskedTextBox.Leave += new EventHandler(MaskedTextBox5_Leave);
-            HolderCodeMaskedTextBox.MaskInputRejected += new MaskInputRejectedEventHandler(MaskedTextBox5_MaskInputRejected);
             Label6 = new Label();
             Label3 = new Label();
             Label4 = new Label();
             Label5 = new Label();
             GroupBox3 = new GroupBox();
+            rbillegal = new RadioButton();
             RadioButton3 = new RadioButton();
             RadioButton2 = new RadioButton();
             RadioButton1 = new RadioButton();
@@ -86,9 +87,9 @@ namespace pmDHCD
             GroupBox1.Controls.Add(Label2);
             GroupBox1.Controls.Add(Label1);
             GroupBox1.Location = new Point(1, 1);
-            GroupBox1.Margin = new Padding(4, 4, 4, 4);
+            GroupBox1.Margin = new Padding(4);
             GroupBox1.Name = "GroupBox1";
-            GroupBox1.Padding = new Padding(4, 4, 4, 4);
+            GroupBox1.Padding = new Padding(4);
             GroupBox1.Size = new Size(932, 188);
             GroupBox1.TabIndex = 55;
             GroupBox1.TabStop = false;
@@ -98,20 +99,21 @@ namespace pmDHCD
             // 
             NumericUpDown1.Font = new Font("Microsoft Sans Serif", 11.25f, FontStyle.Regular, GraphicsUnit.Point, 0);
             NumericUpDown1.Location = new Point(217, 78);
-            NumericUpDown1.Margin = new Padding(4, 4, 4, 4);
+            NumericUpDown1.Margin = new Padding(4);
             NumericUpDown1.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             NumericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             NumericUpDown1.Name = "NumericUpDown1";
             NumericUpDown1.Size = new Size(81, 29);
             NumericUpDown1.TabIndex = 2;
             NumericUpDown1.TabStop = false;
+            NumericUpDown1.TextAlign = HorizontalAlignment.Right;
             NumericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // MaskedTextBox3
             // 
             MaskedTextBox3.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox3.Location = new Point(217, 133);
-            MaskedTextBox3.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox3.Margin = new Padding(4);
             MaskedTextBox3.Name = "MaskedTextBox3";
             MaskedTextBox3.ReadOnly = true;
             MaskedTextBox3.Size = new Size(635, 26);
@@ -122,7 +124,7 @@ namespace pmDHCD
             // 
             MaskedTextBox1.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox1.Location = new Point(217, 37);
-            MaskedTextBox1.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox1.Margin = new Padding(4);
             MaskedTextBox1.Name = "MaskedTextBox1";
             MaskedTextBox1.ReadOnly = true;
             MaskedTextBox1.Size = new Size(265, 26);
@@ -169,7 +171,7 @@ namespace pmDHCD
             StockTextBox1.CustomCulture = false;
             StockTextBox1.CustomCultureInfo = new System.Globalization.CultureInfo("en-US");
             StockTextBox1.Location = new Point(237, 384);
-            StockTextBox1.Margin = new Padding(4, 4, 4, 4);
+            StockTextBox1.Margin = new Padding(4);
             StockTextBox1.MaxLength = 25;
             StockTextBox1.Name = "StockTextBox1";
             StockTextBox1.Precision = 0;
@@ -185,7 +187,7 @@ namespace pmDHCD
             // 
             CheckBox1.AutoSize = true;
             CheckBox1.Location = new Point(605, 220);
-            CheckBox1.Margin = new Padding(4, 4, 4, 4);
+            CheckBox1.Margin = new Padding(4);
             CheckBox1.Name = "CheckBox1";
             CheckBox1.Size = new Size(155, 21);
             CheckBox1.TabIndex = 37;
@@ -198,7 +200,7 @@ namespace pmDHCD
             // 
             MaskedTextBox4.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             MaskedTextBox4.Location = new Point(237, 297);
-            MaskedTextBox4.Margin = new Padding(4, 4, 4, 4);
+            MaskedTextBox4.Margin = new Padding(4);
             MaskedTextBox4.Name = "MaskedTextBox4";
             MaskedTextBox4.ReadOnly = true;
             MaskedTextBox4.Size = new Size(635, 26);
@@ -209,7 +211,7 @@ namespace pmDHCD
             // 
             HolderIdentifyMaskedTextBox2.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             HolderIdentifyMaskedTextBox2.Location = new Point(237, 260);
-            HolderIdentifyMaskedTextBox2.Margin = new Padding(4, 4, 4, 4);
+            HolderIdentifyMaskedTextBox2.Margin = new Padding(4);
             HolderIdentifyMaskedTextBox2.Name = "HolderIdentifyMaskedTextBox2";
             HolderIdentifyMaskedTextBox2.Size = new Size(265, 26);
             HolderIdentifyMaskedTextBox2.TabIndex = 1;
@@ -217,14 +219,12 @@ namespace pmDHCD
             // HolderCodeMaskedTextBox
             // 
             HolderCodeMaskedTextBox.BackColor = SystemColors.InactiveBorder;
-            HolderCodeMaskedTextBox.Enabled = false;
             HolderCodeMaskedTextBox.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             HolderCodeMaskedTextBox.Location = new Point(237, 220);
-            HolderCodeMaskedTextBox.Margin = new Padding(4, 4, 4, 4);
+            HolderCodeMaskedTextBox.Margin = new Padding(4);
             HolderCodeMaskedTextBox.Name = "HolderCodeMaskedTextBox";
             HolderCodeMaskedTextBox.Size = new Size(265, 26);
             HolderCodeMaskedTextBox.TabIndex = 0;
-            HolderCodeMaskedTextBox.TabStop = false;
             // 
             // Label6
             // 
@@ -255,9 +255,9 @@ namespace pmDHCD
             Label4.Location = new Point(35, 267);
             Label4.Margin = new Padding(4, 0, 4, 0);
             Label4.Name = "Label4";
-            Label4.Size = new Size(75, 20);
+            Label4.Size = new Size(88, 20);
             Label4.TabIndex = 35;
-            Label4.Text = "CMT/HC";
+            Label4.Text = "CCCD/HC";
             // 
             // Label5
             // 
@@ -266,29 +266,41 @@ namespace pmDHCD
             Label5.Location = new Point(35, 228);
             Label5.Margin = new Padding(4, 0, 4, 0);
             Label5.Name = "Label5";
-            Label5.Size = new Size(96, 20);
+            Label5.Size = new Size(95, 20);
             Label5.TabIndex = 34;
-            Label5.Text = "Mã cổ đông";
+            Label5.Text = "Mã đại biểu";
             // 
             // GroupBox3
             // 
+            GroupBox3.Controls.Add(rbillegal);
             GroupBox3.Controls.Add(RadioButton3);
             GroupBox3.Controls.Add(RadioButton2);
             GroupBox3.Controls.Add(RadioButton1);
             GroupBox3.Location = new Point(17, 452);
-            GroupBox3.Margin = new Padding(4, 4, 4, 4);
+            GroupBox3.Margin = new Padding(4);
             GroupBox3.Name = "GroupBox3";
-            GroupBox3.Padding = new Padding(4, 4, 4, 4);
+            GroupBox3.Padding = new Padding(4);
             GroupBox3.Size = new Size(916, 92);
             GroupBox3.TabIndex = 57;
             GroupBox3.TabStop = false;
             GroupBox3.Text = "Biểu quyết";
             // 
+            // rbillegal
+            // 
+            rbillegal.AutoSize = true;
+            rbillegal.Location = new Point(591, 41);
+            rbillegal.Margin = new Padding(4);
+            rbillegal.Name = "rbillegal";
+            rbillegal.Size = new Size(113, 21);
+            rbillegal.TabIndex = 2;
+            rbillegal.Text = "Không hợp lệ";
+            rbillegal.UseVisualStyleBackColor = true;
+            // 
             // RadioButton3
             // 
             RadioButton3.AutoSize = true;
-            RadioButton3.Location = new Point(663, 41);
-            RadioButton3.Margin = new Padding(4, 4, 4, 4);
+            RadioButton3.Location = new Point(400, 41);
+            RadioButton3.Margin = new Padding(4);
             RadioButton3.Name = "RadioButton3";
             RadioButton3.Size = new Size(111, 21);
             RadioButton3.TabIndex = 2;
@@ -298,8 +310,8 @@ namespace pmDHCD
             // RadioButton2
             // 
             RadioButton2.AutoSize = true;
-            RadioButton2.Location = new Point(348, 41);
-            RadioButton2.Margin = new Padding(4, 4, 4, 4);
+            RadioButton2.Location = new Point(202, 41);
+            RadioButton2.Margin = new Padding(4);
             RadioButton2.Name = "RadioButton2";
             RadioButton2.Size = new Size(117, 21);
             RadioButton2.TabIndex = 1;
@@ -311,7 +323,7 @@ namespace pmDHCD
             RadioButton1.AutoSize = true;
             RadioButton1.Checked = true;
             RadioButton1.Location = new Point(39, 41);
-            RadioButton1.Margin = new Padding(4, 4, 4, 4);
+            RadioButton1.Margin = new Padding(4);
             RadioButton1.Name = "RadioButton1";
             RadioButton1.Size = new Size(74, 21);
             RadioButton1.TabIndex = 0;
@@ -324,7 +336,7 @@ namespace pmDHCD
             Button3.Font = new Font("Microsoft Sans Serif", 9.0f, FontStyle.Regular, GraphicsUnit.Point, 0);
             Button3.ForeColor = Color.Blue;
             Button3.Location = new Point(467, 559);
-            Button3.Margin = new Padding(4, 4, 4, 4);
+            Button3.Margin = new Padding(4);
             Button3.Name = "Button3";
             Button3.Size = new Size(188, 43);
             Button3.TabIndex = 7;
@@ -335,7 +347,7 @@ namespace pmDHCD
             // 
             Button1.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             Button1.Location = new Point(36, 559);
-            Button1.Margin = new Padding(4, 4, 4, 4);
+            Button1.Margin = new Padding(4);
             Button1.Name = "Button1";
             Button1.Size = new Size(153, 43);
             Button1.TabIndex = 4;
@@ -346,7 +358,7 @@ namespace pmDHCD
             // 
             Button2.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             Button2.Location = new Point(256, 559);
-            Button2.Margin = new Padding(4, 4, 4, 4);
+            Button2.Margin = new Padding(4);
             Button2.Name = "Button2";
             Button2.Size = new Size(161, 43);
             Button2.TabIndex = 5;
@@ -357,7 +369,7 @@ namespace pmDHCD
             // 
             Button4.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             Button4.Location = new Point(780, 559);
-            Button4.Margin = new Padding(4, 4, 4, 4);
+            Button4.Margin = new Padding(4);
             Button4.Name = "Button4";
             Button4.Size = new Size(153, 43);
             Button4.TabIndex = 6;
@@ -369,7 +381,7 @@ namespace pmDHCD
             // 
             delegateNameTextbox.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             delegateNameTextbox.Location = new Point(237, 338);
-            delegateNameTextbox.Margin = new Padding(4, 4, 4, 4);
+            delegateNameTextbox.Margin = new Padding(4);
             delegateNameTextbox.Name = "delegateNameTextbox";
             delegateNameTextbox.ReadOnly = true;
             delegateNameTextbox.Size = new Size(635, 26);
@@ -393,7 +405,7 @@ namespace pmDHCD
             delegateIdentityTextBox.Enabled = false;
             delegateIdentityTextBox.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             delegateIdentityTextBox.Location = new Point(733, 373);
-            delegateIdentityTextBox.Margin = new Padding(4, 4, 4, 4);
+            delegateIdentityTextBox.Margin = new Padding(4);
             delegateIdentityTextBox.Name = "delegateIdentityTextBox";
             delegateIdentityTextBox.Size = new Size(139, 26);
             delegateIdentityTextBox.TabIndex = 60;
@@ -406,7 +418,7 @@ namespace pmDHCD
             delegateCodeMaskedTextBox.Enabled = false;
             delegateCodeMaskedTextBox.Font = new Font("Microsoft Sans Serif", 9.75f, FontStyle.Regular, GraphicsUnit.Point, 0);
             delegateCodeMaskedTextBox.Location = new Point(588, 373);
-            delegateCodeMaskedTextBox.Margin = new Padding(4, 4, 4, 4);
+            delegateCodeMaskedTextBox.Margin = new Padding(4);
             delegateCodeMaskedTextBox.Name = "delegateCodeMaskedTextBox";
             delegateCodeMaskedTextBox.Size = new Size(124, 26);
             delegateCodeMaskedTextBox.TabIndex = 61;
@@ -439,7 +451,7 @@ namespace pmDHCD
             Controls.Add(Label5);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             KeyPreview = true;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Mattervote_ins_update";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Thêm phiếu biểu quyết";
@@ -482,5 +494,6 @@ namespace pmDHCD
         internal Label Label8;
         internal MaskedTextBox delegateIdentityTextBox;
         internal MaskedTextBox delegateCodeMaskedTextBox;
+        internal RadioButton rbillegal;
     }
 }

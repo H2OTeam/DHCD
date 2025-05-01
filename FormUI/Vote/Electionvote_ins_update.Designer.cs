@@ -55,7 +55,7 @@ namespace pmDHCD
             MaskedTextBox2.Leave += new EventHandler(MaskedTextBox2_Leave);
             MaskedTextBox5 = new MaskedTextBox();
             MaskedTextBox5.Leave += new EventHandler(MaskedTextBox5_Leave);
-            MaskedTextBox5.MaskInputRejected += new MaskInputRejectedEventHandler(MaskedTextBox5_MaskInputRejected);
+            MaskedTextBox5.KeyDown += new KeyEventHandler(MaskedTextBox5_KeyDown);
             Label9 = new Label();
             Label6 = new Label();
             Label3 = new Label();
@@ -320,7 +320,7 @@ namespace pmDHCD
             Label4.Location = new Point(15, 64);
             Label4.Margin = new Padding(4, 0, 4, 0);
             Label4.Name = "Label4";
-            Label4.Size = new Size(110, 25);
+            Label4.Size = new Size(88, 20);
             Label4.TabIndex = 35;
             Label4.Text = "CCCD/HC";
             // 

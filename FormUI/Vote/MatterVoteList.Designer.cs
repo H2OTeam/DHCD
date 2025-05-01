@@ -37,9 +37,10 @@ namespace pmDHCD
         {
             var DataGridViewCellStyle1 = new DataGridViewCellStyle();
             var DataGridViewCellStyle2 = new DataGridViewCellStyle();
-            var DataGridViewCellStyle4 = new DataGridViewCellStyle();
             var DataGridViewCellStyle5 = new DataGridViewCellStyle();
+            var DataGridViewCellStyle6 = new DataGridViewCellStyle();
             var DataGridViewCellStyle3 = new DataGridViewCellStyle();
+            var DataGridViewCellStyle4 = new DataGridViewCellStyle();
             var resources = new System.ComponentModel.ComponentResourceManager(typeof(MatterVoteList));
             ToolStrip1 = new ToolStrip();
             ToolStripButton1 = new ToolStripButton();
@@ -51,29 +52,36 @@ namespace pmDHCD
             ToolStripSeparator2 = new ToolStripSeparator();
             ToolStripLabel1 = new ToolStripLabel();
             ToolStripTextBox1 = new ToolStripTextBox();
+            ToolStripTextBox1.KeyDown += new KeyEventHandler(ToolStripTextBox1_KeyDown);
             ToolStripSeparator1 = new ToolStripSeparator();
+            ToolStripLabel3 = new ToolStripLabel();
+            ToolStriptxtDbCode = new ToolStripTextBox();
+            ToolStriptxtDbCode.KeyDown += new KeyEventHandler(ToolStriptxtDbCode_KeyDown);
             ToolStripLabel2 = new ToolStripLabel();
             ToolStripTextBox2 = new ToolStripTextBox();
+            ToolStripTextBox2.KeyDown += new KeyEventHandler(ToolStripTextBox2_KeyDown);
             ToolStripButton4 = new ToolStripButton();
             ToolStripButton4.Click += new EventHandler(ToolStripButton4_Click);
             DataGridView1 = new DataGridView();
             DataGridView1.CellValueChanged += new DataGridViewCellEventHandler(DataGridView1_CellValueChanged);
             Mattercode = new DataGridViewTextBoxColumn();
             MatterName = new DataGridViewTextBoxColumn();
-            HolderName = new DataGridViewTextBoxColumn();
-            Delegatename = new DataGridViewTextBoxColumn();
-            Voterights = new DataGridViewTextBoxColumn();
             agree = new DataGridViewCheckBoxColumn();
             Disagree = new DataGridViewCheckBoxColumn();
             Noidea = new DataGridViewCheckBoxColumn();
+            Illegal = new DataGridViewCheckBoxColumn();
+            Voterights = new DataGridViewTextBoxColumn();
             DelegateCode = new DataGridViewTextBoxColumn();
-            HolderCode = new DataGridViewTextBoxColumn();
+            Delegatename = new DataGridViewTextBoxColumn();
+            IdentityCard = new DataGridViewTextBoxColumn();
             StatusStrip1 = new StatusStrip();
             ToolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabel2 = new ToolStripStatusLabel();
             ToolStripSplitButton3 = new ToolStripSplitButton();
             ToolStripStatusLabel15 = new ToolStripStatusLabel();
             ToolStripStatusLabel16 = new ToolStripStatusLabel();
+            txtCounthople = new ToolStripStatusLabel();
+            txtRighthl = new ToolStripStatusLabel();
             StatusStrip2 = new StatusStrip();
             ToolStripStatusLabel3 = new ToolStripStatusLabel();
             ToolStripStatusLabel4 = new ToolStripStatusLabel();
@@ -98,10 +106,10 @@ namespace pmDHCD
             // ToolStrip1
             // 
             ToolStrip1.ImageScalingSize = new Size(20, 20);
-            ToolStrip1.Items.AddRange(new ToolStripItem[] { ToolStripButton1, ToolStripButton2, ToolStripButton3, ToolStripSeparator2, ToolStripLabel1, ToolStripTextBox1, ToolStripSeparator1, ToolStripLabel2, ToolStripTextBox2, ToolStripButton4 });
+            ToolStrip1.Items.AddRange(new ToolStripItem[] { ToolStripButton1, ToolStripButton2, ToolStripButton3, ToolStripSeparator2, ToolStripLabel1, ToolStripTextBox1, ToolStripSeparator1, ToolStripLabel3, ToolStriptxtDbCode, ToolStripLabel2, ToolStripTextBox2, ToolStripButton4 });
             ToolStrip1.Location = new Point(0, 0);
             ToolStrip1.Name = "ToolStrip1";
-            ToolStrip1.Size = new Size(1136, 27);
+            ToolStrip1.Size = new Size(1136, 31);
             ToolStrip1.TabIndex = 11;
             ToolStrip1.Text = "ToolStrip1";
             // 
@@ -110,7 +118,7 @@ namespace pmDHCD
             ToolStripButton1.Image = My.Resources.Resources.Add;
             ToolStripButton1.ImageTransparentColor = Color.Magenta;
             ToolStripButton1.Name = "ToolStripButton1";
-            ToolStripButton1.Size = new Size(90, 24);
+            ToolStripButton1.Size = new Size(90, 28);
             ToolStripButton1.Text = "Thêm(A)";
             // 
             // ToolStripButton2
@@ -118,7 +126,7 @@ namespace pmDHCD
             ToolStripButton2.Image = My.Resources.Resources.Document;
             ToolStripButton2.ImageTransparentColor = Color.Magenta;
             ToolStripButton2.Name = "ToolStripButton2";
-            ToolStripButton2.Size = new Size(76, 24);
+            ToolStripButton2.Size = new Size(76, 28);
             ToolStripButton2.Text = "Sửa(E)";
             // 
             // ToolStripButton3
@@ -126,49 +134,61 @@ namespace pmDHCD
             ToolStripButton3.Image = My.Resources.Resources.Delete;
             ToolStripButton3.ImageTransparentColor = Color.Magenta;
             ToolStripButton3.Name = "ToolStripButton3";
-            ToolStripButton3.Size = new Size(80, 24);
+            ToolStripButton3.Size = new Size(80, 28);
             ToolStripButton3.Text = "Xóa(D)";
             // 
             // ToolStripSeparator2
             // 
             ToolStripSeparator2.Name = "ToolStripSeparator2";
-            ToolStripSeparator2.Size = new Size(6, 27);
+            ToolStripSeparator2.Size = new Size(6, 31);
             // 
             // ToolStripLabel1
             // 
             ToolStripLabel1.Name = "ToolStripLabel1";
-            ToolStripLabel1.Size = new Size(130, 24);
+            ToolStripLabel1.Size = new Size(130, 28);
             ToolStripLabel1.Text = "Mã v/đ biểu quyết";
             // 
             // ToolStripTextBox1
             // 
             ToolStripTextBox1.Font = new Font("Segoe UI", 9.0f);
             ToolStripTextBox1.Name = "ToolStripTextBox1";
-            ToolStripTextBox1.Size = new Size(132, 27);
+            ToolStripTextBox1.Size = new Size(132, 31);
             // 
             // ToolStripSeparator1
             // 
             ToolStripSeparator1.Name = "ToolStripSeparator1";
-            ToolStripSeparator1.Size = new Size(6, 27);
+            ToolStripSeparator1.Size = new Size(6, 31);
+            // 
+            // ToolStripLabel3
+            // 
+            ToolStripLabel3.Name = "ToolStripLabel3";
+            ToolStripLabel3.Size = new Size(88, 28);
+            ToolStripLabel3.Text = "Mã đại biểu";
+            // 
+            // ToolStriptxtDbCode
+            // 
+            ToolStriptxtDbCode.Font = new Font("Segoe UI", 9.0f);
+            ToolStriptxtDbCode.Name = "ToolStriptxtDbCode";
+            ToolStriptxtDbCode.Size = new Size(100, 31);
             // 
             // ToolStripLabel2
             // 
             ToolStripLabel2.Name = "ToolStripLabel2";
-            ToolStripLabel2.Size = new Size(65, 24);
-            ToolStripLabel2.Text = "CMT/HC";
+            ToolStripLabel2.Size = new Size(73, 28);
+            ToolStripLabel2.Text = "CCCD/HC";
             // 
             // ToolStripTextBox2
             // 
             ToolStripTextBox2.Font = new Font("Segoe UI", 9.0f);
             ToolStripTextBox2.Name = "ToolStripTextBox2";
-            ToolStripTextBox2.Size = new Size(132, 27);
+            ToolStripTextBox2.Size = new Size(132, 31);
             // 
             // ToolStripButton4
             // 
             ToolStripButton4.Image = My.Resources.Resources.Search;
             ToolStripButton4.ImageTransparentColor = Color.Magenta;
             ToolStripButton4.Name = "ToolStripButton4";
-            ToolStripButton4.Size = new Size(58, 24);
+            ToolStripButton4.Size = new Size(58, 28);
             ToolStripButton4.Text = "Tìm";
             // 
             // DataGridView1
@@ -187,31 +207,31 @@ namespace pmDHCD
             DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2;
             DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DataGridView1.Columns.AddRange(new DataGridViewColumn[] { Mattercode, MatterName, HolderName, Delegatename, Voterights, agree, Disagree, Noidea, DelegateCode, HolderCode });
-            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            DataGridViewCellStyle4.BackColor = SystemColors.Window;
-            DataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            DataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            DataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            DataGridView1.DefaultCellStyle = DataGridViewCellStyle4;
-            DataGridView1.Dock = DockStyle.Fill;
-            DataGridView1.Location = new Point(0, 27);
-            DataGridView1.Margin = new Padding(4);
-            DataGridView1.Name = "DataGridView1";
+            DataGridView1.Columns.AddRange(new DataGridViewColumn[] { Mattercode, MatterName, agree, Disagree, Noidea, Illegal, Voterights, DelegateCode, Delegatename, IdentityCard });
             DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            DataGridViewCellStyle5.BackColor = SystemColors.Control;
+            DataGridViewCellStyle5.BackColor = SystemColors.Window;
             DataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            DataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
             DataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
             DataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle5;
+            DataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            DataGridView1.DefaultCellStyle = DataGridViewCellStyle5;
+            DataGridView1.Dock = DockStyle.Fill;
+            DataGridView1.Location = new Point(0, 31);
+            DataGridView1.Margin = new Padding(4);
+            DataGridView1.Name = "DataGridView1";
+            DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            DataGridViewCellStyle6.BackColor = SystemColors.Control;
+            DataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 8.25f, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            DataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            DataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle6;
             DataGridView1.RowHeadersVisible = false;
             DataGridView1.RowHeadersWidth = 51;
             DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DataGridView1.Size = new Size(1136, 583);
+            DataGridView1.Size = new Size(1136, 579);
             DataGridView1.TabIndex = 12;
             // 
             // Mattercode
@@ -227,43 +247,14 @@ namespace pmDHCD
             // 
             // MatterName
             // 
-            MatterName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            MatterName.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             MatterName.DataPropertyName = "MatterName";
             MatterName.FillWeight = 59.08628f;
             MatterName.Frozen = true;
             MatterName.HeaderText = "Tên vấn đề";
             MatterName.MinimumWidth = 6;
             MatterName.Name = "MatterName";
-            MatterName.Width = 150;
-            // 
-            // HolderName
-            // 
-            HolderName.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            HolderName.DataPropertyName = "HolderName";
-            HolderName.HeaderText = "Cổ đông";
-            HolderName.MinimumWidth = 6;
-            HolderName.Name = "HolderName";
-            HolderName.Width = 180;
-            // 
-            // Delegatename
-            // 
-            Delegatename.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Delegatename.DataPropertyName = "Delegatename";
-            Delegatename.HeaderText = "Cổ đông/Người đại diện";
-            Delegatename.MinimumWidth = 6;
-            Delegatename.Name = "Delegatename";
-            Delegatename.Width = 150;
-            // 
-            // Voterights
-            // 
-            Voterights.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Voterights.DataPropertyName = "Voterights";
-            DataGridViewCellStyle3.Format = "N0";
-            Voterights.DefaultCellStyle = DataGridViewCellStyle3;
-            Voterights.HeaderText = "Số quyền biểu quyết";
-            Voterights.MinimumWidth = 6;
-            Voterights.Name = "Voterights";
-            Voterights.Width = 125;
+            MatterName.Width = 86;
             // 
             // agree
             // 
@@ -299,26 +290,63 @@ namespace pmDHCD
             Noidea.SortMode = DataGridViewColumnSortMode.Automatic;
             Noidea.Width = 70;
             // 
+            // Illegal
+            // 
+            Illegal.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Illegal.DataPropertyName = "Illegal";
+            Illegal.HeaderText = "Không hợp lệ";
+            Illegal.MinimumWidth = 6;
+            Illegal.Name = "Illegal";
+            Illegal.SortMode = DataGridViewColumnSortMode.Automatic;
+            Illegal.Width = 70;
+            // 
+            // Voterights
+            // 
+            Voterights.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Voterights.DataPropertyName = "Voterights";
+            DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            DataGridViewCellStyle3.Format = "N0";
+            Voterights.DefaultCellStyle = DataGridViewCellStyle3;
+            Voterights.HeaderText = "Số quyền biểu quyết";
+            Voterights.MinimumWidth = 6;
+            Voterights.Name = "Voterights";
+            Voterights.Width = 120;
+            // 
             // DelegateCode
             // 
+            DelegateCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             DelegateCode.DataPropertyName = "DelegateCode";
-            DelegateCode.HeaderText = "DelegateCode";
+            DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DelegateCode.DefaultCellStyle = DataGridViewCellStyle4;
+            DelegateCode.HeaderText = "Mã đại biểu";
             DelegateCode.MinimumWidth = 6;
             DelegateCode.Name = "DelegateCode";
-            DelegateCode.Visible = false;
+            DelegateCode.Width = 50;
             // 
-            // HolderCode
+            // Delegatename
             // 
-            HolderCode.DataPropertyName = "HolderCode";
-            HolderCode.HeaderText = "HolderCode";
-            HolderCode.MinimumWidth = 6;
-            HolderCode.Name = "HolderCode";
-            HolderCode.Visible = false;
+            Delegatename.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Delegatename.DataPropertyName = "Delegatename";
+            Delegatename.HeaderText = "Tên đại biểu";
+            Delegatename.MinimumWidth = 6;
+            Delegatename.Name = "Delegatename";
+            Delegatename.Width = 150;
+            // 
+            // IdentityCard
+            // 
+            IdentityCard.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            IdentityCard.DataPropertyName = "IdentityCard";
+            IdentityCard.HeaderText = "CCCD/HC";
+            IdentityCard.MinimumWidth = 6;
+            IdentityCard.Name = "IdentityCard";
+            IdentityCard.Resizable = DataGridViewTriState.True;
+            IdentityCard.SortMode = DataGridViewColumnSortMode.NotSortable;
+            IdentityCard.Width = 125;
             // 
             // StatusStrip1
             // 
             StatusStrip1.ImageScalingSize = new Size(20, 20);
-            StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1, ToolStripStatusLabel2, ToolStripSplitButton3, ToolStripStatusLabel15, ToolStripStatusLabel16 });
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1, ToolStripStatusLabel2, ToolStripSplitButton3, ToolStripStatusLabel15, ToolStripStatusLabel16, txtCounthople, txtRighthl });
             StatusStrip1.Location = new Point(0, 584);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Padding = new Padding(1, 0, 19, 0);
@@ -358,6 +386,18 @@ namespace pmDHCD
             ToolStripStatusLabel16.Name = "ToolStripStatusLabel16";
             ToolStripStatusLabel16.Size = new Size(154, 20);
             ToolStripStatusLabel16.Text = "ToolStripStatusLabel16";
+            // 
+            // txtCounthople
+            // 
+            txtCounthople.Name = "txtCounthople";
+            txtCounthople.Size = new Size(17, 20);
+            txtCounthople.Text = "0";
+            // 
+            // txtRighthl
+            // 
+            txtRighthl.Name = "txtRighthl";
+            txtRighthl.Size = new Size(17, 20);
+            txtRighthl.Text = "0";
             // 
             // StatusStrip2
             // 
@@ -530,15 +570,19 @@ namespace pmDHCD
         internal ToolStripStatusLabel ToolStripStatusLabel12;
         internal ToolStripStatusLabel ToolStripStatusLabel13;
         internal ToolStripStatusLabel ToolStripStatusLabel14;
+        internal ToolStripLabel ToolStripLabel3;
+        internal ToolStripTextBox ToolStriptxtDbCode;
+        internal ToolStripStatusLabel txtCounthople;
+        internal ToolStripStatusLabel txtRighthl;
         internal DataGridViewTextBoxColumn Mattercode;
         internal DataGridViewTextBoxColumn MatterName;
-        internal DataGridViewTextBoxColumn HolderName;
-        internal DataGridViewTextBoxColumn Delegatename;
-        internal DataGridViewTextBoxColumn Voterights;
         internal DataGridViewCheckBoxColumn agree;
         internal DataGridViewCheckBoxColumn Disagree;
         internal DataGridViewCheckBoxColumn Noidea;
+        internal DataGridViewCheckBoxColumn Illegal;
+        internal DataGridViewTextBoxColumn Voterights;
         internal DataGridViewTextBoxColumn DelegateCode;
-        internal DataGridViewTextBoxColumn HolderCode;
+        internal DataGridViewTextBoxColumn Delegatename;
+        internal DataGridViewTextBoxColumn IdentityCard;
     }
 }

@@ -24,7 +24,7 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         If MsgBox("Thao tác này sẽ nhập TẤT CẢ phiếu biểu quyết còn lại, Bạn đã kiểm tra CHẮC CHẮN???", MsgBoxStyle.OkCancel + MsgBoxStyle.Critical + MsgBoxStyle.ApplicationModal + MsgBoxStyle.DefaultButton2, "NHẬP HÀNG LOẠT PHIẾU BIỂU QUYẾT") = MsgBoxResult.Ok Then
             Try
-                Mainform.BenlyDal.MatterVotes_insert_remain(Mainform.workingmeeting, insertmattercode, 0, RadioButton1.Checked, RadioButton2.Checked, RadioButton3.Checked)
+                Mainform.BenlyDal.MatterVotes_insert_remain(Mainform.workingmeeting, insertmattercode, 0, RadioButton1.Checked, RadioButton2.Checked, RadioButton3.Checked, rbillegal.Checked)
                 MsgBox("Đã nhập xong")
             Catch ex As Exception
                 MsgBox("Lỗi : " + ex.Message)

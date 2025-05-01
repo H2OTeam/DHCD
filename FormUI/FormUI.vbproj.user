@@ -3,13 +3,16 @@
   <PropertyGroup>
     <ReferencePath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\</ReferencePath>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory />
-    <InstallUrlHistory />
+    <PublishUrlHistory>D:\software\DHCD_3\DHCD\Publish\|C:\Users\admin\Desktop\DHCD\</PublishUrlHistory>
+    <InstallUrlHistory>https://dhcd.apsi.vn/</InstallUrlHistory>
     <SupportUrlHistory />
-    <UpdateUrlHistory />
-    <BootstrapperUrlHistory />
+    <UpdateUrlHistory>https://dhcd.apsi.vn/installs/|http://dhcd.apsi.vn/install/</UpdateUrlHistory>
+    <BootstrapperUrlHistory>https://dhcd.apsi.vn/installs/CrystallReport13/CR13SP37MSI64_0-80007712.msi|http://dhcd.apsi.vn/installs/CrystallReport13/CR13SP37MSI64_0-80007712.msi|http://dhcd.apsi.vn/installsCry/stallReport13/CR13SP37MSI64_0-80007712.msi|http://dhcd.apsi.vn/installs|http://dhcd.apsi.vn/install</BootstrapperUrlHistory>
     <ErrorReportUrlHistory />
     <FallbackCulture>en-US</FallbackCulture>
-    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+    <VerifyUploadedFiles>true</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
 </Project>

@@ -8,6 +8,7 @@
         Me.updateelectioncode = updateelectioncode
         Me.updatedelegatecode = updatedelegationcode
         Me.controlcode = controlcode
+        MaskedTextBox5.Focus()
     End Sub
     Private Sub Electionvote_ins_update_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         MaskedTextBox1.Text = Mainform.workingmeeting
@@ -84,7 +85,7 @@
             Me.Text = "Cập nhật phiếu bầu cử"
             Button2.Enabled = False
         End If
-
+        MaskedTextBox5.Focus()
     End Sub
 
     Private Sub NumericUpDown1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NumericUpDown1.ValueChanged
@@ -118,13 +119,21 @@
     End Sub
 
     Private Sub MaskedTextBox5_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles MaskedTextBox5.Leave
-        Dim dt As New DataTable
         Dim delecode As Integer = 0
         Try
             delecode = MaskedTextBox5.Text
+            If String.IsNullOrEmpty(delecode) Then
+                MaskedTextBox5.Focus()
+                Return
+            End If
+            LoadDelegate(delecode)
         Catch ex As Exception
             delecode = 0
         End Try
+    End Sub
+
+    Public Sub LoadDelegate(ByVal delecode As Integer)
+        Dim dt As New DataTable
         Try
             dt = Mainform.BenlyDal.Delegate_getlist(Mainform.workingmeeting, delecode, "")
         Catch ex As Exception
@@ -147,10 +156,6 @@
             StockTextBox1.Text = ""
             StockTextBox2.Text = ""
         End If
-    End Sub
-
-    Private Sub MaskedTextBox5_MaskInputRejected(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MaskInputRejectedEventArgs) Handles MaskedTextBox5.MaskInputRejected
-
     End Sub
 
     Private Sub MaskedTextBox2_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles MaskedTextBox2.Leave
@@ -236,9 +241,6 @@
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
 
         If RadioButton1.Checked = True Then
-
-
-
             Dim totalvoteingrid As Integer = 0
             Dim totalCandidateingrid As Integer = 0
 
@@ -333,6 +335,22 @@
             DataGridView1.ReadOnly = False
             Button4.Enabled = True
             Button5.Enabled = True
+        End If
+    End Sub
+
+    Private Sub MaskedTextBox5_KeyDown(sender As Object, e As KeyEventArgs) Handles MaskedTextBox5.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Dim delecode As Integer = 0
+            Try
+                delecode = MaskedTextBox5.Text
+                If String.IsNullOrEmpty(delecode) Then
+                    MaskedTextBox5.Focus()
+                    Return
+                End If
+                LoadDelegate(delecode)
+            Catch ex As Exception
+                delecode = 0
+            End Try
         End If
     End Sub
 End Class

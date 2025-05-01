@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using Microsoft.VisualBasic;
@@ -115,8 +116,6 @@ namespace pmDHCD
                 return;
             }
 
-
-
             try
             {
                 string logoPath = System.IO.Path.Combine(Application.StartupPath, @"Resources\Logo.jpg");
@@ -124,7 +123,7 @@ namespace pmDHCD
                 string qrcodepath = System.IO.Path.Combine(Application.StartupPath, @"Resources\qrcode.jpeg");
                 cr.SetParameterValue("qrcodepath", qrcodepath);
                 cr.SetParameterValue("HolderName", DataGridView1.CurrentRow.Cells["Delegatename"].Value);
-                cr.SetParameterValue("Delegatecode", My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
+                cr.SetParameterValue("Delegatecode", "DB" + My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
                 cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells["Delegatename"].Value.ToString().ToUpper());
                 cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells["IdentityCard"].Value);
                 cr.SetParameterValue("Address", DataGridView1.CurrentRow.Cells["DelegateAddress"].Value);
@@ -179,7 +178,7 @@ namespace pmDHCD
                 string logoPath = System.IO.Path.Combine(Application.StartupPath, @"Resources\Logo.jpg");
                 cr.SetParameterValue("LogoPath", logoPath);
                 cr.SetDataSource(My.MyProject.Forms.Mainform.BenlyDal.Matter_getlist(My.MyProject.Forms.Mainform.workingmeeting, 0m));
-                cr.SetParameterValue("Delegatecode", My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
+                cr.SetParameterValue("Delegatecode", "DB" + My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
                 cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells["Delegatename"].Value.ToString().ToUpper());
                 cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells["IdentityCard"].Value);
                 cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells["DelegateAddress"].Value);
@@ -349,11 +348,13 @@ namespace pmDHCD
         private void ToolStripButton10_Click(object sender, EventArgs e)
         {
 
-            string strHolders = My.MyProject.Forms.Mainform.BenlyDal.getAuthorizationByDelegateCode(My.MyProject.Forms.Mainform.workingmeeting, DataGridView1.CurrentRow.Cells["DelegateCode"].Value.ToString());
+            var isOnlyAuthori = default(bool);
+            var isHolder = default(bool);
+            string strHolders = My.MyProject.Forms.Mainform.BenlyDal.getAuthorizationByDelegateCode(My.MyProject.Forms.Mainform.workingmeeting, DataGridView1.CurrentRow.Cells["DelegateCode"].Value.ToString(), ref isOnlyAuthori, ref isHolder);
             try
             {
                 // Me.InPhieuXacNhan(DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper(), DataGridView1.CurrentRow.Cells("Delegatename").Value.ToString.ToUpper(), DataGridView1.CurrentRow.Cells("IdentityCard").Value, DataGridView1.CurrentRow.Cells("DelegateAddress").Value, Mainform.addthousandseperator(DataGridView1.CurrentRow.Cells("voterights").Value))
-                InPhieuXacNhan(strHolders.ToUpper(), Conversions.ToString(DataGridView1.CurrentRow.Cells["Delegatecode"].Value), DataGridView1.CurrentRow.Cells["Delegatename"].Value.ToString().ToUpper(), Conversions.ToString(DataGridView1.CurrentRow.Cells["IdentityCard"].Value), Conversions.ToString(DataGridView1.CurrentRow.Cells["DelegateAddress"].Value), My.MyProject.Forms.Mainform.addthousandseperator(Conversions.ToString(DataGridView1.CurrentRow.Cells["voterights"].Value)));
+                InPhieuXacNhan(strHolders.ToUpper(), Conversions.ToString(DataGridView1.CurrentRow.Cells["Delegatecode"].Value), DataGridView1.CurrentRow.Cells["Delegatename"].Value.ToString().ToUpper(), Conversions.ToString(DataGridView1.CurrentRow.Cells["IdentityCard"].Value), Conversions.ToString(DataGridView1.CurrentRow.Cells["DelegateAddress"].Value), My.MyProject.Forms.Mainform.addthousandseperator(Conversions.ToString(DataGridView1.CurrentRow.Cells["voterights"].Value)), isOnlyAuthori, isHolder);
             }
             catch (Exception ex)
             {
@@ -363,7 +364,7 @@ namespace pmDHCD
 
         }
 
-        private void InPhieuXacNhan(string strHolderName, string strDelegateCode, string strDelegateName, string strIndentityCard, string strAddress, string strVoteRight)
+        private void InPhieuXacNhan(string strHolderName, string strDelegateCode, string strDelegateName, string strIndentityCard, string strAddress, string strVoteRight, bool isOnlyAuthori, bool isHolder)
         {
 
             // Dim cr As New PhieuXacNhan
@@ -382,14 +383,16 @@ namespace pmDHCD
                 string logoPath = System.IO.Path.Combine(Application.StartupPath, @"Resources\Logo.jpg");
                 cr.SetParameterValue("LogoPath", logoPath);
                 string[] holderName = strHolderName.Split(',');
-                if (holderName.Length > 1)
+                object[] holderName2 = Array.Empty<object>();
+                if (holderName.Length > 0)
                 {
-                    for (int i = 0, loopTo = holderName.Length - 1; i <= loopTo; i++)
-                        holderName[i] = (i + 1).ToString() + ". " + holderName[i].Trim();
+                    holderName2 = holderName.Where(s => !string.IsNullOrEmpty(s.Trim().ToUpper())).ToArray();
+                    for (int i = 0, loopTo = holderName2.Length - 1; i <= loopTo; i++)
+                        holderName2[i] = Operators.AddObject((i + 1).ToString() + ". ", holderName2[i].ToString().Trim());
                 }
 
-                cr.SetParameterValue("HolderName", string.Join(Environment.NewLine, holderName).ToUpper());
-                cr.SetParameterValue("Delegatecode", My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
+                cr.SetParameterValue("HolderName", string.Join(Environment.NewLine, holderName2).ToUpper());
+                cr.SetParameterValue("Delegatecode", "DB" + My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
                 cr.SetParameterValue("Delegatename", strDelegateName.ToUpper());
                 cr.SetParameterValue("IdentityCard", strIndentityCard);
                 cr.SetParameterValue("Address", strAddress);
@@ -398,7 +401,8 @@ namespace pmDHCD
                 cr.SetParameterValue("Period", My.MyProject.Forms.Mainform.period);
                 cr.SetParameterValue("MettingType", My.MyProject.Forms.Mainform.mettingType);
                 cr.SetParameterValue("CompanyName", My.MyProject.Forms.Mainform.companyName);
-                // cr.PrintToPrinter(1, True, 1, 10)
+                cr.SetParameterValue("isOnlyAuthori", isOnlyAuthori);
+                cr.SetParameterValue("isHolder", isHolder);
                 ReportViewer.LoadReport(cr, this);
             }
             catch (Exception ex)
@@ -427,7 +431,7 @@ namespace pmDHCD
                 cr.SetDataSource(dt);
                 string logoPath = System.IO.Path.Combine(Application.StartupPath, @"Resources\Logo.jpg");
                 cr.SetParameterValue("LogoPath", logoPath);
-                cr.SetParameterValue("Delegatecode", My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
+                cr.SetParameterValue("Delegatecode", "DB" + My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
                 cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells["Delegatename"].Value);
                 cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells["IdentityCard"].Value);
                 cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells["DelegateAddress"].Value);
@@ -466,7 +470,7 @@ namespace pmDHCD
                 cr.SetDataSource(dt);
                 string logoPath = System.IO.Path.Combine(Application.StartupPath, @"Resources\Logo.jpg");
                 cr.SetParameterValue("LogoPath", logoPath);
-                cr.SetParameterValue("Delegatecode", My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
+                cr.SetParameterValue("Delegatecode", "DB" + My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
                 cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells["Delegatename"].Value);
                 cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells["IdentityCard"].Value);
                 cr.SetParameterValue("CountCandidate", dt.Rows.Count.ToString());
@@ -501,7 +505,7 @@ namespace pmDHCD
                 string logoPath = System.IO.Path.Combine(Application.StartupPath, @"Resources\Logo.jpg");
 
                 cr.SetDataSource(My.MyProject.Forms.Mainform.BenlyDal.Matter_getlist(My.MyProject.Forms.Mainform.workingmeeting, 0m));
-                cr.SetParameterValue("Delegatecode", My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
+                cr.SetParameterValue("Delegatecode", "DB" + My.MyProject.Forms.Mainform.stockCode + DataGridView1.CurrentRow.Cells["Delegatecode"].Value.ToString().PadLeft(4, '0'));
                 cr.SetParameterValue("Delegatename", DataGridView1.CurrentRow.Cells["Delegatename"].Value.ToString().ToUpper());
                 cr.SetParameterValue("IdentityCard", DataGridView1.CurrentRow.Cells["IdentityCard"].Value);
                 cr.SetParameterValue("DelegateAddress", DataGridView1.CurrentRow.Cells["DelegateAddress"].Value);
