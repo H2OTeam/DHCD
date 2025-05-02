@@ -8,7 +8,6 @@
 // </auto-generated>
 // ------------------------------------------------------------------------------
 
-
 using System.Diagnostics;
 using System.Drawing;
 using Microsoft.VisualBasic;
